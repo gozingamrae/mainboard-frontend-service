@@ -1,7 +1,7 @@
 // 자바스크립트 프리티어 설정 파일
 module.exports = {
   singleQuote: true, // 따옴표 사용 시 작은 따옴표 사용
-  trailingComma: 'all', // 후행 콤마 방식 사용
+  trailingComma: "all", // 후행 콤마 방식 사용
   semi: true, // 세미콜론 사용 여부
   printWidth: 80, // 한 줄 최대 길이 지정
   tabWidth: 2, // 탭 너비 지정
