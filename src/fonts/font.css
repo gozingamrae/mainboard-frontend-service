@@ -4,21 +4,21 @@ body {
 
 /* 글꼴 전역 설정 */
 * {
-    font-family: 'gmarket';
+    font-family: 'Gmarket Sans TTF';
     font-style: normal;
     font-weight: 500;
-    color: #231F44;
+    color: #000;
 }
 
 input[type='text'] {
-    font-family: 'gmarket';
+    font-family: 'Gmarket Sans TTF';
     font-style: normal;
     font-weight: 500;
     color: #000;
 }
 
 ::placeholder {
-    font-family: 'gmarket';
+    font-family: 'Gmarket Sans TTF';
     font-style: normal;
     font-weight: 500;
 }
