@@ -6,7 +6,8 @@
     font-style: normal;
 }
 
-.login_title{
+/* 로그인 화면 */
+.login_title, .join_title {
     display: flex;
     justify-content: center;
     padding: 16px 540px;
@@ -20,7 +21,7 @@
     background: #FFFFFF;
 }
 
-.login_title > p {
+.login_title, .join_title > p {
     /* position: absolute; */
     width: 250px;
     height: 68px;
@@ -42,6 +43,8 @@
     color: #7332C3;
 }
 
+/* 로그인 폼 */
+
 .login_form{
     /* position: absolute; */
     /* width: 630px;
@@ -53,9 +56,9 @@
 }
 
 
-.login_input {
+/* .login_input {
 
-}
+} */
 
 .login_input > input {
     width: 413px;
@@ -113,8 +116,8 @@
     width: 325px;
     height: 64px;
 
-    background: #FAE301;
-    border: none;
+    background: #FAE301 !important;
+    border: none !important;;
     border-radius: 50px;
 
     font-family: 'Gmarket Sans TTF';
@@ -134,7 +137,7 @@
     text-align: -webkit-center;
 }
 
-.login_line{
+.login_line, .join_line{
     width: 630px;
     height: 0px;
 
@@ -166,5 +169,50 @@
 
     /* 설명색 */
 
+    color: #635970;
+}
+
+/* 회원가입 */
+
+.join_mainboard{
+    text-align: -webkit-center;
+
+}
+
+.join_mainboard > button{
+    width: 325px;
+    height: 64px;
+
+    font-family: 'Gmarket Sans TTF';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background: #FFFFFF;
+    margin-top: 38px;
+
+    border: 1px solid #635970;
+    color: #635970;
+}
+
+.join_mainboard > a {
+
+    font-family: 'Gmarket Sans TTF';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    align-items: center;
+    text-align: center;
+    margin-top: 58px;
+    text-decoration: none;
+    display: block;
+    
+    /* 설명색 */
+    
     color: #635970;
 }

@@ -1,5 +1,6 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom"; 
 import Login from "./user/pages/Login"; 
+import Join from "./user/pages/Join";
 
 function App() {
   return (
@@ -7,6 +8,10 @@ function App() {
       <Routes>
         <Route path="login" element={ <Login/> }>
         </Route>
+        <Route path="join"  element={ <Join/> }>
+    
+        </Route>
+
       </Routes>
     </BrowserRouter>
   );
