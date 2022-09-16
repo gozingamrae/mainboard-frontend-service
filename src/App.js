@@ -1,8 +1,13 @@
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import OrderInfo from './order/pages/OrderInfo';
+
 function App() {
   return (
-    <div>
-      <h1></h1>
-    </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/order-info" element = { <OrderInfo/> } />
+    </Routes>
+    </BrowserRouter>
   );
 }
 
