@@ -1,8 +1,16 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './layouts/Layout';
+import Main from './main/Main';
+
 function App() {
   return (
-    <div>
-      <h1></h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/main" element={<Layout />}>
+          <Route index element={<Main />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
