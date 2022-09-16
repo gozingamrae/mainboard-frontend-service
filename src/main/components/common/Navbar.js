@@ -79,7 +79,6 @@ function Navbar() {
                 <NavLink
                   to="/boardgame/list?category=collaboration" // 보드게임 전체 목록 - 장르 - 협동 URL
                   className={hiddenStyle.button18}
-                  심리협동
                 >
                   협동
                 </NavLink>
