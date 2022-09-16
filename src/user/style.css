@@ -213,3 +213,107 @@
     
     color: #635970;
 }
+
+
+.agreement{
+    text-align: -webkit-center;
+}
+
+.agreement-header{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #000000;
+    width: 1280px;
+}
+.agreement-title{  
+    font-family: 'Gmarket Sans TTF';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+
+}
+
+.agreement-step{
+    display: flex;
+    font-family: 'Gmarket Sans TTF';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    align-items: center;
+    text-align: center;
+
+    /* 메인컬러 */
+
+    color: #635970;
+}
+
+.step-active{
+    color: #7332C3;
+}
+
+.agreement-body{
+    width: 846px;
+    border-bottom: 2px solid #000000;
+}
+
+.agreement-body > .agreement-title{
+    margin-top: 62px;
+}
+
+.agreement-content{
+    width: 845px;
+    height: 709px;
+    
+    background: #EBE9F2;
+}
+
+.agreement-auth{
+
+    width: 325px;
+    height: 64px;
+    background: #FFFFFF;
+
+    font-family: 'Gmarket Sans TTF';
+    border: none;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin-top: 46px;
+    /* 설명색 */
+    
+    color: #635970;
+}
+
+.agreement-btns{
+
+}
+
+.agreement-btns > button{
+    width: 197px;
+    height: 40px;   
+    font-family: 'Gmarket Sans TTF';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    align-items: center;
+    text-align: center;
+    border-radius: 0px;
+    margin-left: 20px;
+    margin-top: 82px;
+/* 설명색 */
+
+    color: #635970;
+}
