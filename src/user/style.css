@@ -7,7 +7,7 @@
 }
 
 /* 로그인 화면 */
-.login-title, .join-title {
+.login-title, .find-title, .join-title {
     display: flex;
     justify-content: center;
     padding: 16px 540px;
@@ -21,12 +21,10 @@
     background: #FFFFFF;
 }
 
-.login-title, .join-title > p {
+.login-title, .find-title, .join-title > p {
     /* position: absolute; */
-    width: 250px;
+
     height: 68px;
-    left: 835px;
-    top: 16px;
     
     font-family: 'GmarketSansMedium';
     font-style: normal;
@@ -45,19 +43,14 @@
 
 /* 로그인 폼 */
 
-.login-form{
-    /* position: absolute; */
-    /* width: 630px;
-    height: 112px;
-    left: 645px;
-    top: 326px;  */
+.login-form, .find-form{
     display: flex;
     justify-content: center;
 }
 
 
 
-.login-input > input {
+.login-input > input , .find-input > input{
     width: 413px;
     height: 40px;
     margin-bottom: 20px;
@@ -72,7 +65,7 @@
     top: 454px;
 }
 
-.login-input > label{
+.login-input > label, .find-input > label{
     font-family: 'Gmarket Sans TTF';
     font-style: normal;
     font-weight: 500;
@@ -82,7 +75,7 @@
     vertical-align: super;
 }
 
-.login-submit{
+.login-submit, .find-submit{
     box-sizing: border-box;
 
     /* position: absolute; */
@@ -300,7 +293,7 @@
 
 }
 
-.agreement-btns > button, input[type=submit]{
+.agreement-btns > button, .agreement-btns>input[type=submit]{
     width: 197px;
     height: 40px;   
     font-family: 'Gmarket Sans TTF';

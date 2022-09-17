@@ -4,6 +4,7 @@ import Join from "./user/pages/Join";
 import Agreement from "./user/pages/Agreement";
 import InputInfo from "./user/pages/InputInfo";
 import SucessJoin from "./user/pages/SucessJoin";
+import FindId from "./user/pages/FindId";
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
         <Route path="inputInfo"  element={ <InputInfo/> }>
         </Route>
         <Route path="successJoin"  element={ <SucessJoin/> }>
+        </Route>
+        <Route path="findId"  element={ <FindId/> }>
         </Route>
       </Routes>
     </BrowserRouter>
