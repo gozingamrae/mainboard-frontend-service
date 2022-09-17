@@ -354,3 +354,41 @@
 .input-submit{
     text-align-last: center;
 }
+
+/* 회원가입 완료 창 */
+
+.success-container{
+    text-align: -webkit-center;
+}
+
+.user-content > p {
+    font-family: 'Gmarket Sans TTF';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+
+    margin-top: 81px;
+}
+
+.user-content > a {
+    
+    width: 170px;
+
+    font-family: 'Gmarket Sans TTF';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    align-items: center;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+
+    color: #635970;
+
+    margin-top: 115px;
+}
