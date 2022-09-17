@@ -407,3 +407,65 @@
     color: #000000;
 }
 
+/* 패스워드 찾기 */
+
+.find{
+    text-align: center;
+}
+
+.find-pwd{
+    display: block;
+}
+
+.find-sub{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.find-subtitle {
+
+    width: 628px;
+    font-family: 'Gmarket Sans TTF';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 18px;
+    align-items: center;
+    display: flex;
+    margin-top: 16px;
+
+    /* 검은색 */
+
+    color: #000000;
+}
+
+.find-sub > p{
+    width: 628px;
+    font-family: 'Gmarket Sans TTF';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 15px;
+    display: flex;
+    margin-top: 16px;
+    margin-bottom: 38px;
+    
+    /* 설명색 */
+    
+    color: #635970;
+}
+
+.find-form > a {
+    width: 414px;
+    font-family: 'Gmarket Sans TTF';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    display: inline-flex;
+    align-items: center;
+    color: #635970;
+    
+}

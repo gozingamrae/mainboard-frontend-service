@@ -6,6 +6,7 @@ import InputInfo from "./user/pages/InputInfo";
 import SucessJoin from "./user/pages/SucessJoin";
 import FindId from "./user/pages/FindId";
 import FindIdResult from "./user/pages/FindIdResult";
+import FindPwd from "./user/pages/FindPwd";
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
         <Route path="findId"  element={ <FindId/> }>
         </Route>
         <Route path="findIdResult"  element={ <FindIdResult/> }>
+        </Route>
+        <Route path="findPwd"  element={ <FindPwd/> }>
         </Route>
       </Routes>
     </BrowserRouter>

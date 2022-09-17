@@ -8,7 +8,7 @@ function FindId(){
             <form className="find-form">
                 <div className="find-input">
                 
-                <input type="text" name="id" placeholder="이름"></input><br/>
+                <input type="text" name="name" placeholder="이름"></input><br/>
                 <input type="text" name="phone" placeholder="가입 전화번호"></input><br/>
                 </div>
                 <input className="find-submit" type="submit" name="find" value="아이디 찾기" ></input>
