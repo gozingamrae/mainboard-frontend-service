@@ -300,7 +300,7 @@
 
 }
 
-.agreement-btns > button{
+.agreement-btns > button, input[type=submit]{
     width: 197px;
     height: 40px;   
     font-family: 'Gmarket Sans TTF';
@@ -316,4 +316,41 @@
 /* 설명색 */
 
     color: #635970;
+}
+
+.input-info{
+    text-align: -webkit-center;
+}
+
+.join-form{
+   width: 864px;
+   text-align-last: left;
+}
+
+.join-input{
+    height: 55px;
+    line-height: 20px;
+    padding: 12px 16px;
+    box-sizing: border-box;
+    vertical-align: middle;
+    border-bottom: 1px solid #dcdcdc;
+    text-align: left;
+
+    font-family: 'Gmarket Sans TTF';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    align-items: center;
+
+    padding: 12px 20px;
+}
+
+.join-input > label{
+    width: 100px;
+    display: inline-block;
+}
+
+.input-submit{
+    text-align-last: center;
 }
