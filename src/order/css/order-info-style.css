@@ -1,4 +1,53 @@
+.contentBox{
+    display:block;
+    position:absolute;
+    margin-left: 70px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
 .image{
     width: 232px;
     height: 232px;
+    display: inline-block;
+    margin-right: 10px;
+    padding: 30px;
+    background-color: #EBE9F2;
+}
+
+.content{
+    width: 700px;
+    height: 232px;
+    display: inline-block;
+    margin-left: 10px;
+    
+    padding : 15px;
+}
+
+.button{
+    width: 140px;
+    height: 40px;
+    display: inline-block;
+    margin : 10px;
+}
+.buyButton{
+    background-color:#EBE9F2 ;
+    width: 140px;
+    height: 40px;
+    display: inline-block;
+    margin : 10px;
+    
+}
+
+.boardGameName{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.loanPrice{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.footer{
+    margin-top : 50px;
 }
