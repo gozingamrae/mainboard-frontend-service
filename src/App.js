@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import OrderInfo from './order/pages/OrderInfo';
+import OrderInfo from './order/pages/Order';
 
 function App() {
   return (
     <BrowserRouter>
     <Routes>
-      <Route path="/order" element = { <OrderInfo/> } />
+      <Route path="/order" element = { <Order/> } />
     </Routes>
     </BrowserRouter>
   );
