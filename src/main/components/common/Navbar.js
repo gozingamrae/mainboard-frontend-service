@@ -14,6 +14,48 @@ function Navbar() {
     setOpenNavbar(false);
   };
 
+  // onMouseOver Event 발생 시 스타일 변경
+  const frame1HoverHandler = () => {
+    document.getElementById("element1").style.backgroundColor = "#FFF";
+    document.getElementById("button1").style.color = "#7332C3";
+  };
+
+  const frame2HoverHandler = () => {
+    document.getElementById("element2").style.backgroundColor = "#FFF";
+    document.getElementById("button2").style.color = "#7332C3";
+  };
+
+  const frame3HoverHandler = () => {
+    document.getElementById("element3").style.backgroundColor = "#FFF";
+    document.getElementById("button3").style.color = "#7332C3";
+  };
+
+  const frame4HoverHandler = () => {
+    document.getElementById("element4").style.backgroundColor = "#FFF";
+    document.getElementById("button4").style.color = "#7332C3";
+  };
+
+  // onMouseOut Event 발생 시 스타일 변경
+  const frame1HoverOutHandler = () => {
+    document.getElementById("element1").style.backgroundColor = "#7332C3";
+    document.getElementById("button1").style.color = "#EBE9F2";
+  };
+
+  const frame2HoverOutHandler = () => {
+    document.getElementById("element2").style.backgroundColor = "#7332C3";
+    document.getElementById("button2").style.color = "#EBE9F2";
+  };
+
+  const frame3HoverOutHandler = () => {
+    document.getElementById("element3").style.backgroundColor = "#7332C3";
+    document.getElementById("button3").style.color = "#EBE9F2";
+  };
+
+  const frame4HoverOutHandler = () => {
+    document.getElementById("element4").style.backgroundColor = "#7332C3";
+    document.getElementById("button4").style.color = "#EBE9F2";
+  };
+
   // 일반 화면에서는 onMouseOver Event 발생 시 보드게임 필터 목록이 나타난다.
   // 보드게임 목록 화면에서는 Event가 발생하지 않아도 화면에 고정되어 나타난다.
   // 일반 화면에서는 단순히 필터 목록에서 필터를 누르면 보드게임 목록화면으로 이동하지만,
@@ -27,9 +69,16 @@ function Navbar() {
           onMouseOut={onMouseOutHandler}
         >
           <div className={hiddenStyle.frame}>
-            <div className={hiddenStyle.frame1}>
-              <div className={hiddenStyle.element1}>
-                <div className={hiddenStyle.button1}>전체상품</div>
+            <div
+              id="frame1"
+              className={hiddenStyle.frame1}
+              onMouseOver={frame1HoverHandler}
+              onMouseOut={frame1HoverOutHandler}
+            >
+              <div id="element1" className={hiddenStyle.element1}>
+                <div id="button1" className={hiddenStyle.button1}>
+                  전체상품
+                </div>
               </div>
               <div className={hiddenStyle.element5}>
                 <NavLink
@@ -47,9 +96,16 @@ function Navbar() {
               <div className={hiddenStyle.element29} />
               <div className={hiddenStyle.element33} />
             </div>
-            <div className={hiddenStyle.frame2}>
-              <div className={hiddenStyle.element2}>
-                <div className={hiddenStyle.button2}>장르</div>
+            <div
+              id="frame2"
+              className={hiddenStyle.frame2}
+              onMouseOver={frame2HoverHandler}
+              onMouseOut={frame2HoverOutHandler}
+            >
+              <div id="element2" className={hiddenStyle.element2}>
+                <div id="button2" className={hiddenStyle.button2}>
+                  장르
+                </div>
               </div>
               <div className={hiddenStyle.element6}>
                 <NavLink
@@ -116,9 +172,16 @@ function Navbar() {
                 </NavLink>
               </div>
             </div>
-            <div className={hiddenStyle.frame3}>
-              <div className={hiddenStyle.element3}>
-                <div className={hiddenStyle.button3}>난이도</div>
+            <div
+              id="frame3"
+              className={hiddenStyle.frame3}
+              onMouseOver={frame3HoverHandler}
+              onMouseOut={frame3HoverOutHandler}
+            >
+              <div id="element3" className={hiddenStyle.element3}>
+                <div id="button3" className={hiddenStyle.button3}>
+                  난이도
+                </div>
               </div>
               <div className={hiddenStyle.element7}>
                 <NavLink
@@ -157,9 +220,16 @@ function Navbar() {
               <div className={hiddenStyle.element31}></div>
               <div className={hiddenStyle.element35}></div>
             </div>
-            <div className={hiddenStyle.frame4}>
-              <div className={hiddenStyle.element4}>
-                <div className={hiddenStyle.button4}>플레이타임</div>
+            <div
+              id="frame4"
+              className={hiddenStyle.frame4}
+              onMouseOver={frame4HoverHandler}
+              onMouseOut={frame4HoverOutHandler}
+            >
+              <div id="element4" className={hiddenStyle.element4}>
+                <div id="button4" className={hiddenStyle.button4}>
+                  플레이타임
+                </div>
               </div>
               <div className={hiddenStyle.element8}>
                 <NavLink
