@@ -1,6 +1,6 @@
 import "../style.css";
 
-function FindPwd(){
+function FindPw(){
     return (
         <div className="find">
 
@@ -25,4 +25,4 @@ function FindPwd(){
     )
 }
 
-export default FindPwd;
+export default FindPw;

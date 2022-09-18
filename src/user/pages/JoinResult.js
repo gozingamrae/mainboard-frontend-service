@@ -1,6 +1,6 @@
 import "../style.css";
 
-function SucessJoin(){
+function JoinResult(){
 
 
     return (
@@ -26,4 +26,4 @@ function SucessJoin(){
     );
 }
 
-export default SucessJoin;
+export default JoinResult;
