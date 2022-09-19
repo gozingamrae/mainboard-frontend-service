@@ -1,5 +1,7 @@
-import '../css/order-style.css';
-function OrderInfo(){
+import '../css/boardgameInfo-style.css';
+import 부루마블 from '../image/burumavel.jpg';
+
+function boardgameInfo(){
 
     const boardGameName = "부루마블";
     const benefit =5;
@@ -25,7 +27,7 @@ function OrderInfo(){
             <h1>+++ HEADER +++</h1>
             <hr/>
 
-            <img className="image" src="img/burumavel.jpg" alt="사진출력오류"/>
+            <img className="image" src={부루마블} alt="사진출력오류"/>
 
             <div className='content'>
             <p className='boardGameName' >{`${boardGameName}`}</p>
@@ -40,8 +42,6 @@ function OrderInfo(){
             <button className='button' onClick={onClickHandler2}>찜하기</button>
             <button className='buyButton'onClick={onClickHandler3}>바로 구매</button>
             </div>
-
-
             
             <h1 className='footer'>+++ Footer +++</h1>
              
@@ -49,4 +49,4 @@ function OrderInfo(){
     );
 }
 
-export default OrderInfo;
+export default boardgameInfo;
