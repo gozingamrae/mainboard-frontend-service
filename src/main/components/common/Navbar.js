@@ -18,42 +18,174 @@ function Navbar() {
   const frame1HoverHandler = () => {
     document.getElementById("element1").style.backgroundColor = "#FFF";
     document.getElementById("button1").style.color = "#7332C3";
+
+    document.getElementById("button6").style.opacity = "0.4";
+    document.getElementById("button10").style.opacity = "0.4";
+    document.getElementById("button14").style.opacity = "0.4";
+    document.getElementById("button18").style.opacity = "0.4";
+    document.getElementById("button22").style.opacity = "0.4";
+    document.getElementById("button26").style.opacity = "0.4";
+    document.getElementById("button30").style.opacity = "0.4";
+    document.getElementById("button34").style.opacity = "0.4";
+
+    document.getElementById("button7").style.opacity = "0.4";
+    document.getElementById("button11").style.opacity = "0.4";
+    document.getElementById("button15").style.opacity = "0.4";
+    document.getElementById("button19").style.opacity = "0.4";
+
+    document.getElementById("button8").style.opacity = "0.4";
+    document.getElementById("button12").style.opacity = "0.4";
+    document.getElementById("button16").style.opacity = "0.4";
+    document.getElementById("button20").style.opacity = "0.4";
+    document.getElementById("button24").style.opacity = "0.4";
   };
 
   const frame2HoverHandler = () => {
     document.getElementById("element2").style.backgroundColor = "#FFF";
     document.getElementById("button2").style.color = "#7332C3";
+
+    document.getElementById("button5").style.opacity = "0.4";
+
+    document.getElementById("button7").style.opacity = "0.4";
+    document.getElementById("button11").style.opacity = "0.4";
+    document.getElementById("button15").style.opacity = "0.4";
+    document.getElementById("button19").style.opacity = "0.4";
+
+    document.getElementById("button8").style.opacity = "0.4";
+    document.getElementById("button12").style.opacity = "0.4";
+    document.getElementById("button16").style.opacity = "0.4";
+    document.getElementById("button20").style.opacity = "0.4";
+    document.getElementById("button24").style.opacity = "0.4";
   };
 
   const frame3HoverHandler = () => {
     document.getElementById("element3").style.backgroundColor = "#FFF";
     document.getElementById("button3").style.color = "#7332C3";
+
+    document.getElementById("button5").style.opacity = "0.4";
+
+    document.getElementById("button6").style.opacity = "0.4";
+    document.getElementById("button10").style.opacity = "0.4";
+    document.getElementById("button14").style.opacity = "0.4";
+    document.getElementById("button18").style.opacity = "0.4";
+    document.getElementById("button22").style.opacity = "0.4";
+    document.getElementById("button26").style.opacity = "0.4";
+    document.getElementById("button30").style.opacity = "0.4";
+    document.getElementById("button34").style.opacity = "0.4";
+
+    document.getElementById("button8").style.opacity = "0.4";
+    document.getElementById("button12").style.opacity = "0.4";
+    document.getElementById("button16").style.opacity = "0.4";
+    document.getElementById("button20").style.opacity = "0.4";
+    document.getElementById("button24").style.opacity = "0.4";
   };
 
   const frame4HoverHandler = () => {
     document.getElementById("element4").style.backgroundColor = "#FFF";
     document.getElementById("button4").style.color = "#7332C3";
+
+    document.getElementById("button5").style.opacity = "0.4";
+
+    document.getElementById("button6").style.opacity = "0.4";
+    document.getElementById("button10").style.opacity = "0.4";
+    document.getElementById("button14").style.opacity = "0.4";
+    document.getElementById("button18").style.opacity = "0.4";
+    document.getElementById("button22").style.opacity = "0.4";
+    document.getElementById("button26").style.opacity = "0.4";
+    document.getElementById("button30").style.opacity = "0.4";
+    document.getElementById("button34").style.opacity = "0.4";
+
+    document.getElementById("button7").style.opacity = "0.4";
+    document.getElementById("button11").style.opacity = "0.4";
+    document.getElementById("button15").style.opacity = "0.4";
+    document.getElementById("button19").style.opacity = "0.4";
   };
 
   // onMouseOut Event 발생 시 스타일 변경
   const frame1HoverOutHandler = () => {
     document.getElementById("element1").style.backgroundColor = "#7332C3";
     document.getElementById("button1").style.color = "#EBE9F2";
+
+    document.getElementById("button6").style.opacity = "1.0";
+    document.getElementById("button10").style.opacity = "1.0";
+    document.getElementById("button14").style.opacity = "1.0";
+    document.getElementById("button18").style.opacity = "1.0";
+    document.getElementById("button22").style.opacity = "1.0";
+    document.getElementById("button26").style.opacity = "1.0";
+    document.getElementById("button30").style.opacity = "1.0";
+    document.getElementById("button34").style.opacity = "1.0";
+
+    document.getElementById("button7").style.opacity = "1.0";
+    document.getElementById("button11").style.opacity = "1.0";
+    document.getElementById("button15").style.opacity = "1.0";
+    document.getElementById("button19").style.opacity = "1.0";
+
+    document.getElementById("button8").style.opacity = "1.0";
+    document.getElementById("button12").style.opacity = "1.0";
+    document.getElementById("button16").style.opacity = "1.0";
+    document.getElementById("button20").style.opacity = "1.0";
+    document.getElementById("button24").style.opacity = "1.0";
   };
 
   const frame2HoverOutHandler = () => {
     document.getElementById("element2").style.backgroundColor = "#7332C3";
     document.getElementById("button2").style.color = "#EBE9F2";
+
+    document.getElementById("button5").style.opacity = "1.0";
+
+    document.getElementById("button7").style.opacity = "1.0";
+    document.getElementById("button11").style.opacity = "1.0";
+    document.getElementById("button15").style.opacity = "1.0";
+    document.getElementById("button19").style.opacity = "1.0";
+
+    document.getElementById("button8").style.opacity = "1.0";
+    document.getElementById("button12").style.opacity = "1.0";
+    document.getElementById("button16").style.opacity = "1.0";
+    document.getElementById("button20").style.opacity = "1.0";
+    document.getElementById("button24").style.opacity = "1.0";
   };
 
   const frame3HoverOutHandler = () => {
     document.getElementById("element3").style.backgroundColor = "#7332C3";
     document.getElementById("button3").style.color = "#EBE9F2";
+
+    document.getElementById("button5").style.opacity = "1.0";
+
+    document.getElementById("button6").style.opacity = "1.0";
+    document.getElementById("button10").style.opacity = "1.0";
+    document.getElementById("button14").style.opacity = "1.0";
+    document.getElementById("button18").style.opacity = "1.0";
+    document.getElementById("button22").style.opacity = "1.0";
+    document.getElementById("button26").style.opacity = "1.0";
+    document.getElementById("button30").style.opacity = "1.0";
+    document.getElementById("button34").style.opacity = "1.0";
+
+    document.getElementById("button8").style.opacity = "1.0";
+    document.getElementById("button12").style.opacity = "1.0";
+    document.getElementById("button16").style.opacity = "1.0";
+    document.getElementById("button20").style.opacity = "1.0";
+    document.getElementById("button24").style.opacity = "1.0";
   };
 
   const frame4HoverOutHandler = () => {
     document.getElementById("element4").style.backgroundColor = "#7332C3";
     document.getElementById("button4").style.color = "#EBE9F2";
+
+    document.getElementById("button5").style.opacity = "1.0";
+
+    document.getElementById("button6").style.opacity = "1.0";
+    document.getElementById("button10").style.opacity = "1.0";
+    document.getElementById("button14").style.opacity = "1.0";
+    document.getElementById("button18").style.opacity = "1.0";
+    document.getElementById("button22").style.opacity = "1.0";
+    document.getElementById("button26").style.opacity = "1.0";
+    document.getElementById("button30").style.opacity = "1.0";
+    document.getElementById("button34").style.opacity = "1.0";
+
+    document.getElementById("button7").style.opacity = "1.0";
+    document.getElementById("button11").style.opacity = "1.0";
+    document.getElementById("button15").style.opacity = "1.0";
+    document.getElementById("button19").style.opacity = "1.0";
   };
 
   // 일반 화면에서는 onMouseOver Event 발생 시 보드게임 필터 목록이 나타난다.
@@ -82,6 +214,7 @@ function Navbar() {
               </div>
               <div className={hiddenStyle.element5}>
                 <NavLink
+                  id="button5"
                   to="/boardgame/list" // 보드게임 전체 목록 URL
                   className={hiddenStyle.button5}
                 >
@@ -109,6 +242,7 @@ function Navbar() {
               </div>
               <div className={hiddenStyle.element6}>
                 <NavLink
+                  id="button6"
                   to="/boardgame/list?category=strategy" // 보드게임 전체 목록 - 장르 - 전략 URL
                   className={hiddenStyle.button6}
                 >
@@ -117,6 +251,7 @@ function Navbar() {
               </div>
               <div className={hiddenStyle.element10}>
                 <NavLink
+                  id="button10"
                   to="/boardgame/list?category=reasoning" // 보드게임 전체 목록 - 장르 - 추리 URL
                   className={hiddenStyle.button10}
                 >
@@ -125,6 +260,7 @@ function Navbar() {
               </div>
               <div className={hiddenStyle.element14}>
                 <NavLink
+                  id="button14"
                   to="/boardgame/list?category=mentality" // 보드게임 전체 목록 - 장르 - 심리 URL
                   className={hiddenStyle.button14}
                 >
@@ -133,6 +269,7 @@ function Navbar() {
               </div>
               <div className={hiddenStyle.element18}>
                 <NavLink
+                  id="button18"
                   to="/boardgame/list?category=collaboration" // 보드게임 전체 목록 - 장르 - 협동 URL
                   className={hiddenStyle.button18}
                 >
@@ -141,6 +278,7 @@ function Navbar() {
               </div>
               <div className={hiddenStyle.element22}>
                 <NavLink
+                  id="button22"
                   to="/boardgame/list?category=negotiation" // 보드게임 전체 목록 - 장르 - 협상 URL
                   className={hiddenStyle.button22}
                 >
@@ -149,6 +287,7 @@ function Navbar() {
               </div>
               <div className={hiddenStyle.element26}>
                 <NavLink
+                  id="button26"
                   to="/boardgame/list?category=speed" // 보드게임 전체 목록 - 장르 - 순발력 URL
                   className={hiddenStyle.button26}
                 >
@@ -157,6 +296,7 @@ function Navbar() {
               </div>
               <div className={hiddenStyle.element30}>
                 <NavLink
+                  id="button30"
                   to="/boardgame/list?category=team" // 보드게임 전체 목록 - 장르 - 팀전 URL
                   className={hiddenStyle.button30}
                 >
@@ -165,6 +305,7 @@ function Navbar() {
               </div>
               <div className={hiddenStyle.element34}>
                 <NavLink
+                  id="button34"
                   to="/boardgame/list?category=personal" // 보드게임 전체 목록 - 장르 - 개인전 URL
                   className={hiddenStyle.button34}
                 >
@@ -185,6 +326,7 @@ function Navbar() {
               </div>
               <div className={hiddenStyle.element7}>
                 <NavLink
+                  id="button7"
                   to="/boardgame/list?category=easy" // 보드게임 전체 목록 - 난이도 - 쉬움 URL
                   className={hiddenStyle.button7}
                 >
@@ -193,6 +335,7 @@ function Navbar() {
               </div>
               <div className={hiddenStyle.element11}>
                 <NavLink
+                  id="button11"
                   to="/boardgame/list?category=medium" // 보드게임 전체 목록 - 난이도 - 중간 URL
                   className={hiddenStyle.button11}
                 >
@@ -201,6 +344,7 @@ function Navbar() {
               </div>
               <div className={hiddenStyle.element15}>
                 <NavLink
+                  id="button15"
                   to="/boardgame/list?category=hard" // 보드게임 전체 목록 - 난이도 - 어려움 URL
                   className={hiddenStyle.button15}
                 >
@@ -209,6 +353,7 @@ function Navbar() {
               </div>
               <div className={hiddenStyle.element19}>
                 <NavLink
+                  id="button19"
                   to="/boardgame/list?category=very-hard" // 보드게임 전체 목록 - 난이도 - 매우 어려움 URL
                   className={hiddenStyle.button19}
                 >
@@ -233,6 +378,7 @@ function Navbar() {
               </div>
               <div className={hiddenStyle.element8}>
                 <NavLink
+                  id="button8"
                   to="/boardgame/list?category=interval1" // 보드게임 전체 목록 - 플레이타임 - 30분 이하 URL
                   className={hiddenStyle.button8}
                 >
@@ -241,6 +387,7 @@ function Navbar() {
               </div>
               <div className={hiddenStyle.element12}>
                 <NavLink
+                  id="button12"
                   to="/boardgame/list?category=interval2" // 보드게임 전체 목록 - 플레이타임 - 30분~1시간 URL
                   className={hiddenStyle.button12}
                 >
@@ -249,6 +396,7 @@ function Navbar() {
               </div>
               <div className={hiddenStyle.element16}>
                 <NavLink
+                  id="button16"
                   to="/boardgame/list?category=interval3" // 보드게임 전체 목록 - 플레이타임 - 1시간~2시간 URL
                   className={hiddenStyle.button16}
                 >
@@ -257,6 +405,7 @@ function Navbar() {
               </div>
               <div className={hiddenStyle.element20}>
                 <NavLink
+                  id="button20"
                   to="/boardgame/list?category=interval4" // 보드게임 전체 목록 - 플레이타임 - 2시간~3시간 URL
                   className={hiddenStyle.button20}
                 >
@@ -265,6 +414,7 @@ function Navbar() {
               </div>
               <div className={hiddenStyle.element24}>
                 <NavLink
+                  id="button24"
                   to="/boardgame/list?category=interval5" // 보드게임 전체 목록 - 플레이타임 - 3시간 이상 URL
                   className={hiddenStyle.button24}
                 >
