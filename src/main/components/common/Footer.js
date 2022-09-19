@@ -2,7 +2,7 @@ import style from "../../static/css/footer.module.css";
 import { NavLink } from "react-router-dom";
 
 function Footer() {
-  return (
+  return (  
     <div className={style.layout}>
       <div className={style.textBox}>
         <NavLink className={style.text1} to="/policy/service">
@@ -18,10 +18,10 @@ function Footer() {
           고객센터
         </NavLink>
       </div>
-      <div className={style.phone}>010-1234-4567</div>
-      <div className={style.copyright}>
-        c 2022 고진감래 Inc. All rights reserved
-      </div>
+        <div className={style.phone}>010-1234-4567</div>
+        <div className={style.copyright}>
+          c 2022 고진감래 Inc. All rights reserved
+        </div>
     </div>
   );
 }
