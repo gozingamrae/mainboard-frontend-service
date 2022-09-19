@@ -20,6 +20,7 @@ function App() {
         <Route path="/main" element={<Layout />}>
           <Route index element={<Main />} />
           <Route path="login" element={ <Login/> }/>
+        </Route>
         <Route path="join">
           <Route index element={ <Join/> }/>
           <Route path="agreement"  element={ <Agreement/> }/>
@@ -34,7 +35,6 @@ function App() {
           <Route index element={ <FindPw/> }/>
           <Route path="changepw"  element={ <ChangePw/> }/>
           <Route path="result"  element={ <ChangePwResult/> }/>
-        </Route>
         </Route>
       </Routes>
     </BrowserRouter>
