@@ -1,4 +1,4 @@
-import '../css/order-info-style.css';
+import '../css/order-style.css';
 function OrderInfo(){
 
     const boardGameName = "부루마블";
