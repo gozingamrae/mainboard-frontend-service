@@ -5,11 +5,11 @@
     background-size: cover;
 
     width: 315px;
-    height: 60px;
+    height: 57px;
 
     position: absolute;
-    left: 10px;
-    top: 25px;
+    left: 315px;
+    top: 30px;
 }
 
 .searchButton {
