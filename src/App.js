@@ -5,7 +5,7 @@ function App() {
   return (
     <BrowserRouter>
     <Routes>
-      <Route path="/order" element = { <Order/> } />
+      <Route path="/boardgame/list/:1" element = { <Order/> } />
     </Routes>
     </BrowserRouter>
   );
