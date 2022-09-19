@@ -9,12 +9,17 @@ import FindIdResult from "./user/pages/FindIdResult";
 import FindPw from "./user/pages/FindPw";
 import ChangePw from "./user/pages/ChangePw";
 import ChangePwResult from "./user/pages/ChangePwResult"; 
+import Layout from './layouts/Layout';
+import Main from './main/Main';
+import OrderInfo from './order/pages/OrderInfo';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="login" element={ <Login/> }/>
+        <Route path="/main" element={<Layout />}>
+          <Route index element={<Main />} />
+          <Route path="login" element={ <Login/> }/>
         <Route path="join">
           <Route index element={ <Join/> }/>
           <Route path="agreement"  element={ <Agreement/> }/>
@@ -29,6 +34,7 @@ function App() {
           <Route index element={ <FindPw/> }/>
           <Route path="changepw"  element={ <ChangePw/> }/>
           <Route path="result"  element={ <ChangePwResult/> }/>
+        </Route>
         </Route>
       </Routes>
     </BrowserRouter>
