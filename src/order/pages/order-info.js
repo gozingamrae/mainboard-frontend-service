@@ -4,8 +4,8 @@ import { useState } from 'react';
 function OrderInfo(){
 
     const arr = [{info: "부루마블", quantity: "2", price: "4000", points: 400, totalPrice: 8000},
-    {info: "부루마블2", quantity: "3", price: "3000", points: 450, totalPrice: 9000},
-    {info: "부루마블3", quantity: "1", price: "2000", points: 100, totalPrice: 2000}
+    {info: "부루마블 2", quantity: "3", price: "3000", points: 450, totalPrice: 9000},
+    {info: "부루마블 3", quantity: "1", price: "2000", points: 100, totalPrice: 2000}
     ] 
 
     const deliveryCharge = 2500;
@@ -22,7 +22,7 @@ function OrderInfo(){
     }
 
     const [subPrice, setSubPrice]=useState(0);
-    const [usePoints, setUsePoints]=useState(0);
+ 
 
 
     const onChangeHandler = (e) => {
@@ -30,12 +30,21 @@ function OrderInfo(){
     }
 
     const onClickHandler = (e) => {
-        setUsePoints(e.target.checked);
+
+        const inputText = document.getElementById("usingPoints");
+
+        if(e.target.checked){
+            inputText.value = holdingPoints; 
+            setSubPrice(holdingPoints);
+        }
+        else {inputText.value="" }
     }
 
     var finalPrice = TOTALPRICE - subPrice;
 
-
+    function paymentButtonOnChangeHandler(){
+        window.location.href="/payment";
+    }
 
     return(
 
@@ -115,10 +124,10 @@ function OrderInfo(){
                         <tr>
                             <td>배송지 확인</td>
                             <td> &nbsp; 
-                            기본배송지<input type="radio" name="default" value="default"/> &nbsp;
-                            최근배송지<input type="radio" name="last"/>  &nbsp;
-                            직접입력<input type="radio" name="input"/>  &nbsp;
-                            주문자정보와동일<input type="radio" name="sameAsOrder"/> &nbsp;  
+                            <input  type="radio" name="deliveryLocation" value="default"/>기본배송지 &nbsp;
+                            <input type="radio" name="deliveryLocation" value="last"/>최근배송지  &nbsp;
+                            <input type="radio" name="deliveryLocation" value="direct"/>직접입력 &nbsp;
+                            <input type="radio" name="deliveryLocation" value="sameAsOrder"/>주문자정보와동일&nbsp;  
                             </td>
                         </tr>
                         <tr>
@@ -177,7 +186,7 @@ function OrderInfo(){
                         </tr>
                         <tr>
                             <td>포인트 사용</td>
-                            <td><input name="usingPointsAmount" onChange={onChangeHandler}/>원 <input type="checkBox" onClick={onClickHandler} value={holdingPoints}/>전액사용하기 (보유마일리지: {holdingPoints}원)
+                            <td><input id="usingPoints" name="usingPointsAmount" onChange={onChangeHandler}/>원 <input id="TEST" type="checkBox" onClick={onClickHandler} value={holdingPoints}/>전액사용하기 (보유마일리지: {holdingPoints}원)
                             <br/>
                             <p>*100원 이상 부터 사용 가능</p>
                             </td>
@@ -191,8 +200,8 @@ function OrderInfo(){
                 </table>
             </div>
 
-
-            
+            <hr/>
+            <button onClick={paymentButtonOnChangeHandler}> 결제하기 </button>
 
             <hr/>
             <h1>+++ Footer +++</h1>
