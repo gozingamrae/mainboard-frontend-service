@@ -1,16 +1,18 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Layout from './layouts/Layout';
-import Main from './main/Main';
-import OrderInfo from './order/pages/OrderInfo';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import BoardgameList from "./boardgame/pages/BoardgameList";
+import Layout from "./layouts/Layout";
+import Main from "./main/pages/Main";
+import OrderInfo from "./order/pages/OrderInfo";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/main" element={<Layout />}>
+        <Route path="/" element={<Layout />}>
           <Route index element={<Main />} />
+          <Route path="/boardgame/list" element={<BoardgameList />} />
+          <Route path="/order-info" element={<OrderInfo />} />
         </Route>
-        <Route path="/order-info" element = { <OrderInfo/> } />
       </Routes>
     </BrowserRouter>
   );

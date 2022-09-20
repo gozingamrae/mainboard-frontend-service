@@ -1,110 +1,109 @@
 .logo {
-/* logo type */
-    background-image: url(../images/mainlogo.png);
-    background-repeat: no-repeat;
-    background-size: cover;
+  /* logo type */
+  background-image: url(../images/mainlogo.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 
-    width: 315px;
-    height: 57px;
+  width: 317px;
+  height: 45px;
 
-    position: absolute;
-    left: 315px;
-    top: 30px;
+  position: absolute;
+  left: 317px;
+  top: 37px;
 }
 
 .searchButton {
-    background-image: url(../images/searchbutton.png);
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-image: url(../images/searchbutton.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 
-    width: 25.35px;
-    height: 26.19px;
+  width: 25.35px;
+  height: 26.19px;
 
-    position: absolute;
-    left: 1137px;
-    top: 48px;
+  position: absolute;
+  left: 1137px;
+  top: 48px;
 
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .searchBox {
-/* Article */
+  /* Article */
 
-position: absolute;
-width: 386px;
-height: 40px;
-left: 755px;
-top: 37px;
+  position: absolute;
+  width: 386px;
+  height: 40px;
+  left: 755px;
+  top: 37px;
 
-/* 서브컬러 */
-background: #EBE9F2;
-/* 메인컬러 */
-border: 1px solid #7332C3;
-border-radius: 20px;
+  /* 서브컬러 */
+  background: #ebe9f2;
+  /* 메인컬러 */
+  border: 1px solid #7332c3;
+  border-radius: 20px;
 
-padding-left: 30px;
-padding-top: 5px;
+  padding-left: 30px;
+  padding-top: 5px;
 
-color: #7332C3;
-line-height: 15px;
+  color: #7332c3;
+  line-height: 15px;
 
-font-style: normal;
-font-weight: 500;
-font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
 }
 
 .searchBox::placeholder {
-    color: #7332C3;
-    line-height: 15px;
+  color: #7332c3;
+  line-height: 15px;
 
-    font-style: normal;
-    font-weight: 500;
-    font-size: 13px;
-
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
 }
 
 .searchBox:focus {
-    outline: none;
+  outline: none;
 }
 
 .login {
-    /* 로그인 */
+  /* 로그인 */
 
-    position: absolute;
-    left: 1400px;
-    top: 45px;
+  position: absolute;
+  left: 1400px;
+  top: 45px;
 
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 18px;
-    display: flex;
-    align-items: center;
-    text-align: center;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  text-align: center;
 
-    /* 메인컬러 */
-    color: #7332C3;
-    width: 120px;
-    height: 40px;
+  /* 메인컬러 */
+  color: #7332c3;
+  width: 120px;
+  height: 40px;
 }
 
 .join {
-    /* 회원가입 */
+  /* 회원가입 */
 
-    position: absolute;
-    left: 1520px;
-    top: 45px;
+  position: absolute;
+  left: 1520px;
+  top: 45px;
 
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 18px;
-    display: flex;
-    align-items: center;
-    text-align: center;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  text-align: center;
 
-    /* 메인컬러 */
-    color: #7332C3;
-    width: 120px;
-    height: 40px;
+  /* 메인컬러 */
+  color: #7332c3;
+  width: 120px;
+  height: 40px;
 }
