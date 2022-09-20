@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import style from "./static/css/main.module.css";
+import style from "../static/css/main.module.css";
 
 function Main() {
   return (
