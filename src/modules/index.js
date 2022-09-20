@@ -1,8 +1,9 @@
 import { combineReducers } from "redux";
-import { defaultReducer } from "./mainModules/mainModule";
+import { navbarReducer, hiddenNavbarReducer } from "./mainModules/navbarModule";
 
 const rootReducer = combineReducers({
-  defaultReducer,
+  navbarReducer,
+  hiddenNavbarReducer,
 });
 
 export default rootReducer;
