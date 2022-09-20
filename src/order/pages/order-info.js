@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../css/order-info-style.css';
 
 function OrderInfo(){
@@ -22,26 +22,52 @@ function OrderInfo(){
     }
 
     const [subPrice, setSubPrice]=useState(0);
+    const [emailId, setEmailId]=useState("");
+    const [emailDomain, setEmailDomain]=useState("");
+    const [email, setEmail] = useState("");
 
-    const onChangeHandler = (e) => {
+
+    const pointsOnChangeHandler = (e) => {
         setSubPrice(e.target.value);
     }
 
-    const onClickHandler = (e) => {
+    const pointsOnClickHandler = (e) => {
 
         const inputText = document.getElementById("usingPoints");
+        console.log(inputText);
 
         if(e.target.checked){
             inputText.value = holdingPoints; 
             setSubPrice(holdingPoints);
-        }
-        else {
+        } else {
             inputText.value="" 
             setSubPrice(0);
         }
     }
 
-    var finalPrice = TOTALPRICE - subPrice;
+    const emailOnClickHandler = (e) => {
+        const inputText = document.getElementById("orderEmailDomain");
+        const domain = document.getElementById("orderEmailDomainOption");
+
+        inputText.value = domain.value;
+
+        const emailText = emailId + "@" + emailDomain
+        setEmail(emailText);
+    }
+
+    const emailOnChangeHandler1 = (e) => {
+        setEmailId(e.target.value);
+        console.log(emailId);
+    }
+
+    const emailOnChangeHandler2 = (e) => {
+        setEmailDomain(e.target.value);
+
+        setEmail(emailId + "@" + emailDomain);
+
+        console.log(email);  
+    }
+
 
     function paymentButtonOnChangeHandler(){
         window.location.href="/payment";
@@ -49,6 +75,10 @@ function OrderInfo(){
     function cancelButtonOnChangeHandler(){
         window.location.href="/boardgame/list";
     }
+
+
+    var finalPrice = TOTALPRICE - subPrice;
+    
 
     return(
 
@@ -90,34 +120,26 @@ function OrderInfo(){
                 <table className='InfoTable'>
                 
                 <tbody>
-                <tr>
-                <td className='InfoFirstColumn'>*주문하시는 분  </td>
-                <td className='InfoSecondColumn'><input name="orderName" className='InputBox'/></td>
-                </tr>
+                <tr> <td className='InfoFirstColumn'>*주문하시는 분  </td> <td className='InfoSecondColumn'><input name="orderName" className='InputBox'/></td> </tr>
 
-                <tr>
-                <td className='InfoFirstColumn'> 전화번호 </td>
-                <td className='InfoSecondColumn'><input name="orderTelephone" className='InputBox'/></td>
-                </tr>
+                <tr><td className='InfoFirstColumn'> 전화번호 </td> <td className='InfoSecondColumn'><input name="orderTelephone" className='InputBox'/></td></tr>
 
-                <tr>
-                    <td className='InfoFirstColumn'>*휴대전화 번호 </td>
-                    <td className='InfoSecondColumn'><input name="orderPhoneNum" className='InputBox'/></td>
-                </tr>
+                <tr><td className='InfoFirstColumn'>*휴대전화 번호 </td><td className='InfoSecondColumn'><input name="orderPhoneNum" className='InputBox'/></td></tr>
 
-                <tr> 
-                    <td className='InfoFirstColumn'>이메일 </td>
+                <tr><td className='InfoFirstColumn'>이메일 </td>
                     <td className='InfoSecondColumn'>
-                     <input name="orderEmailId" className='InputBox'/>@<input name="ordereMailDomain" className='InputBox'/>
-                        <select name="orderEmailDomain" className='ordererOptionBox'>
+                     <input name="orderEmailId" className='InputBox' value={emailId} onChange={emailOnChangeHandler1}/>
+                     @
+                     <input id="orderEmailDomain" className='InputBox' value={emailDomain} onChange={emailOnChangeHandler2}/>
+
+                        <select id="orderEmailDomainOption" className='ordererOptionBox' onClick={emailOnClickHandler}>
                             <option value=""> 직접입력</option>
                             <option value="gmail.com">gmail.com</option>
                             <option value="naver.com">naver.com</option>
                             <option value="daum.com">daum.com</option>
                             <option value="hanmail.com">hanmail.com</option>
                         </select>
-                     </td>
-                </tr>
+                     </td></tr>
                 </tbody>
                 
                 </table>
@@ -192,9 +214,9 @@ function OrderInfo(){
                         <tr>
                             <td className='InfoFirstColumn'>포인트 사용</td>
                             <td className='InfoSecondColumn'>
-                                <input id="usingPoints" name="usingPointsAmount" onChange={onChangeHandler} className='InputBox'/> 
+                                <input id="usingPoints" name="usingPointsAmount" onChange={pointsOnChangeHandler} className='InputBox'/> 
                                 원  &nbsp; &nbsp;
-                                <input id="TEST" type="checkBox" onClick={onClickHandler} value={holdingPoints}/>전액사용하기 
+                                <input id="useAllPoints" type="checkBox" onClick={pointsOnClickHandler} value={holdingPoints}/>전액사용하기 
                                 (보유마일리지: {holdingPoints}원)
                             <br/>
                             <p >*100원 이상 부터 사용 가능</p>
