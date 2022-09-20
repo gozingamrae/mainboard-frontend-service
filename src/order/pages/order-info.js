@@ -79,11 +79,6 @@ function OrderInfo(){
     }
 
     console.log(emailResult.email);
-    
-
- 
-
-
 
     function paymentButtonOnChangeHandler(){
         window.location.href="/payment";
@@ -92,17 +87,11 @@ function OrderInfo(){
         window.location.href="/boardgame/list";
     }
 
-
     var finalPrice = TOTALPRICE - subPriceResult.subPrice;
-    
 
     return(
 
         <div>
-            <h1>+++ Header +++</h1>
-            <hr/>
-            <br/>
-
             <h3>주문 상세 내역</h3>
             <hr/>
             <table className='orderInfoTable'>
@@ -256,8 +245,6 @@ function OrderInfo(){
             <button onClick={paymentButtonOnChangeHandler} className="paymentButton"> 결제하기 </button>
             </div>
 
-            <hr/>
-            <h1>+++ Footer +++</h1>
 
         </div>
     );
