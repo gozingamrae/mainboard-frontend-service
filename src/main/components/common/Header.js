@@ -20,7 +20,7 @@ function Header() {
 
   return (
     <div className={style.layout}>
-      <NavLink className={style.logo} to="/main"></NavLink>
+      <NavLink className={style.logo} to="/"></NavLink>
       <div>
         <input
           id="search"
