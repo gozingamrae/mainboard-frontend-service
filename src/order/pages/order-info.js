@@ -1,11 +1,11 @@
-
 import { useState } from 'react';
+import '../css/order-info-style.css';
 
 function OrderInfo(){
 
     const arr = [{info: "부루마블", quantity: "2", price: "4000", points: 400, totalPrice: 8000},
-    {info: "부루마블 2", quantity: "3", price: "3000", points: 450, totalPrice: 9000},
-    {info: "부루마블 3", quantity: "1", price: "2000", points: 100, totalPrice: 2000}
+    {info: "할리갈리", quantity: "3", price: "3000", points: 450, totalPrice: 9000},
+    {info: "쿼리도", quantity: "1", price: "2000", points: 100, totalPrice: 2000}
     ] 
 
     const deliveryCharge = 2500;
@@ -22,8 +22,6 @@ function OrderInfo(){
     }
 
     const [subPrice, setSubPrice]=useState(0);
- 
-
 
     const onChangeHandler = (e) => {
         setSubPrice(e.target.value);
@@ -37,7 +35,10 @@ function OrderInfo(){
             inputText.value = holdingPoints; 
             setSubPrice(holdingPoints);
         }
-        else {inputText.value="" }
+        else {
+            inputText.value="" 
+            setSubPrice(0);
+        }
     }
 
     var finalPrice = TOTALPRICE - subPrice;
@@ -45,19 +46,23 @@ function OrderInfo(){
     function paymentButtonOnChangeHandler(){
         window.location.href="/payment";
     }
+    function cancelButtonOnChangeHandler(){
+        window.location.href="/boardgame/list";
+    }
 
     return(
 
         <div>
             <h1>+++ Header +++</h1>
             <hr/>
+            <br/>
 
-            <h2>주문 상세 내역</h2>
+            <h3>주문 상세 내역</h3>
             <hr/>
-            <table border="1" width ="1200" align = "center">
+            <table className='orderInfoTable'>
 
                 <thead>
-                <tr bgcolor ="#EBE9F2" align="center">
+                <tr className='orderInfoHeader'>
                     <th width="600">상품/옵션 정보</th>
                     <th>수량</th>
                     <th>상품 금액</th>
@@ -68,8 +73,8 @@ function OrderInfo(){
 
                 <tbody>
                 {arr.map(list=>
-                <tr align="center">
-                    <td width = "500" height="150"  >{list.info}</td>
+                <tr align="center" className='orderInfoContent'>
+                    <td width = "500" height="100"  >{list.info}</td>
                     <td>{list.quantity}</td>
                     <td>{list.price}</td>
                     <td>{list.points}</td>
@@ -82,34 +87,36 @@ function OrderInfo(){
             <div>
                 <h3>주문자 정보</h3>
                 <hr/>
-                <table border="1" align="center">
+                <table className='InfoTable'>
                 
-                <tbody align="center">
-                <tr >
-                <td>*주문하시는 분 : </td>
-                <td><input name="orderName"/></td>
+                <tbody>
+                <tr>
+                <td className='InfoFirstColumn'>*주문하시는 분  </td>
+                <td className='InfoSecondColumn'><input name="orderName" className='InputBox'/></td>
                 </tr>
 
                 <tr>
-                <td> 전화번호 :</td>
-                <td><input name="orderTelephone"/></td>
+                <td className='InfoFirstColumn'> 전화번호 </td>
+                <td className='InfoSecondColumn'><input name="orderTelephone" className='InputBox'/></td>
                 </tr>
 
                 <tr>
-                    <td>*휴대전화 번호 :</td>
-                    <td><input name="orderPhoneNum"/></td>
+                    <td className='InfoFirstColumn'>*휴대전화 번호 </td>
+                    <td className='InfoSecondColumn'><input name="orderPhoneNum" className='InputBox'/></td>
                 </tr>
 
                 <tr> 
-                    <td>이메일 :</td>
-                     <input name="orderEmailId"/> @ <input name="ordereMailDomain"/>
-                <select name="orderEmailDomain">
-                    <option value=""> 직접입력</option>
-                    <option value="gmail.com">gmail.com</option>
-                    <option value="naver.com">naver.com</option>
-                    <option value="daum.com">daum.com</option>
-                    <option value="hanmail.com">hanmail.com</option>
-                </select>
+                    <td className='InfoFirstColumn'>이메일 </td>
+                    <td className='InfoSecondColumn'>
+                     <input name="orderEmailId" className='InputBox'/>@<input name="ordereMailDomain" className='InputBox'/>
+                        <select name="orderEmailDomain" className='ordererOptionBox'>
+                            <option value=""> 직접입력</option>
+                            <option value="gmail.com">gmail.com</option>
+                            <option value="naver.com">naver.com</option>
+                            <option value="daum.com">daum.com</option>
+                            <option value="hanmail.com">hanmail.com</option>
+                        </select>
+                     </td>
                 </tr>
                 </tbody>
                 
@@ -119,42 +126,42 @@ function OrderInfo(){
             <div>
                 <h3>배송정보</h3>
                 <hr/>
-                <table border="1" align="center">
+                <table className='InfoTable' >
                     <tbody>
                         <tr>
-                            <td>배송지 확인</td>
-                            <td> &nbsp; 
-                            <input  type="radio" name="deliveryLocation" value="default"/>기본배송지 &nbsp;
-                            <input type="radio" name="deliveryLocation" value="last"/>최근배송지  &nbsp;
-                            <input type="radio" name="deliveryLocation" value="direct"/>직접입력 &nbsp;
-                            <input type="radio" name="deliveryLocation" value="sameAsOrder"/>주문자정보와동일&nbsp;  
+                            <td className='InfoFirstColumn' >배송지 확인</td>
+                            <td className='InfoSecondColumn'> &nbsp; &nbsp; 
+                            <input  type="radio" name="deliveryLocation" value="default"/>기본배송지 &nbsp; &nbsp; 
+                            <input type="radio" name="deliveryLocation" value="last"/>최근배송지  &nbsp; &nbsp; 
+                            <input type="radio" name="deliveryLocation" value="direct"/>직접입력 &nbsp; &nbsp; 
+                            <input type="radio" name="deliveryLocation" value="sameAsOrder"/>주문자정보와동일&nbsp; &nbsp; 
                             </td>
                         </tr>
                         <tr>
-                            <td>받으시는 분</td>
-                            <td><input name="deliveryName"/></td>
+                            <td className='InfoFirstColumn'>*받으시는 분</td>
+                            <td className='InfoSecondColumn'><input name="deliveryName" className='InputBox'/></td>
                         </tr>
                         <tr>
-                            <td>받으실 곳</td>
-                            <td><input name="deliveryLocation"/> <button>우편번호 검색</button> <br/>
-                                <input name="deliveryLocation"/><input name="deliveryLocationDetail" placeholder="상세주소입력"/>
+                            <td className='InfoFirstColumn'>*받으실 곳</td>
+                            <td className='InfoSecondColumn'><input name="deliveryLocation" className='InputBox'/> <button>우편번호 검색</button> <br/>
+                                <input name="deliveryLocation" className='InputBox'/><input name="deliveryLocationDetail" placeholder="상세주소입력" className='InputBox'/>
                             </td>
                         </tr>
                         <tr>
-                            <td>전화번호</td>
-                            <td><input name="deliveryTelephone"/></td>
+                            <td className='InfoFirstColumn'>전화번호</td>
+                            <td className='InfoSecondColumn'><input name="deliveryTelephone" className='InputBox'/></td>
                         </tr>
                         <tr>
-                            <td>휴대전화 번호</td>
-                            <td><input name="deliveryPhoneNum"/></td>
+                            <td className='InfoFirstColumn'>*휴대전화 번호</td>
+                            <td className='InfoSecondColumn'><input name="deliveryPhoneNum" className='InputBox'/></td>
                         </tr>
                         <tr>
-                            <td>배송메시지</td>
-                            <td><input name="deliveryMessage"/></td>
+                            <td className='InfoFirstColumn'>배송메시지</td>
+                            <td className='InfoSecondColumn'><input name="deliveryMessage"className='InputBox'/></td>
                         </tr>
                         <tr>
-                            <td>배송지 저장</td>
-                            <td><input name="saveLocation" type="checkBox"/> 배송지 저장</td>
+                            <td className='InfoFirstColumn'>배송지 저장</td>
+                            <td className='InfoSecondColumn'><input name="saveLocation" type="checkBox" /> 배송지 저장</td>
                         </tr>
                     </tbody>
                 </table>
@@ -163,45 +170,53 @@ function OrderInfo(){
             <div>
                 <h3>결제정보</h3>
                 <hr/>
-                <table border="1" align="center">
+                <table className='infoTable'>
                     <tbody>
                         <tr>
-                            <td>상품 합계 금액</td>
-                            <td>
-                                {TOTALPRICE.toLocaleString()}원
+                            <td className='InfoFirstColumn'>상품 합계 금액</td>
+                            <td className='InfoSecondColumn'> {TOTALPRICE.toLocaleString()}원</td>
+                        </tr>
+                        <tr>
+                            <td className='InfoFirstColumn'>배송비</td>
+                            <td className='InfoSecondColumn'>{deliveryCharge.toLocaleString()}원</td>
+                        </tr>
+                        <tr>
+                            <td className='InfoFirstColumn'>적립</td>
+                            <td className='InfoSecondColumn'>적립 마일리지 : {TOTALPOINTS.toLocaleString()}원
                             </td>
                         </tr>
                         <tr>
-                            <td>배송비</td>
-                            <td>{deliveryCharge.toLocaleString()}원</td>
+                            <td className='InfoFirstColumn'>쿠폰사용</td>
+                            <td className='InfoSecondColumn'><button>쿠폰조회 및 사용</button></td>
                         </tr>
                         <tr>
-                            <td>적립</td>
-                            <td>적립 마일리지 : {TOTALPOINTS.toLocaleString()}원
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>쿠폰사용</td>
-                            <td><button>쿠폰조회 및 사용</button></td>
-                        </tr>
-                        <tr>
-                            <td>포인트 사용</td>
-                            <td><input id="usingPoints" name="usingPointsAmount" onChange={onChangeHandler}/>원 <input id="TEST" type="checkBox" onClick={onClickHandler} value={holdingPoints}/>전액사용하기 (보유마일리지: {holdingPoints}원)
+                            <td className='InfoFirstColumn'>포인트 사용</td>
+                            <td className='InfoSecondColumn'>
+                                <input id="usingPoints" name="usingPointsAmount" onChange={onChangeHandler} className='InputBox'/> 
+                                원  &nbsp; &nbsp;
+                                <input id="TEST" type="checkBox" onClick={onClickHandler} value={holdingPoints}/>전액사용하기 
+                                (보유마일리지: {holdingPoints}원)
                             <br/>
-                            <p>*100원 이상 부터 사용 가능</p>
+                            <p >*100원 이상 부터 사용 가능</p>
                             </td>
 
                         </tr>
                         <tr>
-                            <td>최종 결제 금액</td>
-                            <td>{finalPrice}</td>
+                            <td className='InfoFirstColumn'>최종 결제 금액</td>
+                            <td className='InfoSecondColumn'>{finalPrice}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <hr/>
-            <button onClick={paymentButtonOnChangeHandler}> 결제하기 </button>
+            <div className='terms'>
+            <input id="terms" type="checkBox"/>(필수) 구매약관에 동의합니다.
+            </div>
+            
+            <div className='finalButton'>
+            <button onClick={cancelButtonOnChangeHandler} className="cancelButton">취소</button>
+            <button onClick={paymentButtonOnChangeHandler} className="paymentButton"> 결제하기 </button>
+            </div>
 
             <hr/>
             <h1>+++ Footer +++</h1>
