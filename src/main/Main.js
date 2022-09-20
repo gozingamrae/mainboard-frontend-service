@@ -3,7 +3,7 @@ import style from "./static/css/main.module.css";
 
 function Main() {
   return (
-    <div>
+    <div >
       <div className={style.bannerLayout} />
       <div className={style.bestTitleLayout}>
         <NavLink
