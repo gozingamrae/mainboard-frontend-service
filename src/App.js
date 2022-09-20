@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import BoardgameInfo from './order/pages/boardgameInfo.js';
 import OrderInfo from './order/pages/order-info.js';
-=======
-
 import Login from "./user/pages/Login"; 
 import Join from "./user/pages/Join";
 import Agreement from "./user/pages/Agreement";
@@ -14,12 +9,10 @@ import FindIdResult from "./user/pages/FindIdResult";
 import FindPw from "./user/pages/FindPw";
 import ChangePw from "./user/pages/ChangePw";
 import ChangePwResult from "./user/pages/ChangePwResult"; 
-import BoardgameInfo from './order/pages/Order';
+import BoardgameInfo from './order/pages/boardgameInfo';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './layouts/Layout';
 import Main from './main/Main';
-
->>>>>>> 9080fb2af5c5fa8415115a739e2ad19a4f456725
 
 function App() {
   return (

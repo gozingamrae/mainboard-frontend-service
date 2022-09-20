@@ -1,4 +1,6 @@
-import { useEffect, useState } from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { SUBPRICE, EMAIL, EMAILID, EMAILDOMAIN} from '../../modules/orderModules/orderModule';
 import '../css/order-info-style.css';
 
 function OrderInfo(){
@@ -13,6 +15,17 @@ function OrderInfo(){
     var TOTALPRICE = 0;
     var TOTALPOINTS = 0;
 
+    //useSelector는 현재 state값을 받아올 수 있는 react hook이다. -> subPrice, email등등의  state를 가져옴.
+    const subPriceResult = useSelector( (state) => state.subPriceReducer);
+    const emailIdResult = useSelector( (state) => state.emailIdReducer);
+    const emailDomainResult = useSelector( (state) => state.emailDomainReducer);
+    const emailResult = useSelector( (state) => state.emailReducer);
+
+
+
+    //Dispatch -> reducer를 호출하는 함수.
+    const dispatch = useDispatch();
+
     for(var i = 0; i < arr.length; i++){
         TOTALPRICE = TOTALPRICE + arr[i].totalPrice;
     };
@@ -21,14 +34,12 @@ function OrderInfo(){
         TOTALPOINTS = TOTALPOINTS + arr[j].points;
     }
 
-    const [subPrice, setSubPrice]=useState(0);
-    const [emailId, setEmailId]=useState("");
-    const [emailDomain, setEmailDomain]=useState("");
-    const [email, setEmail] = useState("");
 
-
+    /*Points*/
     const pointsOnChangeHandler = (e) => {
-        setSubPrice(e.target.value);
+        //reducer에서 key값으로 액션을 실행시키고, payload에 원하는 값을 넣어 state를 변경시킨다.
+       dispatch({type: SUBPRICE, payload: e.target.value});
+       console.log(subPriceResult);
     }
 
     const pointsOnClickHandler = (e) => {
@@ -38,11 +49,23 @@ function OrderInfo(){
 
         if(e.target.checked){
             inputText.value = holdingPoints; 
-            setSubPrice(holdingPoints);
+            dispatch({type:SUBPRICE, payload: holdingPoints});
         } else {
             inputText.value="" 
-            setSubPrice(0);
+            dispatch({type:SUBPRICE, payload: 0});
         }
+    }
+
+    /*E-mail*/
+    const emailOnChangeHandler1 = (e) => {
+        dispatch({type: EMAILID, payload: e.target.value});
+        dispatch({type:EMAIL, payload: emailIdResult.emailId + "@" + emailDomainResult.emailDomain});
+
+    }
+
+    const emailOnChangeHandler2 = (e) => {
+        dispatch({type:EMAILDOMAIN, payload: e.target.value});
+        dispatch({type:EMAIL, payload: emailIdResult.emailId + "@" + emailDomainResult.emailDomain});
     }
 
     const emailOnClickHandler = (e) => {
@@ -51,22 +74,15 @@ function OrderInfo(){
 
         inputText.value = domain.value;
 
-        const emailText = emailId + "@" + emailDomain
-        setEmail(emailText);
+        dispatch({type:EMAILDOMAIN, payload: domain.value});
+        dispatch({type:EMAIL, payload: emailIdResult.emailId + "@" + emailDomainResult.emailDomain});
     }
 
-    const emailOnChangeHandler1 = (e) => {
-        setEmailId(e.target.value);
-        console.log(emailId);
-    }
+    console.log(emailResult.email);
+    
 
-    const emailOnChangeHandler2 = (e) => {
-        setEmailDomain(e.target.value);
+ 
 
-        setEmail(emailId + "@" + emailDomain);
-
-        console.log(email);  
-    }
 
 
     function paymentButtonOnChangeHandler(){
@@ -77,7 +93,7 @@ function OrderInfo(){
     }
 
 
-    var finalPrice = TOTALPRICE - subPrice;
+    var finalPrice = TOTALPRICE - subPriceResult.subPrice;
     
 
     return(
@@ -128,9 +144,9 @@ function OrderInfo(){
 
                 <tr><td className='InfoFirstColumn'>이메일 </td>
                     <td className='InfoSecondColumn'>
-                     <input name="orderEmailId" className='InputBox' value={emailId} onChange={emailOnChangeHandler1}/>
+                     <input name="orderEmailId" className='InputBox' value={emailIdResult.emailId} onChange={emailOnChangeHandler1}/>
                      @
-                     <input id="orderEmailDomain" className='InputBox' value={emailDomain} onChange={emailOnChangeHandler2}/>
+                     <input id="orderEmailDomain" className='InputBox' value={emailDomainResult.emailDomain} onChange={emailOnChangeHandler2}/>
 
                         <select id="orderEmailDomainOption" className='ordererOptionBox' onClick={emailOnClickHandler}>
                             <option value=""> 직접입력</option>
