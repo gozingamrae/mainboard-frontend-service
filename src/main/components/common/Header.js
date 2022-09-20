@@ -21,7 +21,7 @@ function Header() {
   return (
     <div className={style.layout}>
       <NavLink className={style.logo} to="/main"></NavLink>
-      <div>
+      <div className={style.searchArea}>
         <input
           id="search"
           className={style.searchBox}
@@ -30,12 +30,14 @@ function Header() {
         />
         <div className={style.searchButton} onClick={searchByKeyword} />
       </div>
-      <NavLink className={style.login} to="/login">
-        로그인
-      </NavLink>
-      <NavLink className={style.join} to="/join">
-        회원가입
-      </NavLink>
+      <div className={style.userButton}>
+        <NavLink className={style.login} to="/login">
+          로그인
+        </NavLink>
+        <NavLink className={style.join} to="/join">
+          회원가입
+        </NavLink>
+      </div>
     </div>
   );
 }

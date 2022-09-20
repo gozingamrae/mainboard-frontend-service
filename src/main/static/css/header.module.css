@@ -1,3 +1,21 @@
+.layout{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 38px;
+    padding-bottom: 38px;
+    padding-left: 330px;
+    padding-right: 330px;
+}
+
+.userButton{
+    display: flex;
+    justify-content: center;
+}
+
+.searchArea{
+
+}
+
 .logo {
 /* logo type */
     background-image: url(../images/mainlogo.png);
@@ -7,9 +25,6 @@
     width: 315px;
     height: 57px;
 
-    position: absolute;
-    left: 315px;
-    top: 30px;
 }
 
 .searchButton {
@@ -20,21 +35,20 @@
     width: 25.35px;
     height: 26.19px;
 
-    position: absolute;
-    left: 1137px;
-    top: 48px;
-
     cursor: pointer;
+    
+    position: relative;
+    left: 380px;
+    top: -36px;
+
 }
 
 .searchBox {
 /* Article */
 
-position: absolute;
 width: 386px;
 height: 40px;
-left: 755px;
-top: 37px;
+
 
 /* 서브컬러 */
 background: #EBE9F2;
@@ -70,10 +84,6 @@ font-size: 13px;
 .login {
     /* 로그인 */
 
-    position: absolute;
-    left: 1400px;
-    top: 45px;
-
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
@@ -90,11 +100,6 @@ font-size: 13px;
 
 .join {
     /* 회원가입 */
-
-    position: absolute;
-    left: 1520px;
-    top: 45px;
-
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
