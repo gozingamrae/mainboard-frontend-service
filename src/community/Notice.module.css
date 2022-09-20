@@ -1,0 +1,29 @@
+.title{
+  width: 197px;
+  height: 50px;
+
+}
+
+.table{
+  position: absolute;
+  width: 1064px;
+
+  left: 428px;
+  top: 269px;
+}
+
+.thead{
+ 
+  width: 1064px;
+  height: 50px;
+
+  
+  /* 서브컬러 */
+  
+  background: #EBE9F2;
+}
+
+.noticerow{
+  text-align: center;
+  height: 50px;
+}
