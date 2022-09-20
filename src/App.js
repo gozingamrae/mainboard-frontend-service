@@ -1,4 +1,4 @@
-import {BrowserRouter, Routes, Route} from "react-router-dom"; 
+
 import Login from "./user/pages/Login"; 
 import Join from "./user/pages/Join";
 import Agreement from "./user/pages/Agreement";
@@ -9,13 +9,18 @@ import FindIdResult from "./user/pages/FindIdResult";
 import FindPw from "./user/pages/FindPw";
 import ChangePw from "./user/pages/ChangePw";
 import ChangePwResult from "./user/pages/ChangePwResult"; 
+import BoardgameInfo from './order/pages/Order';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './layouts/Layout';
 import Main from './main/Main';
-import OrderInfo from './order/pages/OrderInfo';
+
 
 function App() {
   return (
     <BrowserRouter>
+    <Routes>
+      <Route path="/boardgame/list/:1" element = { <Order/> } />
+    </Routes>
       <Routes>
         <Route path="/main" element={<Layout />}>
           <Route index element={<Main />} />
@@ -37,6 +42,7 @@ function App() {
           <Route path="result"  element={ <ChangePwResult/> }/>
         </Route>
       </Routes>
+
     </BrowserRouter>
   );
 }
