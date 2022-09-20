@@ -21,8 +21,6 @@ function OrderInfo(){
     const emailDomainResult = useSelector( (state) => state.emailDomainReducer);
     const emailResult = useSelector( (state) => state.emailReducer);
 
-
-
     //Dispatch -> reducer를 호출하는 함수.
     const dispatch = useDispatch();
 
