@@ -13,6 +13,7 @@ import BoardgameInfo from './order/pages/boardgameInfo';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './layouts/Layout';
 import Main from './main/Main';
+import PaymentCompleted from './payment/pages/payment-completed';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
     <Routes>
       <Route path="/boardgame/list/:1" element = { <BoardgameInfo/> } />
       <Route path="/order-info" element = { <OrderInfo/>} />
+      <Route path="/payment-completed" element = { <PaymentCompleted/> } />
     </Routes>
       <Routes>
         <Route path="/main" element={<Layout />}>
