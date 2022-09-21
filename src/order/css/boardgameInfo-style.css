@@ -6,7 +6,7 @@
 
 .contentBox{
     display: block;
-    position: absolute;
+
     margin-left: 70px;
     padding-left: 20px;
     padding-right: 20px;
@@ -28,21 +28,13 @@
   background-color: #ebe9f2;
 }
 
-.content {
-  width: 700px;
-  height: 232px;
-  display: inline-block;
-  margin-left: 10px;
-
-
 .content{
     width: 600px;
     height: 232px;
     display: inline-block;
     margin-left: 10px;
     
-    padding : 15px;
-
+    padding : 45px;
 }
 
 .button {

@@ -88,9 +88,9 @@ function OrderInfo(){
 
     return(
 
-        <div>
-            <h3>주문 상세 내역</h3>
-            <hr/>
+        <div className='orderInfo'>
+            <h3 className='orderInfoSubTitle'>주문 상세 내역</h3>
+            <hr className='orderInfohr'/>
             <table className='orderInfoTable'>
 
                 <thead>
@@ -117,8 +117,8 @@ function OrderInfo(){
             </table>
 
             <div>
-                <h3>주문자 정보</h3>
-                <hr/>
+                <h3 className='orderInfoSubTitle'>주문자 정보</h3>
+                <hr className='orderInfohr'/>
                 <table className='InfoTable'>
                 
                 <tbody>
@@ -148,8 +148,8 @@ function OrderInfo(){
             </div>
 
             <div>
-                <h3>배송정보</h3>
-                <hr/>
+                <h3 className='orderInfoSubTitle'>배송정보</h3>
+                <hr className='orderInfohr'/>
                 <table className='InfoTable' >
                     <tbody>
                         <tr>
@@ -192,8 +192,8 @@ function OrderInfo(){
             </div>
 
             <div>
-                <h3>결제정보</h3>
-                <hr/>
+                <h3 className='orderInfoSubTitle'>결제정보</h3>
+                <hr className='orderInfohr'/>
                 <table className='infoTable'>
                     <tbody>
                         <tr>
