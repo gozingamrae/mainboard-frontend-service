@@ -101,7 +101,7 @@ function OrderInfo(){
                     <th>적립 포인트</th>
                     <th>합계 금액</th>
                 </tr>
-                 </thead>
+                </thead>
 
                 <tbody>
                 {arr.map(list=>
@@ -241,8 +241,6 @@ function OrderInfo(){
             <button onClick={cancelButtonOnChangeHandler} className="cancelButton">취소</button>
             <button onClick={paymentButtonOnChangeHandler} className="paymentButton"> 결제하기 </button>
             </div>
-
-
         </div>
     );
 }

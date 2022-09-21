@@ -1,9 +1,7 @@
-
 .layout {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
-
 .contentBox{
     display: block;
 
@@ -11,13 +9,13 @@
     padding-left: 20px;
     padding-right: 20px;
 }
-.image{
-    width: 230px;
-    height: 230px;
-    display: inline-block;
-    margin-right: 10px;
-    padding: 30px;
-    background-color: #EBE9F2;
+.image {
+  width: 230px;
+  height: 230px;
+  display: inline-block;
+  margin-right: 10px;
+  padding: 30px;
+  background-color: #ebe9f2;
 }
 .image {
   width: 232px;
@@ -27,6 +25,7 @@
   padding: 30px;
   background-color: #ebe9f2;
 }
+
 
 .content{
     width: 600px;
@@ -43,6 +42,7 @@
   display: inline-block;
   margin: 10px;
 }
+
 .buyButton {
   background-color: #ebe9f2;
   width: 140px;
