@@ -1,53 +1,52 @@
-.contentBox{
-    display:block;
-    position:absolute;
-    margin-left: 70px;
-    padding-left: 20px;
-    padding-right: 20px;
+.contentBox {
+  display: block;
+  position: absolute;
+  margin-left: 70px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
-.image{
-    width: 232px;
-    height: 232px;
-    display: inline-block;
-    margin-right: 10px;
-    padding: 30px;
-    background-color: #EBE9F2;
-}
-
-.content{
-    width: 700px;
-    height: 232px;
-    display: inline-block;
-    margin-left: 10px;
-    
-    padding : 15px;
+.image {
+  width: 232px;
+  height: 232px;
+  display: inline-block;
+  margin-right: 10px;
+  padding: 30px;
+  background-color: #ebe9f2;
 }
 
-.button{
-    width: 140px;
-    height: 40px;
-    display: inline-block;
-    margin : 10px;
-}
-.buyButton{
-    background-color:#EBE9F2 ;
-    width: 140px;
-    height: 40px;
-    display: inline-block;
-    margin : 10px;
-    
+.content {
+  width: 700px;
+  height: 232px;
+  display: inline-block;
+  margin-left: 10px;
+
+  padding: 15px;
 }
 
-.boardGameName{
-    font-size: 20px;
-    font-weight: bold;
+.button {
+  width: 140px;
+  height: 40px;
+  display: inline-block;
+  margin: 10px;
+}
+.buyButton {
+  background-color: #ebe9f2;
+  width: 140px;
+  height: 40px;
+  display: inline-block;
+  margin: 10px;
 }
 
-.loanPrice{
-    font-size: 16px;
-    font-weight: bold;
+.boardGameName {
+  font-size: 20px;
+  font-weight: bold;
 }
 
-.footer{
-    margin-top : 50px;
+.loanPrice {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.footer {
+  margin-top: 50px;
 }

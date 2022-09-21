@@ -7,11 +7,15 @@
   align-items: flex-start;
   padding: 0px;
 
-  position: absolute;
-  width: 1064px;
-  height: 240px;
-  left: 428px;
-  top: 205px;
+  position: relative;
+  width: calc(90% - 1280px / 2);
+  height: calc(100% - 1280px / 2);
+  left: calc(55.7% - 1280px / 2);
+  top: 0px;
+
+  z-index: 1;
+
+  background-color: cadetblue;
 }
 
 .frame {
@@ -423,6 +427,8 @@
   flex: none;
   order: 0;
   flex-grow: 0;
+
+  z-index: 1;
 }
 
 .element10 {
@@ -1470,4 +1476,38 @@
   order: 8;
   align-self: stretch;
   flex-grow: 1;
+}
+
+.filterBox {
+  /* Frame 12 */
+
+  position: absolute;
+  left: 550px;
+  top: 260px;
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  align-items: flex-end;
+  padding: 0px;
+
+  width: 118.22px;
+  height: 60px;
+
+  /* Onclick */
+  background: #e0daf1;
+}
+
+.filterCancelButton {
+  background-image: url(../images/filtercancelbutton.png);
+  background-size: cover;
+
+  width: 25px;
+  height: 25px;
+
+  margin-top: 1px;
+  margin-right: 2.5px;
+
+  cursor: pointer;
+  z-index: 2;
 }
