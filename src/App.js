@@ -31,6 +31,8 @@ function App() {
             <Route path="inputinfo" element={<InputInfo />} />
             <Route path="result" element={<JoinResult />} />
           </Route>
+
+          
           <Route path="findid">
             <Route index element={<FindId />} />
             <Route path="result" element={<FindIdResult />} />
