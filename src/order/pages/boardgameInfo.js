@@ -1,3 +1,4 @@
+
 import '../css/boardgameInfo-style.css';
 import 부루마블 from '../image/burumavel.jpg';
 
@@ -22,7 +23,8 @@ function boardgameInfo(){
     };  
 
     return(
-        <div className='contentBox'>
+        <div className='layout'>       
+         <div className='contentBox'>
 
             <h1>+++ HEADER +++</h1>
             <hr/>
@@ -46,6 +48,8 @@ function boardgameInfo(){
             <h1 className='footer'>+++ Footer +++</h1>
              
         </div>
+        </div>
+
     );
 }
 
