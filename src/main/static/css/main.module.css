@@ -1,467 +1,207 @@
-.bannerLayout {
-    /* Banner1 */
-    background: url(../images/banner.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    position: absolute;
-    width: 1280px;
-    height: 389px;
-    top: 200px;
-    left: 320px;
-
-    z-index: -1;
+/* 전체 레이아웃 */
+.layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.bestTitleLayout {
-    /* Frame 30 */
+/* 배너 레이아웃 */
+.bannerBox {
+  position: relative;
 
-    /* Auto layout */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 16px 540px;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-    position: absolute;
-    width: 840px;
-    height: 100px;
-    left: 0px;
-    top: 669px;
-
-    background: #FFFFFF;
+  height: 389px;
+  margin-bottom: 100px;
 }
 
-.bestTitle {
-    /* BEST PRODUCTS */
+.banner {
+  background-image: url(../images/banner.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 
-    position: absolute;
-    width: 250px;
-    height: 68px;
-    left: 835px;
-    top: 16px;
-
-    font-family: 'Gmarket Sans TTF';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 28px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-
-    /* 메인컬러 */
-    color: #7332C3;
+  width: 1280px;
+  height: 389px;
 }
 
-  /* 이미지 투명도 설정 */
-.backImage::after {
-    background: url(../images/backimage.png) no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+.leftArrow {
+  position: absolute;
+  left: 58px;
 
-    position: absolute;
-    top: 1169px;
-    left: 320px;
+  width: 48px;
+  height: 48px;
 
-    width:  1280px;
-    height: 300px;
-
-    content: "";
-    z-index: -1;
-    opacity: 0.6;
+  cursor: pointer;
 }
 
-.pickTitleLayout {
-    /* Frame 34 */
+.rightArrow {
+  position: absolute;
+  float: right;
+  right: 58px;
 
-    /* Auto layout */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 16px 540px;
-    gap: 10px;
+  width: 48px;
+  height: 48px;
 
-    position: absolute;
-    width: 1920px;
-    height: 100px;
-    left: 0px;
-    top: 1519px;
-
-    background: #FFFFFF;
+  cursor: pointer;
 }
 
-.pickTitle {
-/* MDs PICK */
+/* 상품 레이아웃 */
+.bestBox {
+  position: relative;
 
-position: absolute;
-width: 250px;
-height: 68px;
-left: 885px;
-top: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 350px;
 
-font-family: 'Gmarket Sans TTF';
-font-style: normal;
-font-weight: 500;
-font-size: 24px;
-line-height: 28px;
-display: flex;
-align-items: center;
-text-align: center;
-
-/* 메인컬러 */
-color: #7332C3;
+  width: 100%;
+  height: 500px;
 }
 
-.bestProduct {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 20px;
+.pickBox {
+  position: relative;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-    position: absolute;
-    width: 1920px;
-    height: 400px;
-    left: 0px;
-    top: 769px;
-
-    background: #FFFFFF;
+  width: 100%;
+  height: 500px;
 }
 
-.productFiveLayout {
-    /* Frame 1246 */
+.title {
+  font-size: 24px;
+  line-height: 24px;
 
-    /* Auto layout */
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 0px;
-    gap: 20px;
-
-    position: absolute;
-    width: 980px;
-    height: 336px;
-    left: 473px;
-    top: 32px;
+  color: #7332c3;
 }
 
-.best1Image {
-    background-image: url(../images/best1.png);
-    background-repeat: no-repeat;
-    background-size: cover;
+.titleBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    width: 180px;
-    height: 180px;
-
+  width: 100%;
+  height: 100px;
 }
 
-.best2Image {
-    background-image: url(../images/best2.png);
-    background-repeat: no-repeat;
-    background-size: cover;
+.productBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 
-    width: 180px;
-    height: 180px;
+  width: 100%;
+  height: 400px;
 }
 
-.best3Image {
-    background-image: url(../images/best3.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    
-    width: 180px;
-    height: 180px;
+.product {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 197px;
+  height: 336px;
 }
 
-.best4Image {
-    background-image: url(../images/best4.png);
-    background-repeat: no-repeat;
-    background-size: cover;
+.imageBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    width: 180px;
-    height: 180px;
+  width: 197px;
+  height: 197px;
+
+  background-color: #ebe9f2;
 }
 
-.best5Image {
-    background-image: url(../images/best5.png);
-    background-repeat: no-repeat;
-    background-size: cover;
+.image {
+  background-repeat: no-repeat;
+  background-size: cover;
 
-    width: 180px;
-    height: 180px;
-}
-
-.productLayout {
-    width: 180px;
-    height: 336px;
+  width: 150px;
+  height: 150px;
 }
 
 .info {
-    /* Frame 33 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-    /* Auto layout */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0px;
-    margin-top: 16px;
-
-    width: 197px;
-    height: 123px;
-
-
-    /* Inside auto layout */
-    flex: none;
-    order: 1;
-    flex-grow: 0;
+  margin-top: 16px;
+  width: 197px;
+  height: 123px;
 }
 
-.name {
-    /* 스플렌더 */
+.boardgameName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    width: 180px;
-    height: 41px;
+  width: 197px;
+  height: 41px;
 
-    font-family: 'Gmarket Sans TTF';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 23px;
-    display: inline-block;
-    align-items: center;
-    text-align: center;
-
-    color: #000000;
-
-
-    /* Inside auto layout */
-    flex: none;
-    order: 0;
-    align-self: stretch;
-    flex-grow: 1;
+  font-size: 20px;
+  line-height: 20px;
 }
 
-.price {
-    /* 4,000원 */
+.boardgamePrice {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    width: 180px;
-    height: 41px;
+  width: 197px;
+  height: 41px;
 
-    font-family: 'Gmarket Sans TTF';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 18px;
-    display: inline-block;
-    align-items: center;
-    text-align: center;
-
-    color: #000000;
-
-
-    /* Inside auto layout */
-    flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 1;
+  font-size: 20px;
+  line-height: 20px;
 }
 
 .category {
-    /* Category */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
 
-    /* Auto layout */
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 0px;
-    gap: 3px;
-
-    width: 180px;
-    height: 41px;
-
-
-    /* Inside auto layout */
-    flex: none;
-    order: 2;
-    align-self: stretch;
-    flex-grow: 1;
+  width: 197px;
+  height: 41px;
 }
 
-.themeBox {
-    /* Group 1237 */
-    /* Inside auto layout */
-    flex: none;
-    order: 0;
-    align-self: stretch;
-    flex-grow: 1;
-    line-height: 41px;
+.category > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    /* Rectangle 2303 */
+  width: 63.67px;
+  height: 41px;
 
-    width: 58px;
-    height: 41px;
-
-    /* 서브컬러 */
-    background: #EBE9F2;
-    border-radius: 5px;
+  border-radius: 5px;
+  background-color: #ebe9f2;
+  color: #7332c3;
+  font-size: 12px;
 }
 
-.theme {
-    /* 전략 */
+.backImage {
+  background: url(../images/backimage.png);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: contain;
 
-    width: 58px;
-    height: 41px;
+  position: absolute;
+  top: 1250px;
 
-    font-family: 'Gmarket Sans TTF';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 11px;
-    line-height: 11px;
-    display: inline-block;
-    align-items: center;
-    text-align: center;
+  width: 100%;
+  height: 300px;
 
-    /* 메인컬러 */
-    color: #7332C3;
-}
+  opacity: 0.45;
 
-.levelBox {
-    /* Group 1238 */
-    /* Inside auto layout */
-    flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 1;
-    line-height: 41px;
-
-    /* Rectangle 2303 */
-
-    width: 58px;
-    height: 41px;
-
-    /* 서브컬러 */
-    background: #EBE9F2;
-    border-radius: 5px;
-}
-
-.level {
-    /* 매우 어려움 */
-
-    width: 58px;
-    height: 41px;
-
-    font-family: 'Gmarket Sans TTF';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 11px;
-    line-height: 11px;
-    display: inline-block;
-    align-items: center;
-    text-align: center;
-
-    /* 메인컬러 */
-    color: #7332C3;
-}
-
-.timeBox {
-    /* Group 1239 */
-    /* Inside auto layout */
-    flex: none;
-    order: 2;
-    align-self: stretch;
-    flex-grow: 1;
-    line-height: 41px;
-    
-    /* Rectangle 2303 */
-
-    width: 58px;
-    height: 41px;
-
-    /* 서브컬러 */
-    background: #EBE9F2;
-    border-radius: 5px;
-}
-
-.time {
-    /* 3시간 이상 */
-
-    width: 58px;
-    height: 41px;
-
-    font-family: 'Gmarket Sans TTF';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 11px;
-    line-height: 11px;
-    display: inline-block;
-    align-items: center;
-    text-align: center;
-
-    /* 메인컬러 */
-    color: #7332C3;
-}
-
-.pickProduct {
-    /* Frame 36 */
-
-    position: absolute;
-    width: 1920px;
-    height: 400px;
-    left: 0px;
-    top: 1619px;
-
-    background: #FFFFFF;
-}
-
-.pick1Image {
-    background-image: url(../images/pick1.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    width: 180px;
-    height: 180px;
-
-}
-
-.pick2Image {
-    background-image: url(../images/pick2.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    width: 180px;
-    height: 180px;
-}
-
-.pick3Image {
-    background-image: url(../images/pick3.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    
-    width: 180px;
-    height: 180px;
-}
-
-.pick4Image {
-    background-image: url(../images/pick4.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    width: 180px;
-    height: 180px;
-}
-
-.pick5Image {
-    background-image: url(../images/pick5.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    width: 180px;
-    height: 180px;
+  z-index: -1;
 }

@@ -1,3 +1,4 @@
+
 import '../css/boardgameInfo-style.css';
 import 부루마블 from '../image/burumavel.jpg';
 

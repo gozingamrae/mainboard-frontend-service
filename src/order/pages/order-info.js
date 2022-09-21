@@ -1,4 +1,3 @@
-
 import { useDispatch, useSelector } from 'react-redux';
 import { SUBPRICE, EMAIL, EMAILID, EMAILDOMAIN} from '../../modules/orderModules/orderModule';
 import '../css/order-info-style.css';
