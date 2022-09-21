@@ -10,6 +10,7 @@ module.exports = {
 /**
  * ******************** 프리티어 설정 적용 방법 ********************
  * 'prettier Code formatter' 설치 후 Ctrl + S 누르면 자동 적용
+ * Ctrl + S 적용 안될시 터미털에서 'npm run format:fix'
  *
  * ********************** 프리티어 플러그인 설치 ***********************
  * VScode 좌측의 Extenstions에 'prettier Code formatter' 검색 후 Install
