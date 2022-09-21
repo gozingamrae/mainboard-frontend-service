@@ -1,9 +1,23 @@
-.contentBox {
-  display: block;
-  position: absolute;
-  margin-left: 70px;
-  padding-left: 20px;
-  padding-right: 20px;
+
+.layout {
+    display: flex;
+    justify-content: center;
+}
+
+.contentBox{
+    display: block;
+    position: absolute;
+    margin-left: 70px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.image{
+    width: 230px;
+    height: 230px;
+    display: inline-block;
+    margin-right: 10px;
+    padding: 30px;
+    background-color: #EBE9F2;
 }
 .image {
   width: 232px;
@@ -20,7 +34,15 @@
   display: inline-block;
   margin-left: 10px;
 
-  padding: 15px;
+
+.content{
+    width: 600px;
+    height: 232px;
+    display: inline-block;
+    margin-left: 10px;
+    
+    padding : 15px;
+
 }
 
 .button {
