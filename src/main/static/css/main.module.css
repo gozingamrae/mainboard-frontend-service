@@ -1,458 +1,207 @@
-.bannerLayout {
-  /* Banner1 */
-  background: url(../images/banner.png);
+/* 전체 레이아웃 */
+.layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 배너 레이아웃 */
+.bannerBox {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 389px;
+  margin-bottom: 100px;
+}
+
+.banner {
+  background-image: url(../images/banner.png);
   background-repeat: no-repeat;
   background-size: cover;
 
-  position: absolute;
   width: 1280px;
   height: 389px;
-  top: 210px;
-  left: 320px;
 }
 
-.bestTitleLayout {
-  /* Frame 30 */
+.leftArrow {
+  position: absolute;
+  left: 58px;
 
-  /* Auto layout */
+  width: 48px;
+  height: 48px;
+
+  cursor: pointer;
+}
+
+.rightArrow {
+  position: absolute;
+  float: right;
+  right: 58px;
+
+  width: 48px;
+  height: 48px;
+
+  cursor: pointer;
+}
+
+/* 상품 레이아웃 */
+.bestBox {
+  position: relative;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 16px 540px;
-  gap: 10px;
+  margin-bottom: 350px;
 
-  position: absolute;
-  width: 840px;
-  height: 100px;
-  left: 0px;
-  top: 669px;
-
-  background: #ffffff;
+  width: 100%;
+  height: 500px;
 }
 
-.bestTitle {
-  /* BEST PRODUCTS */
+.pickBox {
+  position: relative;
 
-  position: absolute;
-  width: 250px;
-  height: 68px;
-  left: 835px;
-  top: 16px;
-
-  font-family: "Gmarket Sans TTF";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 28px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-
-  /* 메인컬러 */
-  color: #7332c3;
-}
-
-/* 이미지 투명도 설정 */
-.backImage::after {
-  background: url(../images/backimage.png) no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-
-  position: absolute;
-  top: 1169px;
-  left: 320px;
-
-  width: 1280px;
-  height: 300px;
-
-  content: "";
-  z-index: -1;
-  opacity: 0.6;
-}
-
-.pickTitleLayout {
-  /* Frame 34 */
-
-  /* Auto layout */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 16px 540px;
-  gap: 10px;
 
-  position: absolute;
-  width: 1920px;
-  height: 100px;
-  left: 0px;
-  top: 1519px;
-
-  background: #ffffff;
+  width: 100%;
+  height: 500px;
 }
 
-.pickTitle {
-  /* MDs PICK */
-
-  position: absolute;
-  width: 250px;
-  height: 68px;
-  left: 885px;
-  top: 16px;
-
-  font-family: "Gmarket Sans TTF";
-  font-style: normal;
-  font-weight: 500;
+.title {
   font-size: 24px;
-  line-height: 28px;
-  display: flex;
-  align-items: center;
-  text-align: center;
+  line-height: 24px;
 
-  /* 메인컬러 */
   color: #7332c3;
 }
 
-.bestProduct {
+.titleBox {
   display: flex;
-  flex-direction: row;
   justify-content: center;
-  align-items: flex-start;
-  padding: 0px;
+  align-items: center;
+
+  width: 100%;
+  height: 100px;
+}
+
+.productBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 20px;
 
-  position: absolute;
-  width: 1920px;
+  width: 100%;
   height: 400px;
-  left: 0px;
-  top: 769px;
-
-  background: #ffffff;
 }
 
-.productFiveLayout {
-  /* Frame 1246 */
-
-  /* Auto layout */
+.product {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0px;
-  gap: 20px;
 
-  position: absolute;
-  width: 980px;
+  width: 197px;
   height: 336px;
-  left: 473px;
-  top: 32px;
 }
 
-.best1Image {
-  background-image: url(../images/best1.png);
+.imageBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 197px;
+  height: 197px;
+
+  background-color: #ebe9f2;
+}
+
+.image {
   background-repeat: no-repeat;
   background-size: cover;
 
-  width: 180px;
-  height: 180px;
-}
-
-.best2Image {
-  background-image: url(../images/best2.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  width: 180px;
-  height: 180px;
-}
-
-.best3Image {
-  background-image: url(../images/best3.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  width: 180px;
-  height: 180px;
-}
-
-.best4Image {
-  background-image: url(../images/best4.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  width: 180px;
-  height: 180px;
-}
-
-.best5Image {
-  background-image: url(../images/best5.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  width: 180px;
-  height: 180px;
-}
-
-.productLayout {
-  width: 180px;
-  height: 336px;
+  width: 150px;
+  height: 150px;
 }
 
 .info {
-  /* Frame 33 */
-
-  /* Auto layout */
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 0px;
-  margin-top: 16px;
 
+  margin-top: 16px;
   width: 197px;
   height: 123px;
-
-  /* Inside auto layout */
-  flex: none;
-  order: 1;
-  flex-grow: 0;
 }
 
-.name {
-  /* 스플렌더 */
+.boardgameName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  width: 180px;
+  width: 197px;
   height: 41px;
 
-  font-family: "Gmarket Sans TTF";
-  font-style: normal;
-  font-weight: 500;
   font-size: 20px;
-  line-height: 23px;
-  display: inline-block;
-  align-items: center;
-  text-align: center;
-
-  color: #000000;
-
-  /* Inside auto layout */
-  flex: none;
-  order: 0;
-  align-self: stretch;
-  flex-grow: 1;
+  line-height: 20px;
 }
 
-.price {
-  /* 4,000원 */
+.boardgamePrice {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  width: 180px;
+  width: 197px;
   height: 41px;
 
-  font-family: "Gmarket Sans TTF";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 18px;
-  display: inline-block;
-  align-items: center;
-  text-align: center;
-
-  color: #000000;
-
-  /* Inside auto layout */
-  flex: none;
-  order: 1;
-  align-self: stretch;
-  flex-grow: 1;
+  font-size: 20px;
+  line-height: 20px;
 }
 
 .category {
-  /* Category */
-
-  /* Auto layout */
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 0px;
   gap: 3px;
 
-  width: 180px;
+  width: 197px;
   height: 41px;
-
-  /* Inside auto layout */
-  flex: none;
-  order: 2;
-  align-self: stretch;
-  flex-grow: 1;
 }
 
-.themeBox {
-  /* Group 1237 */
-  /* Inside auto layout */
-  flex: none;
-  order: 0;
-  align-self: stretch;
-  flex-grow: 1;
-  line-height: 41px;
-
-  /* Rectangle 2303 */
-
-  width: 58px;
-  height: 41px;
-
-  /* 서브컬러 */
-  background: #ebe9f2;
-  border-radius: 5px;
-}
-
-.theme {
-  /* 전략 */
-
-  width: 58px;
-  height: 41px;
-
-  font-family: "Gmarket Sans TTF";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 11px;
-  line-height: 11px;
-  display: inline-block;
+.category > div {
+  display: flex;
+  justify-content: center;
   align-items: center;
-  text-align: center;
 
-  /* 메인컬러 */
-  color: #7332c3;
-}
-
-.levelBox {
-  /* Group 1238 */
-  /* Inside auto layout */
-  flex: none;
-  order: 1;
-  align-self: stretch;
-  flex-grow: 1;
-  line-height: 41px;
-
-  /* Rectangle 2303 */
-
-  width: 58px;
+  width: 63.67px;
   height: 41px;
 
-  /* 서브컬러 */
-  background: #ebe9f2;
   border-radius: 5px;
-}
-
-.level {
-  /* 매우 어려움 */
-
-  width: 58px;
-  height: 41px;
-
-  font-family: "Gmarket Sans TTF";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 11px;
-  line-height: 11px;
-  display: inline-block;
-  align-items: center;
-  text-align: center;
-
-  /* 메인컬러 */
+  background-color: #ebe9f2;
   color: #7332c3;
+  font-size: 12px;
 }
 
-.timeBox {
-  /* Group 1239 */
-  /* Inside auto layout */
-  flex: none;
-  order: 2;
-  align-self: stretch;
-  flex-grow: 1;
-  line-height: 41px;
-
-  /* Rectangle 2303 */
-
-  width: 58px;
-  height: 41px;
-
-  /* 서브컬러 */
-  background: #ebe9f2;
-  border-radius: 5px;
-}
-
-.time {
-  /* 3시간 이상 */
-
-  width: 58px;
-  height: 41px;
-
-  font-family: "Gmarket Sans TTF";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 11px;
-  line-height: 11px;
-  display: inline-block;
-  align-items: center;
-  text-align: center;
-
-  /* 메인컬러 */
-  color: #7332c3;
-}
-
-.pickProduct {
-  /* Frame 36 */
+.backImage {
+  background: url(../images/backimage.png);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: contain;
 
   position: absolute;
-  width: 1920px;
-  height: 400px;
-  left: 0px;
-  top: 1619px;
+  top: 1250px;
 
-  background: #ffffff;
-}
+  width: 100%;
+  height: 300px;
 
-.pick1Image {
-  background-image: url(../images/pick1.png);
-  background-repeat: no-repeat;
-  background-size: cover;
+  opacity: 0.45;
 
-  width: 180px;
-  height: 180px;
-}
-
-.pick2Image {
-  background-image: url(../images/pick2.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  width: 180px;
-  height: 180px;
-}
-
-.pick3Image {
-  background-image: url(../images/pick3.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  width: 180px;
-  height: 180px;
-}
-
-.pick4Image {
-  background-image: url(../images/pick4.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  width: 180px;
-  height: 180px;
-}
-
-.pick5Image {
-  background-image: url(../images/pick5.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  width: 180px;
-  height: 180px;
+  z-index: -1;
 }

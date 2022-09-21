@@ -1,248 +1,139 @@
 import { NavLink } from "react-router-dom";
-import style from "../static/css/main.module.css";
+import mainStyle from "../static/css/main.module.css";
 
 function Main() {
+  const exampleProduct = [
+    {
+      boardgameCode: 1,
+      boardgameName: "스플렌더",
+      boardgamePrice: 4000,
+      boardgameTheme: "전략",
+      boardgameLevel: "매우 어려움",
+      boardgameTime: "3시간 이상",
+    },
+    {
+      boardgameCode: 2,
+      boardgameName: "다빈치 코드",
+      boardgamePrice: 4000,
+      boardgameTheme: "전략",
+      boardgameLevel: "매우 어려움",
+      boardgameTime: "3시간 이상",
+    },
+    {
+      boardgameCode: 3,
+      boardgameName: "루미큐브",
+      boardgamePrice: 4000,
+      boardgameTheme: "전략",
+      boardgameLevel: "매우 어려움",
+      boardgameTime: "3시간 이상",
+    },
+    {
+      boardgameCode: 4,
+      boardgameName: "블리츠",
+      boardgamePrice: 4000,
+      boardgameTheme: "순발력",
+      boardgameLevel: "쉬움",
+      boardgameTime: "30분 이하",
+    },
+    {
+      boardgameCode: 5,
+      boardgameName: "클루",
+      boardgamePrice: 4000,
+      boardgameTheme: "추리",
+      boardgameLevel: "어려움",
+      boardgameTime: "30분~1시간",
+    },
+  ];
+
   return (
-    <div>
-      <div className={style.bannerLayout} />
-      <div className={style.bestTitleLayout}>
-        <NavLink
-          to="/boardgame/list?category=best" // BEST 상품 URL
-          className={style.bestTitle}
-        >
-          BEST PRODUCTS
-        </NavLink>
-      </div>
-      {/* BEST 5 일단은 하드코딩 하였음. 나중에 정보 불러오기*/}
-      <div className={style.bestProduct}>
-        <div className={style.productFiveLayout}>
-          <NavLink
-            className={style.productLayout}
-            to="/boardgame/list/베스트1보드게임종류코드"
-          >
-            <div className={style.best1Image} />
-            <div className={style.info}>
-              <div className={style.name}>스플렌더</div>
-              <div className={style.price}>4,000원</div>
-              <div className={style.category}>
-                <div className={style.themeBox}>
-                  <div className={style.theme}>전략</div>
-                </div>
-                <div className={style.levelBox}>
-                  <div className={style.level}>매우 어려움</div>
-                </div>
-                <div className={style.timeBox}>
-                  <div className={style.time}>3시간 이상</div>
-                </div>
-              </div>
-            </div>
-          </NavLink>
-          <NavLink
-            className={style.productLayout}
-            to="/boardgame/list/베스트2보드게임종류코드"
-          >
-            <div className={style.best2Image} />
-            <div className={style.info}>
-              <div className={style.name}>다빈치 코드</div>
-              <div className={style.price}>4,000원</div>
-              <div className={style.category}>
-                <div className={style.themeBox}>
-                  <div className={style.theme}>전략</div>
-                </div>
-                <div className={style.levelBox}>
-                  <div className={style.level}>매우 어려움</div>
-                </div>
-                <div className={style.timeBox}>
-                  <div className={style.time}>3시간 이상</div>
-                </div>
-              </div>
-            </div>
-          </NavLink>
-          <NavLink
-            className={style.productLayout}
-            to="/boardgame/list/베스트3보드게임종류코드"
-          >
-            <div className={style.best3Image} />
-            <div className={style.info}>
-              <div className={style.name}>루미큐브</div>
-              <div className={style.price}>4,000원</div>
-              <div className={style.category}>
-                <div className={style.themeBox}>
-                  <div className={style.theme}>전략</div>
-                </div>
-                <div className={style.levelBox}>
-                  <div className={style.level}>매우 어려움</div>
-                </div>
-                <div className={style.timeBox}>
-                  <div className={style.time}>3시간 이상</div>
-                </div>
-              </div>
-            </div>
-          </NavLink>
-          <NavLink
-            className={style.productLayout}
-            to="/boardgame/list/베스트4보드게임종류코드"
-          >
-            <div className={style.best4Image} />
-            <div className={style.info}>
-              <div className={style.name}>블리츠</div>
-              <div className={style.price}>4,000원</div>
-              <div className={style.category}>
-                <div className={style.themeBox}>
-                  <div className={style.theme}>순발력</div>
-                </div>
-                <div className={style.levelBox}>
-                  <div className={style.level}>쉬움</div>
-                </div>
-                <div className={style.timeBox}>
-                  <div className={style.time}>30분 이하</div>
-                </div>
-              </div>
-            </div>
-          </NavLink>
-          <NavLink
-            className={style.productLayout}
-            to="/boardgame/list/베스트5보드게임종류코드"
-          >
-            <div className={style.best5Image} />
-            <div className={style.info}>
-              <div className={style.name}>클루</div>
-              <div className={style.price}>4,000원</div>
-              <div className={style.category}>
-                <div className={style.themeBox}>
-                  <div className={style.theme}>추리</div>
-                </div>
-                <div className={style.levelBox}>
-                  <div className={style.level}>어려움</div>
-                </div>
-                <div className={style.timeBox}>
-                  <div className={style.time}>30분~1시간</div>
-                </div>
-              </div>
-            </div>
-          </NavLink>
+    exampleProduct && (
+      <div className={mainStyle.layout}>
+        <div className={mainStyle.bannerBox}>
+          <div className={mainStyle.leftArrow}>
+            <img src={require("../static/images/leftarrow.png")} />
+          </div>
+          <div className={mainStyle.banner} />
+          <div className={mainStyle.rightArrow}>
+            <img src={require("../static/images/rightarrow.png")} />
+          </div>
+        </div>
+        <div className={mainStyle.bestBox}>
+          <div className={mainStyle.titleBox}>
+            <div className={mainStyle.title}>BEST PRODUCTS</div>
+          </div>
+          <div className={mainStyle.productBox}>
+            {exampleProduct.map((product) => {
+              return (
+                <NavLink
+                  to={`/boardgame/list/${product.boardgameCode}`}
+                  className={mainStyle.product}
+                >
+                  <div className={mainStyle.imageBox}>
+                    <img
+                      className={mainStyle.image}
+                      src={require(`../static/images/best${product.boardgameCode}.png`)}
+                    />
+                  </div>
+                  <div className={mainStyle.info}>
+                    <div className={mainStyle.boardgameName}>
+                      {product.boardgameName}
+                    </div>
+                    <div className={mainStyle.boardgamePrice}>
+                      {product.boardgamePrice
+                        .toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "원"}
+                    </div>
+                    <div className={mainStyle.category}>
+                      <div>{product.boardgameTheme}</div>
+                      <div>{product.boardgameLevel}</div>
+                      <div>{product.boardgameTime}</div>
+                    </div>
+                  </div>
+                </NavLink>
+              );
+            })}
+          </div>
+        </div>
+        <div className={mainStyle.backImage} />
+        <div className={mainStyle.pickBox}>
+          <div className={mainStyle.titleBox}>
+            <div className={mainStyle.title}>MDs PICK</div>
+          </div>
+          <div className={mainStyle.productBox}>
+            {exampleProduct.map((product) => {
+              return (
+                <NavLink
+                  to={`/boardgame/list/${product.boardgameCode}`}
+                  className={mainStyle.product}
+                >
+                  <div className={mainStyle.imageBox}>
+                    <img
+                      className={mainStyle.image}
+                      src={require(`../static/images/pick${product.boardgameCode}.png`)}
+                    />
+                  </div>
+                  <div className={mainStyle.info}>
+                    <div className={mainStyle.boardgameName}>
+                      {product.boardgameName}
+                    </div>
+                    <div className={mainStyle.boardgamePrice}>
+                      {product.boardgamePrice
+                        .toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "원"}
+                    </div>
+                    <div className={mainStyle.category}>
+                      <div>{product.boardgameTheme}</div>
+                      <div>{product.boardgameLevel}</div>
+                      <div>{product.boardgameTime}</div>
+                    </div>
+                  </div>
+                </NavLink>
+              );
+            })}
+          </div>
         </div>
       </div>
-      <div className={style.pickTitleLayout}>
-        <NavLink
-          to="/boardgame/list?category=recommendation" // 추천 상품 URL
-          className={style.pickTitle}
-        >
-          MDs PICK
-        </NavLink>
-      </div>
-      {/* MDs PICK 5 일단은 하드코딩 하였음. 나중에 정보 불러오기*/}
-      <div className={style.pickProduct}>
-        <div className={style.productFiveLayout}>
-          <NavLink
-            className={style.productLayout}
-            to="/boardgame/list/추천1보드게임종류코드"
-          >
-            <div className={style.pick1Image} />
-            <div className={style.info}>
-              <div className={style.name}>스플렌더</div>
-              <div className={style.price}>4,000원</div>
-              <div className={style.category}>
-                <div className={style.themeBox}>
-                  <div className={style.theme}>전략</div>
-                </div>
-                <div className={style.levelBox}>
-                  <div className={style.level}>매우 어려움</div>
-                </div>
-                <div className={style.timeBox}>
-                  <div className={style.time}>3시간 이상</div>
-                </div>
-              </div>
-            </div>
-          </NavLink>
-          <NavLink
-            className={style.productLayout}
-            to="/boardgame/list/추천2보드게임종류코드"
-          >
-            <div className={style.pick2Image} />
-            <div className={style.info}>
-              <div className={style.name}>다빈치 코드</div>
-              <div className={style.price}>4,000원</div>
-              <div className={style.category}>
-                <div className={style.themeBox}>
-                  <div className={style.theme}>전략</div>
-                </div>
-                <div className={style.levelBox}>
-                  <div className={style.level}>매우 어려움</div>
-                </div>
-                <div className={style.timeBox}>
-                  <div className={style.time}>3시간 이상</div>
-                </div>
-              </div>
-            </div>
-          </NavLink>
-          <NavLink
-            className={style.productLayout}
-            to="/boardgame/list/추천3보드게임종류코드"
-          >
-            <div className={style.pick3Image} />
-            <div className={style.info}>
-              <div className={style.name}>루미큐브</div>
-              <div className={style.price}>4,000원</div>
-              <div className={style.category}>
-                <div className={style.themeBox}>
-                  <div className={style.theme}>전략</div>
-                </div>
-                <div className={style.levelBox}>
-                  <div className={style.level}>매우 어려움</div>
-                </div>
-                <div className={style.timeBox}>
-                  <div className={style.time}>3시간 이상</div>
-                </div>
-              </div>
-            </div>
-          </NavLink>
-          <NavLink
-            className={style.productLayout}
-            to="/boardgame/list/추천4보드게임종류코드"
-          >
-            <div className={style.pick4Image} />
-            <div className={style.info}>
-              <div className={style.name}>블리츠</div>
-              <div className={style.price}>4,000원</div>
-              <div className={style.category}>
-                <div className={style.themeBox}>
-                  <div className={style.theme}>순발력</div>
-                </div>
-                <div className={style.levelBox}>
-                  <div className={style.level}>쉬움</div>
-                </div>
-                <div className={style.timeBox}>
-                  <div className={style.time}>30분 이하</div>
-                </div>
-              </div>
-            </div>
-          </NavLink>
-          <NavLink
-            className={style.productLayout}
-            to="/boardgame/list/추천5보드게임종류코드"
-          >
-            <div className={style.pick5Image} />
-            <div className={style.info}>
-              <div className={style.name}>클루</div>
-              <div className={style.price}>4,000원</div>
-              <div className={style.category}>
-                <div className={style.themeBox}>
-                  <div className={style.theme}>추리</div>
-                </div>
-                <div className={style.levelBox}>
-                  <div className={style.level}>어려움</div>
-                </div>
-                <div className={style.timeBox}>
-                  <div className={style.time}>30분~1시간</div>
-                </div>
-              </div>
-            </div>
-          </NavLink>
-        </div>
-      </div>
-      <div className={style.backImage} />
-    </div>
+    )
   );
 }
 

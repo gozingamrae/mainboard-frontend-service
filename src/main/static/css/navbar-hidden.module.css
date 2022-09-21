@@ -7,13 +7,15 @@
   align-items: flex-start;
   padding: 0px;
 
-  position: absolute;
-  width: 1064px;
-  height: 240px;
-  left: 428px;
-  top: 205px;
+  position: relative;
+  width: calc(90% - 1280px / 2);
+  height: calc(100% - 1280px / 2);
+  left: calc(55.7% - 1280px / 2);
+  top: 0px;
 
   z-index: 1;
+
+  background-color: cadetblue;
 }
 
 .frame {
@@ -1507,4 +1509,5 @@
   margin-right: 2.5px;
 
   cursor: pointer;
+  z-index: 2;
 }

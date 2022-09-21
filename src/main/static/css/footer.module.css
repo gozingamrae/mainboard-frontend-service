@@ -1,162 +1,145 @@
 .layout {
-    /* Footer */
+  /* Footer */
 
-    position: absolute;
-    width: 1280px;
-    height: 120px;
-    left: 320px;
-    top: 2080px;
+  margin-left: 320px;
+  margin-right: 320px;
 
-    /* 서브컬러 */
-    background: #EBE9F2;
+  text-align: -webkit-center;
+  /* 서브컬러 */
+  background: #ebe9f2;
+  min-height: 100%;
+  margin-top: 66px;
 }
 
 .textBox {
-    /* Frame 25 */
+  /* Frame 25 */
 
-    /* Auto layout */
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 0px;
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
 
-    position: absolute;
-    width: 632px;
-    height: 30px;
-    left: 324px;
-    top: 30px;
+  padding-top: 30px;
+  width: 632px;
+  height: 30px;
 }
 
-
 .text1 {
-    /* 이용약관 */
+  /* 이용약관 */
 
-    width: 158px;
-    height: 30px;
+  width: 158px;
+  height: 30px;
 
-    font-family: 'Gmarket Sans TTF';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 18px;
-    text-align: center;
+  font-family: "Gmarket Sans TTF";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  text-align: center;
 
-    /* 설명색 */
-    color: #635970;
+  /* 설명색 */
+  color: #635970;
 
-
-    /* Inside auto layout */
-    flex: none;
-    order: 0;
-    flex-grow: 1;
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 1;
 }
 
 .text2 {
-    /* 개인정보처리방침 */
+  /* 개인정보처리방침 */
 
-    width: 158px;
-    height: 30px;
+  width: 158px;
+  height: 30px;
 
-    font-family: 'Gmarket Sans TTF';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 18px;
-    text-align: center;
+  font-family: "Gmarket Sans TTF";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  text-align: center;
 
-    /* 설명색 */
-    color: #635970;
+  /* 설명색 */
+  color: #635970;
 
-
-    /* Inside auto layout */
-    flex: none;
-    order: 1;
-    flex-grow: 1;
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 1;
 }
 
 .text3 {
-    /* 사업자정보 */
+  /* 사업자정보 */
 
-    width: 158px;
-    height: 30px;
+  width: 158px;
+  height: 30px;
 
-    font-family: 'Gmarket Sans TTF';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 18px;
-    text-align: center;
+  font-family: "Gmarket Sans TTF";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  text-align: center;
 
-    /* 설명색 */
-    color: #635970;
+  /* 설명색 */
+  color: #635970;
 
-    /* Inside auto layout */
-    flex: none;
-    order: 2;
-    flex-grow: 1;
+  /* Inside auto layout */
+  flex: none;
+  order: 2;
+  flex-grow: 1;
 }
 
 .text4 {
-    /* 고객센터 */
+  /* 고객센터 */
 
-    width: 158px;
-    height: 30px;
+  width: 158px;
+  height: 30px;
 
-    font-family: 'Gmarket Sans TTF';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 18px;
-    text-align: center;
+  font-family: "Gmarket Sans TTF";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  text-align: center;
 
-    /* 설명색 */
-    color: #635970;
+  /* 설명색 */
+  color: #635970;
 
-
-    /* Inside auto layout */
-    flex: none;
-    order: 3;
-    flex-grow: 1;
+  /* Inside auto layout */
+  flex: none;
+  order: 3;
+  flex-grow: 1;
 }
 
 .phone {
-    /* TEL : 010-1234-4567 */
+  /* TEL : 010-1234-4567 */
 
-    position: absolute;
-    width: 189px;
-    height: 30px;
-    left: 546px;
-    top: 60px;
+  font-family: "Gmarket Sans TTF";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  text-align: center;
+  padding-top: 15px;
 
-    font-family: 'Gmarket Sans TTF';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 18px;
-    text-align: center;
-
-    /* 설명색 */
-    color: #635970;
+  /* 설명색 */
+  color: #635970;
 }
 
-
 .copyright {
-    /* c 2022 고진감래 Inc. All rights reserved */
+  /* c 2022 고진감래 Inc. All rights reserved */
 
-    position: absolute;
-    width: 401px;
-    height: 30px;
-    left: 440px;
-    top: 90px;
+  font-family: "Gmarket Sans TTF";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  text-align: center;
+  padding-top: 15px;
 
-    font-family: 'Gmarket Sans TTF';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 18px;
-    text-align: center;
-
-    /* 설명색 */
-    color: #635970;
+  /* 설명색 */
+  color: #635970;
 }
