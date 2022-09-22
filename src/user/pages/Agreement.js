@@ -21,8 +21,7 @@ function Agreement() {
     dispatch({type: CHECK_ALL, payload: e.target.value});
   }
   const useHandler = (e) => {
-   //if(checkAll === checkUse && (!checkUse === checkPrivacy) && (!checkUse === checkMarketing)) dispatch({type: CHECK_ALL, payload: e.target.value});
-    dispatch({type: CHECK_USE, payload: e.target.value});
+   dispatch({type: CHECK_USE, payload: e.target.value});
      console.log(checkUse); 
   }
  
