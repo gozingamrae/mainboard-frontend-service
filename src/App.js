@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Login from "./user/pages/Login"; 
+import Login from "./user/pages/Login";
 import Join from "./user/pages/Join";
 import Agreement from "./user/pages/Agreement";
 import InputInfo from "./user/pages/InputInfo";
@@ -33,8 +33,6 @@ function App() {
             <Route path="inputinfo" element={<InputInfo />} />
             <Route path="result" element={<JoinResult />} />
           </Route>
-
-          
           <Route path="findid">
             <Route index element={<FindId />} />
             <Route path="result" element={<FindIdResult />} />

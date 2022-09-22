@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
-import { defaultReducer } from "./mainModules/mainModule";
 import { subPriceReducer } from "./orderModules/orderModule";
 import { emailReducer } from "./orderModules/orderModule";
 import { emailIdReducer } from "./orderModules/orderModule";
 import { emailDomainReducer } from "./orderModules/orderModule";
 import { navbarReducer, hiddenNavbarReducer } from "./mainModules/navbarModule";
+import { agreementReducer } from "./userModules/userModule";
 
 
 const rootReducer = combineReducers({
@@ -14,6 +14,7 @@ const rootReducer = combineReducers({
   emailReducer,
   navbarReducer,
   hiddenNavbarReducer,
+  agreementReducer
 });
 
 export default rootReducer;
