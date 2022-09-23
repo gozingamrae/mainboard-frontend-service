@@ -1,25 +1,23 @@
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.message{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.contents{
-    
-
+.contents {
 }
-.content{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 30px;
-    margin:0px;
-    padding:0px;
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  margin: 0px;
+  padding: 0px;
 }
-.content:hover{
-    text-decoration: underline;
+.content:hover {
+  text-decoration: underline;
 }

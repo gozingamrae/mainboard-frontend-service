@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Login from "./user/pages/Login"; 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./user/pages/Login";
 import Join from "./user/pages/Join";
 import Agreement from "./user/pages/Agreement";
 import InputInfo from "./user/pages/InputInfo";
@@ -8,7 +8,7 @@ import FindId from "./user/pages/FindId";
 import FindIdResult from "./user/pages/FindIdResult";
 import FindPw from "./user/pages/FindPw";
 import ChangePw from "./user/pages/ChangePw";
-import PaymentCompleted from './payment/pages/payment-completed';
+import PaymentCompleted from "./payment/pages/payment-completed";
 import ChangePwResult from "./user/pages/ChangePwResult";
 import BoardgameInfo from "./order/pages/boardgameInfo";
 import BoardgameList from "./boardgame/pages/BoardgameList";
@@ -25,7 +25,7 @@ function App() {
           <Route path="/boardgame/list" element={<BoardgameList />} />
           <Route path="/boardgame/list/:1" element={<BoardgameInfo />} />
           <Route path="/order-info" element={<OrderInfo />} />
-          <Route path="/payment-completed" element = { <PaymentCompleted/> } />
+          <Route path="/payment-completed" element={<PaymentCompleted />} />
           <Route path="login" element={<Login />} />
           <Route path="join">
             <Route index element={<Join />} />

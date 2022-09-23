@@ -1,90 +1,88 @@
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*주문상세내역 스타일*/
-.orderInfoTable{
-    border-style: solid;
-    border-width: 0.5px;
-    border-color: rgba(209, 207, 207, 0.534);
-    width: 1000px;
+.orderInfoTable {
+  border-style: solid;
+  border-width: 0.5px;
+  border-color: rgba(209, 207, 207, 0.534);
+  width: 1000px;
 }
-.orderInfoHeader{
-    border-style: solid;
-    border-width: 0.5px;
-    border-color: rgba(204, 204, 204, 0.315);
-    background-color:#EBE9F2 ;
-    height: 50px;
+.orderInfoHeader {
+  border-style: solid;
+  border-width: 0.5px;
+  border-color: rgba(204, 204, 204, 0.315);
+  background-color: #ebe9f2;
+  height: 50px;
 }
-.orderInfoContent{
-    background-color: rgba(194, 194, 194, 0.1);
+.orderInfoContent {
+  background-color: rgba(194, 194, 194, 0.1);
 }
 
 /*주문자/배송/결제 정보 스타일*/
-.InfoTable{
-    border-style: solid;
-    border-width: 0.5px;
-    border-color: rgba(87, 86, 86, 0.171);
+.InfoTable {
+  border-style: solid;
+  border-width: 0.5px;
+  border-color: rgba(87, 86, 86, 0.171);
 }
-.InfoFirstColumn{
-    background-color: rgba(180, 180, 180, 0.301);
-    width: 200px;
-    height: 50px;
-    padding-left: 20px;
-    
+.InfoFirstColumn {
+  background-color: rgba(180, 180, 180, 0.301);
+  width: 200px;
+  height: 50px;
+  padding-left: 20px;
 }
-.InfoSecondColumn{
-   padding-left: 20px;
-   width: 750px;
+.InfoSecondColumn {
+  padding-left: 20px;
+  width: 750px;
 }
-.InputBox{
-    width: 270px;
-    height: 30px;
-    border-style: solid;
-    border-width: 0.5px;
-    border-color: rgba(0, 0, 0, 0.24);
-    padding-left: 15px;
-    margin:5px;
+.InputBox {
+  width: 270px;
+  height: 30px;
+  border-style: solid;
+  border-width: 0.5px;
+  border-color: rgba(0, 0, 0, 0.24);
+  padding-left: 15px;
+  margin: 5px;
 }
-.ordererOptionBox{
-    margin-left: 7px;
-    height: 30px;
-    width: 120px;
+.ordererOptionBox {
+  margin-left: 7px;
+  height: 30px;
+  width: 120px;
 }
 
 /*버튼 스타일*/
-.finalButton{
-    text-align: center;
-
+.finalButton {
+  text-align: center;
 }
-.paymentButton{
-    display: inline-block;
-    width: 220px;
-    height: 50px;
-    background-color: #EBE9F2;
-    font-weight: 700;
-    font-size: 15px;
-    border-width: 0.1px;
-    margin: 5px;
+.paymentButton {
+  display: inline-block;
+  width: 220px;
+  height: 50px;
+  background-color: #ebe9f2;
+  font-weight: 700;
+  font-size: 15px;
+  border-width: 0.1px;
+  margin: 5px;
 }
-.cancelButton{
-    display: inline-block;
-    width: 220px;
-    height: 50px;
-    background-color: #c2c2c2;
-    font-weight: 700;
-    font-size: 15px;
-    border-width: 0.1px;
-    margin: 5px;
+.cancelButton {
+  display: inline-block;
+  width: 220px;
+  height: 50px;
+  background-color: #c2c2c2;
+  font-weight: 700;
+  font-size: 15px;
+  border-width: 0.1px;
+  margin: 5px;
 }
 
 /*약관 스타일*/
-.terms{
-    margin-top: 35px;
-    margin-bottom: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.terms {
+  margin-top: 35px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

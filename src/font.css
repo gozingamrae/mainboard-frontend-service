@@ -3,10 +3,10 @@
 /* font */
 
 @font-face {
-  font-family: 'gmarket';
-  src: url('./');
+  font-family: "gmarket";
+  src: url("./");
 }
 
 * {
-  font-family: 'gmarket';
+  font-family: "gmarket";
 }
