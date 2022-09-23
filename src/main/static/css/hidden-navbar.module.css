@@ -2,6 +2,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  left: calc(50% - 1064px / 2);
+
+  position: fixed;
+  top: 180px;
+
+  background-color: #ffffff;
+  border-top: none;
+
+  z-index: 2;
 }
 
 .hiddenLayout {
@@ -12,6 +22,7 @@
   width: 1064px;
   height: 240px;
 
+  position: relative;
   background-color: cadetblue;
 }
 
@@ -34,6 +45,8 @@
 
   width: 1064px;
   height: 60px;
+
+  background-color: #ebe9f2;
 }
 
 .menu {
@@ -42,8 +55,10 @@
   align-items: center;
   text-align: center;
 
-  width: 118.22px;
-  height: 60px;
+  width: 116.22px;
+  height: 58px;
+
+  margin: 1px;
 
   font-size: 16px;
   line-height: 16px;
@@ -52,7 +67,21 @@
   color: #7332c3;
 }
 
+.menu:not(:first-child) {
+  cursor: pointer;
+}
+
 .menu:first-child {
   background-color: #7332c3;
+  border: 1px #7332c3 solid;
   color: #ffffff;
+}
+
+.row:hover > .menu:not(:first-child) {
+  color: #7332c366;
+}
+
+.row:hover > .menu:first-child {
+  background-color: #ffffff;
+  color: #7332c3;
 }

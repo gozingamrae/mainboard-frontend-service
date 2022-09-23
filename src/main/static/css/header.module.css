@@ -5,6 +5,14 @@
   padding-bottom: 38px;
   padding-left: 330px;
   padding-right: 330px;
+
+  position: sticky;
+  height: 44.02px;
+  top: 0px;
+
+  background-color: #ffffff;
+
+  z-index: 2;
 }
 
 .userButton {
