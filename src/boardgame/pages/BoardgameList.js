@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import Pagenation from "../items/Pagenation";
 import style from "../static/css/boardgame-list.module.css";
 
 function BoardgameList() {
@@ -170,9 +171,7 @@ function BoardgameList() {
         </div>
       </div>
       <div className={style.pagenation}>
-        <div>좌측 버튼</div>
-        <div>--숫자--</div>
-        <div>우측 버튼</div>
+        <Pagenation />
       </div>
     </div>
   );

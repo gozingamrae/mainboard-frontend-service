@@ -1,0 +1,134 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  top: 300px;
+  margin-top: 16px;
+
+  overflow: visible;
+}
+
+.rowBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 1280px;
+  height: 1350px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 1280px;
+  height: 450px;
+}
+
+.row > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  width: 1065px;
+  height: 336px;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 197px;
+  height: 336px;
+}
+
+.imageBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 197px;
+  height: 197px;
+
+  background-color: #ebe9f2;
+}
+
+.image {
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  width: 150px;
+  height: 150px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 16px;
+  width: 197px;
+  height: 123px;
+}
+
+.boardgameName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 197px;
+  height: 41px;
+
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.boardgamePrice {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 197px;
+  height: 41px;
+
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.category {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+
+  width: 197px;
+  height: 41px;
+}
+
+.category > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 63.67px;
+  height: 41px;
+
+  border-radius: 5px;
+  background-color: #ebe9f2;
+  color: #7332c3;
+  font-size: 12px;
+}
+
+.pagenation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
