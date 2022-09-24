@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
 
-  left: calc(50% - 1064px / 2);
+  left: calc(50% - 1068px / 2);
 
   position: fixed;
   top: 180px;
@@ -21,6 +21,9 @@
 
   width: 1064px;
   height: 240px;
+
+  border: #7332c3 solid 2px;
+  border-top: none;
 
   position: relative;
   background-color: cadetblue;
@@ -67,13 +70,14 @@
   color: #7332c3;
 }
 
-.menu:not(:first-child) {
+.menu:not(:div) {
   cursor: pointer;
 }
 
 .menu:first-child {
   background-color: #7332c3;
-  border: 1px #7332c3 solid;
+  border: 2px #7332c3 solid;
+  margin: -1px;
   color: #ffffff;
 }
 

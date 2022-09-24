@@ -1,7 +1,7 @@
 import style from "../../static/css/navbar.module.css";
 import hiddenStyle from "../../static/css/hidden-navbar.module.css";
 // import hiddenStyle from "../../static/css/navbar-hidden.module.css";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -23,7 +23,7 @@ function Navbar() {
   const hiddenNavbarInfo = [
     [
       { type: "category", name: "전체상품", parameter: "" },
-      { type: "value", name: "전체상품", parameter: "" },
+      { type: "value", name: "전체상품", parameter: "all" },
       { type: "value", name: "", parameter: "" },
       { type: "value", name: "", parameter: "" },
       { type: "value", name: "", parameter: "" },
@@ -70,14 +70,17 @@ function Navbar() {
   const location = useLocation(); // URL 변경 감지하여 URL 정보 제공
   const openNavbar = useSelector((state) => state.navbarReducer); // Navbar 열고 닫기를 담당하는 state
   const useFilter = useSelector((state) => state.hiddenNavbarReducer);
+  const [searchParams, setSearchParams] = useSearchParams();
+  console.log(searchParams.get("category"));
+  console.log(window.location.search);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
 
   const dispatch = useDispatch();
-  // console.log(location.pathname, location.search, "리렌더링");
-  console.log(useFilter);
+  //console.log(location.pathname + location.search, "리렌더링");
+  // console.log(useFilter);
 
   const onHiddenNavbar = () => {
     dispatch({ type: ON_NAVBAR });
@@ -91,6 +94,7 @@ function Navbar() {
   // 보드게임 목록 화면에서는 Event가 발생하지 않아도 화면에 고정되어 나타난다.
   // 일반 화면에서는 단순히 필터 목록에서 필터를 누르면 보드게임 목록화면으로 이동하지만,
   // 보드게임 목록 화면에서는 State 관리를 통해 필터 정보를 저장하고 필터를 누적할 수 있도록 한다.
+
   const hiddenNavbar = () => {
     const hidden = (
       <div id="hiddenLayout" className={hiddenStyle.layout}>
@@ -105,18 +109,24 @@ function Navbar() {
                 <div>
                   <div id="row" className={hiddenStyle.row}>
                     {menuList.map((menu) => {
-                      return menu.type == "category" ? (
-                        <div id="menu" className={hiddenStyle.menu}>
-                          {menu.name}
-                        </div>
-                      ) : (
+                      return menu.type == "value" && menu.name != "" ? (
                         <NavLink
                           id="menu"
                           className={hiddenStyle.menu}
-                          to={`boardgame/list?category=${menu.parameter}`}
+                          to={
+                            location.pathname.includes("/boardgame/list")
+                              ? `${location.pathname}${location.search}&category=${menu.parameter}`
+                              : `/boardgame/list?query=${"search"}&category=${
+                                  menu.parameter
+                                }`
+                          }
                         >
                           {menu.name}
                         </NavLink>
+                      ) : (
+                        <div id="menu" className={hiddenStyle.menu}>
+                          {menu.name}
+                        </div>
                       );
                     })}
                   </div>
@@ -148,8 +158,8 @@ function Navbar() {
           <NavLink
             to={
               location.pathname != "/boardgame/list"
-                ? "/boardgame/list"
-                : location
+                ? "/boardgame/list?search=&category=all"
+                : location.pathname + location.search
             } // 보드게임 전체 목록 URL
             className={style.frame1}
             onMouseEnter={onHiddenNavbar}
@@ -199,10 +209,7 @@ function Navbar() {
           to="/main" // 1대1문의 URL
           className={style.frame7}
         >
-          <div className={style.button7}>
-            1:1문의 <br />
-            (수정 필요)
-          </div>
+          <div className={style.button7}>1:1문의</div>
         </NavLink>
         <div className={style.line8} />
       </div>
