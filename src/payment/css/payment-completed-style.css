@@ -8,11 +8,8 @@ body{
     justify-content: center;
     align-items: center;
 }
-.contents{
-    
 
-}
-.content{
+.paymentContent{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,6 +17,7 @@ body{
     margin:0px;
     padding:0px;
 }
-.content:hover{
+.paymentContent:hover{
     text-decoration: underline;
 }
+

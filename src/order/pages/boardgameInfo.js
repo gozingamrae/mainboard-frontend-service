@@ -1,4 +1,3 @@
-
 import '../css/boardgameInfo-style.css';
 import 부루마블 from '../image/burumavel.jpg';
 
@@ -25,7 +24,9 @@ function boardgameInfo(){
     return(
         <div className='layout'>       
          <div className='contentBox'>
+
             <hr/>
+
 
             <img className="image" src={부루마블} alt="사진출력오류"/>
 
@@ -42,7 +43,6 @@ function boardgameInfo(){
             <button className='button' onClick={onClickHandler2}>찜하기</button>
             <button className='buyButton'onClick={onClickHandler3}>바로 구매</button>
             </div>
-            
              
         </div>
         </div>
