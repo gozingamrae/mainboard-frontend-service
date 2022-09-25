@@ -1,11 +1,18 @@
 import style from "../../static/css/header.module.css";
 import { useNavigate, NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  OFF_FILTER,
+  SET_FILTER,
+} from "../../../modules/mainModules/navbarModule";
 
 function Header() {
   const navigate = useNavigate();
   const location = useLocation();
   const [login, setLogin] = useState(false);
+  const filter = useSelector((state) => state.hiddenNavbarReducer);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     // 검색으로 접근하지 않을 시 검색어 초기화
@@ -19,6 +26,8 @@ function Header() {
     navigate(
       `/boardgame/list?query=${document.getElementById("search").value}`
     );
+    dispatch({ type: OFF_FILTER });
+    dispatch({ type: SET_FILTER, payload: "all" });
   };
 
   // 검색창에서 엔터 눌러도 검색 버튼 누른 것과 동일 효과
