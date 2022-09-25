@@ -1,0 +1,110 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+
+  padding-top: 48px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #000000;
+  box-sizing: border-box;
+
+  font-size: 20px;
+
+  width: 1040px;
+}
+
+.subTitleBox {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  width: 932px;
+  height: 20px;
+  margin-top: 48px;
+  margin-bottom: 16px;
+}
+
+.subTitle {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  font-size: 20px;
+  margin-left: -24px;
+
+  width: 160px;
+  height: 20px;
+}
+
+.addressList {
+  border-collapse: collapse;
+
+  width: 980px;
+}
+
+.addressList > tr > th {
+  border-top: 1px solid #dadada;
+  border-bottom: 1px solid #dadada;
+  border-top: 2px solid #000000;
+  box-sizing: border-box;
+
+  text-align: center;
+
+  font-size: 12px;
+
+  height: 48px;
+
+  background-color: #f8f5ff;
+}
+
+.addressList > tr > td {
+  text-align: center;
+
+  border-top: 1px solid #dadada;
+  border-bottom: 1px solid #dadada;
+
+  font-size: 12px;
+
+  height: 100px;
+}
+
+.address > div {
+  text-align: left;
+  height: 24px;
+}
+
+.button {
+  gap: 8px;
+  width: 220px;
+}
+
+.button > button {
+  width: 80px;
+  height: 24px;
+
+  font-size: 12px;
+
+  border: none;
+  background-color: #7332c3;
+  color: #ffffff;
+
+  cursor: pointer;
+}
+
+.addressName {
+  width: 160px;
+}
+
+.address {
+  width: 360px;
+}
+
+.phone {
+  width: 240px;
+}
