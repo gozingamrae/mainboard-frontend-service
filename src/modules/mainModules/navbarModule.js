@@ -54,7 +54,7 @@ export const navbarReducer = handleActions(
 export const hiddenNavbarReducer = handleActions(
   {
     [SET_FILTER]: (state, { payload }) => {
-      console.log(payload);
+      // console.log(payload);
 
       return { ...state };
     },
