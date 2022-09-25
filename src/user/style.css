@@ -143,7 +143,7 @@
   margin-top: 32px;
 }
 
-.loginpage-buttons > button {
+.loginpage-button {
   box-sizing: border-box;
   width: 197px;
   height: 40px;
@@ -171,7 +171,7 @@
   text-align: -webkit-center;
 }
 
-.join-mainboard > button {
+.join-mainboard button {
   width: 325px;
   height: 64px;
 
@@ -334,11 +334,12 @@
   color: #635970;
 }
 
-.agreement-btns {
+.agreement-btns button{
+
 }
 
-.agreement-btns > button,
-.agreement-btns > input[type="submit"] {
+.agreement-btns button,
+.agreement-btns input[type="submit"] {
   width: 197px;
   height: 40px;
   font-family: "Gmarket Sans TTF";

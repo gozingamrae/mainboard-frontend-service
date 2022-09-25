@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { CHECK_ALL, CHECK_USE,CHECK_MARKETING, CHECK_PRIVACY } from "../../modules/userModules/userModule";
 import "../style.css";
+import { NavLink } from "react-router-dom";
 
 function Agreement() {
 
@@ -100,8 +101,8 @@ useEffect(
       </div>
       <button className="agreement-auth"> 휴대폰 본인 인증</button>
       <div className="agreement-btns">
-        <button> 이전 단계 </button>
-        <button> 다음 단계 </button>
+        <button > 이전 단계 </button>
+        <NavLink to="/join/inputinfo"> <button> 다음 단계 </button> </NavLink>
       </div>
     </div>
   );

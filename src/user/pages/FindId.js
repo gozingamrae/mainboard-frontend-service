@@ -1,4 +1,5 @@
 import "../style.css";
+import { NavLink } from "react-router-dom";
 
 function FindId() {
   return (
@@ -21,8 +22,8 @@ function FindId() {
         ></input>
       </form>
       <div className="agreement-btns input-submit">
-        <button> 비밀번호 찾기 </button>
-        <button> 로그인 하기 </button>
+        <NavLink to="/findpw"> <button> 비밀번호 찾기 </button></NavLink>
+        <NavLink to="/login"><button> 로그인 하기 </button></NavLink>
       </div>
     </div>
   );

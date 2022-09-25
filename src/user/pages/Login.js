@@ -1,4 +1,5 @@
 import "../style.css";
+import { NavLink } from "react-router-dom";
 
 function Login() {
   return (
@@ -31,9 +32,9 @@ function Login() {
         <div className="login-line"></div>
       </div>
       <div className="loginpage-buttons">
-        <button> 회원가입 </button>
-        <button> 아이디 찾기 </button>
-        <button> 비밀번호 찾기 </button>
+        <NavLink to="/join"><button className="loginpage-button"> 회원가입 </button> </NavLink>
+        <NavLink to="/findid"><button className="loginpage-button"> 아이디 찾기 </button> </NavLink>
+        <NavLink to="/findpw"><button className="loginpage-button"> 비밀번호 찾기 </button> </NavLink>
       </div>
     </div>
   );
