@@ -21,6 +21,8 @@ import DeliveryAddressUpdate from "./mypage/pages/DeliveryAddressUpdate";
 import Mypage from "./layouts/Mypage";
 import EditProfile from "./mypage/pages/EditProfile";
 import Unregist from "./mypage/pages/Unregist";
+import OrderReport from './mypage/pages/orderreport';
+
 
 function App() {
   return (
@@ -64,6 +66,7 @@ function App() {
               path="delivery-address-update"
               element={<DeliveryAddressUpdate />}
             />
+            <Route path="orderreport" element={<OrderReport/>} />
           </Route>
         </Route>
       </Routes>

@@ -1,0 +1,111 @@
+/* 컴포넌트 div 스타일 */
+.componentBox{
+    padding: 10px;
+    width : 100%;
+    
+}
+
+/* 페이지 제목 */
+.titleBox{
+    background-color : white;
+    padding : 10px;
+    font-size: 17px;
+    border : 1px solid #7332C3;
+    font-weight: bold;
+}
+
+/* 검색 버튼 스타일 */
+.searchButton{
+    background-color: #A086F1;
+    color : white;
+    border : none;
+    padding : 5px;
+    padding : 5px 20px 5px 20px;
+    height: 25px;
+    font-size: 15px;
+    font-weight: 100;
+    margin: auto;
+}
+
+/* 박스 스타일 */
+.box{
+    margin-top : 10px;
+    background-color: white;
+    padding : 10px;
+    font-size: 15px;
+    
+
+}
+.box h1{
+    font-size : 15px;
+}
+.box table{
+    width : 100%;
+    height: 100%;
+    font-weight : 100;
+    border-collapse: collapse;
+}
+.box table th{
+    background-color: #F8F5FF;
+    border-top : 0.5px solid black;
+    border-bottom : 0.5px solid black;
+    font-weight: 100;
+    font-size:15px;
+    padding : 15px;
+}
+.box table td{
+    border-bottom : 1px solid #CCCCCC;
+    font-weight: 100;
+    font-size:15px;
+    text-align: center;
+    padding : 15px;
+}
+
+/* 작은 박스 스타일 */
+.subBox{
+    display : flex;
+    padding : 10px;
+}
+.subBox h1{
+    width : 30%;
+    font-size : 15px;
+    font-weight: 100;
+}
+.subBox div{
+    font-size : 15px;
+    display : flex;
+}
+.subBox .checkBox label{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.subBox select{
+    font-size : 15px;
+}
+.pageButtonBox{
+    display : flex;
+    padding : 10px;
+    justify-content: center;
+}
+
+.pageButtonBox button{
+    /* background-color: #EBE9F2; */
+    background-color: white;
+    border-radius: 100%;
+    border: none;
+    width : 20px;
+    height: 20px;
+    padding : 5px;
+    text-align: center;
+    font-size: 10px;
+}
+.pageButtonBox img{
+    padding : 5px;
+    width : 5px;
+    height : 10px;
+}
+.dateInput{
+    background-color: #ACB7E1;
+    border-radius: 0.5em;
+}
+

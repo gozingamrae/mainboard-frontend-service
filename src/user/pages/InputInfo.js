@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { INPUT_INFO } from "../../modules/userModules/userModule";
 import "../style.css";
+import { NavLink } from "react-router-dom";
 
 function InputInfo() {
 
@@ -91,7 +92,7 @@ function InputInfo() {
         </div>
         <div className="agreement-btns input-submit">
           <button> 이전 단계 </button>
-          <input type="submit" value="다음 단계" />
+          <NavLink to="/join/result"> <input type="submit" value="다음 단계" /></NavLink>
         </div>
       </form>
     </div>
