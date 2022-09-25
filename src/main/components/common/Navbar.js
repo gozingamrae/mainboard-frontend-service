@@ -7,7 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   ON_NAVBAR,
   OFF_NAVBAR,
-  // SET_FILTER,
+  SET_FILTER,
+  OFF_FILTER,
 } from "../../../modules/mainModules/navbarModule";
 
 function Navbar() {
@@ -72,11 +73,15 @@ function Navbar() {
   const openNavbar = useSelector((state) => state.navbarReducer); // Navbar 열고 닫기를 담당하는 state
   const filter = useSelector((state) => state.hiddenNavbarReducer);
   const [searchParams, setSearchParams] = useSearchParams();
-  // console.log(searchParams.get("category"));
-  // console.log(window.location.search);
+  console.log(searchParams.get("category"));
+  console.log(window.location.search);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    if (location.pathname != "/boardgame/list") {
+      dispatch({ type: OFF_FILTER });
+    }
+    // 검색 시 필터가 아직 유지 됨(개선 사항)
   }, [location]);
 
   const dispatch = useDispatch();
@@ -91,9 +96,9 @@ function Navbar() {
     dispatch({ type: OFF_NAVBAR });
   };
 
-  const setFilter = (menu) => {
-    // dispatch({ type: SET_FILTER, payload: menu.parameter });
-  };
+  // const setFilter = (menu) => {
+  //   dispatch({ type: SET_FILTER, payload: menu });
+  // };
 
   // 일반 화면에서는 onMouseOver Event 발생 시 보드게임 필터 목록이 나타난다.
   // 보드게임 목록 화면에서는 Event가 발생하지 않아도 화면에 고정되어 나타난다.
@@ -115,18 +120,49 @@ function Navbar() {
                   <div id="row" className={hiddenStyle.row}>
                     {menuList.map((menu, index) => {
                       return menu.type == "value" && menu.name != "" ? (
-                        <NavLink
-                          id="menu"
-                          className={hiddenStyle.menu}
-                          to={
-                            location.search.includes("?query=")
-                              ? location.pathname + location.search
-                              : "/boardgame/list?query="
-                          }
-                          onClick={setFilter(index)}
-                        >
-                          {menu.name}
-                        </NavLink>
+                        filter[menu.parameter] ? (
+                          <NavLink
+                            id="menu"
+                            className={hiddenStyle.useMenu}
+                            to={
+                              location.search.includes("?query=")
+                                ? location.pathname + location.search
+                                : "/boardgame/list?query="
+                            }
+                            onClick={() => {
+                              dispatch({
+                                type: SET_FILTER,
+                                payload: menu.parameter,
+                              });
+                            }}
+                            style={{
+                              backgroundColor: "#E0DAF1",
+                            }}
+                          >
+                            <div className={hiddenStyle.cancelBox}>
+                              <div />
+                            </div>
+                            {menu.name}
+                          </NavLink>
+                        ) : (
+                          <NavLink
+                            id="menu"
+                            className={hiddenStyle.menu}
+                            to={
+                              location.search.includes("?query=")
+                                ? location.pathname + location.search
+                                : "/boardgame/list?query="
+                            }
+                            onClick={() => {
+                              dispatch({
+                                type: SET_FILTER,
+                                payload: menu.parameter,
+                              });
+                            }}
+                          >
+                            {menu.name}
+                          </NavLink>
+                        )
                       ) : (
                         <div id="menu" className={hiddenStyle.menu}>
                           {menu.name}

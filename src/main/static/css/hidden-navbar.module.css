@@ -52,6 +52,24 @@
   background-color: #ebe9f2;
 }
 
+.useMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  width: 116.22px;
+  height: 58px;
+
+  margin: 1px;
+
+  font-size: 16px;
+  line-height: 16px;
+
+  background-color: #ebe9f2;
+  color: #7332c3;
+}
+
 .menu {
   display: flex;
   justify-content: center;
@@ -80,12 +98,34 @@
   margin: -1px;
   color: #ffffff;
 }
-
-.row:hover > .menu:not(:first-child) {
+/* .menu:not(.menu:first-child)  */
+.rowBox:hover > div > .row:not(:hover) > .menu {
   color: #7332c366;
+}
+
+.rowBox:hover > div > .row:not(:hover) > .menu:first-child {
+  color: #ffffff;
 }
 
 .row:hover > .menu:first-child {
   background-color: #ffffff;
   color: #7332c3;
+}
+
+.cancelBox {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+
+  width: 116.22px;
+  height: 58px;
+}
+
+.cancelBox > div {
+  background-image: url("../images/cancel.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  width: 23px;
+  height: 23px;
 }
