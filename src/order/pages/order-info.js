@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { SUBPRICE, EMAIL, EMAILID, EMAILDOMAIN} from '../../modules/orderModules/orderModule';
 import '../css/order-info-style.css';
+import { NavLink}   from "react-router-dom";
 
 function OrderInfo(){
 
@@ -78,7 +79,7 @@ function OrderInfo(){
     console.log(emailResult.email);
 
     function paymentButtonOnChangeHandler(){
-        window.location.href="/payment";
+        window.location.href="/payment-completed";
     }
     function cancelButtonOnChangeHandler(){
         window.location.href="/boardgame/list";
@@ -240,7 +241,7 @@ function OrderInfo(){
             
             <div className='finalButton'>
             <button onClick={cancelButtonOnChangeHandler} className="cancelButton">취소</button>
-            <button onClick={paymentButtonOnChangeHandler} className="paymentButton"> 결제하기 </button>
+             <button onClick={paymentButtonOnChangeHandler} className="paymentButton"> 결제하기 </button>
             </div>
         </div>
     );
