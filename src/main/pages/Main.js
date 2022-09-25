@@ -59,7 +59,12 @@ function Main() {
         </div>
         <div className={mainStyle.bestBox}>
           <div className={mainStyle.titleBox}>
-            <div className={mainStyle.title}>BEST PRODUCTS</div>
+            <NavLink
+              to="/boardgame/list?category=best" // BEST 상품 URL
+              className={mainStyle.title}
+            >
+              BEST PRODUCTS
+            </NavLink>
           </div>
           <div className={mainStyle.productBox}>
             {exampleProduct.map((product) => {
@@ -97,7 +102,12 @@ function Main() {
         <div className={mainStyle.backImage} />
         <div className={mainStyle.pickBox}>
           <div className={mainStyle.titleBox}>
-            <div className={mainStyle.title}>MDs PICK</div>
+            <NavLink
+              to="/boardgame/list?category=pick" // BEST 상품 URL
+              className={mainStyle.title}
+            >
+              MDs PICK
+            </NavLink>
           </div>
           <div className={mainStyle.productBox}>
             {exampleProduct.map((product) => {

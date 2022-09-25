@@ -1,13 +1,22 @@
 import style from "../../static/css/header.module.css";
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate, NavLink, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 function Header() {
   const navigate = useNavigate();
+  const location = useLocation();
 
+  useEffect(() => {
+    // 검색으로 접근하지 않을 시 검색어 초기화
+    if (!location.search.includes("?query="))
+      document.getElementById("search").value = "";
+  }, [location]);
+
+  // console.log(location.search);
   // 검색 시 쿼리스트링 파라미터로 검색어 전달
   const searchByKeyword = () => {
     navigate(
-      `/boardgame/list?search=${document.getElementById("search").value}`
+      `/boardgame/list?query=${document.getElementById("search").value}`
     );
   };
 
