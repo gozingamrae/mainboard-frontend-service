@@ -18,6 +18,9 @@ import OrderInfo from "./order/pages/order-info";
 import DeliveryAddressList from "./mypage/pages/DeliveryAddressList";
 import DeliveryAddressInsert from "./mypage/pages/DeliveryAddressInsert";
 import DeliveryAddressUpdate from "./mypage/pages/DeliveryAddressUpdate";
+import Mypage from "./layouts/Mypage";
+import EditProfile from "./mypage/pages/EditProfile";
+import Unregist from "./mypage/pages/Unregist";
 
 function App() {
   return (
@@ -45,18 +48,23 @@ function App() {
             <Route path="changepw" element={<ChangePw />} />
             <Route path="result" element={<ChangePwResult />} />
           </Route>
-          <Route
-            path="mypage/delivery-address-list"
-            element={<DeliveryAddressList />}
-          />
-          <Route
-            path="mypage/delivery-address-insert"
-            element={<DeliveryAddressInsert />}
-          />
-          <Route
-            path="mypage/delivery-address-update"
-            element={<DeliveryAddressUpdate />}
-          />
+
+          <Route path="mypage" element={<Mypage />}>
+            <Route index element={<EditProfile />} />
+            <Route path="unregist" element={<Unregist />} />
+            <Route
+              path="delivery-address-list"
+              element={<DeliveryAddressList />}
+            />
+            <Route
+              path="delivery-address-insert"
+              element={<DeliveryAddressInsert />}
+            />
+            <Route
+              path="delivery-address-update"
+              element={<DeliveryAddressUpdate />}
+            />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

@@ -48,8 +48,6 @@ function boardgameInfo() {
             바로 구매
           </button>
         </div>
-
-        <h1 className="footer">+++ Footer +++</h1>
       </div>
     </div>
   );
