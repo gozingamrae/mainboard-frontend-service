@@ -1,4 +1,8 @@
 .pagenation {
+  background-image: url("../images/pagenation.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,7 +11,4 @@
 
   width: 347.89px;
   height: 95px;
-
-  border: 3px solid saddlebrown;
-  box-sizing: border-box;
 }
