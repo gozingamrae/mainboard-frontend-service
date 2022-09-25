@@ -85,6 +85,7 @@ function OrderInfo(){
     }
 
     var finalPrice = TOTALPRICE - subPriceResult.subPrice;
+    console.log(subPriceResult.subPrice );
 
     return(
 
