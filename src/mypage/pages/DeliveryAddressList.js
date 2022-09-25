@@ -1,6 +1,8 @@
+import { NavLink, useNavigate } from "react-router-dom";
 import style from "../css/delivery-address-list.module.css";
 
 function DeliveryAddressList() {
+  const navigate = useNavigate();
   const exampleAddressList = [
     {
       name: "본가",
@@ -54,9 +56,21 @@ function DeliveryAddressList() {
                 </td>
                 <td className={style.phone}>{address.phone}</td>
                 <td className={style.button}>
-                  <button>수정</button>
+                  <button
+                    onClick={() => {
+                      navigate("/mypage/delivery-address-insert");
+                    }}
+                  >
+                    수정
+                  </button>
                   <p />
-                  <button>삭제</button>
+                  <button
+                    onClick={() => {
+                      navigate("/mypage/delivery-address-update");
+                    }}
+                  >
+                    삭제
+                  </button>
                 </td>
               </tr>
             );
