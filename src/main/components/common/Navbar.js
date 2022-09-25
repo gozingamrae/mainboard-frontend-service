@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   ON_NAVBAR,
   OFF_NAVBAR,
-  SET_FILTER,
+  // SET_FILTER,
 } from "../../../modules/mainModules/navbarModule";
 
 function Navbar() {
@@ -72,8 +72,8 @@ function Navbar() {
   const openNavbar = useSelector((state) => state.navbarReducer); // Navbar 열고 닫기를 담당하는 state
   const filter = useSelector((state) => state.hiddenNavbarReducer);
   const [searchParams, setSearchParams] = useSearchParams();
-  console.log(searchParams.get("category"));
-  console.log(window.location.search);
+  // console.log(searchParams.get("category"));
+  // console.log(window.location.search);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -92,7 +92,7 @@ function Navbar() {
   };
 
   const setFilter = (menu) => {
-    dispatch({ type: SET_FILTER, payload: menu.parameter });
+    // dispatch({ type: SET_FILTER, payload: menu.parameter });
   };
 
   // 일반 화면에서는 onMouseOver Event 발생 시 보드게임 필터 목록이 나타난다.
