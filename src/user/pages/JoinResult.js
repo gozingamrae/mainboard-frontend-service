@@ -1,4 +1,5 @@
 import "../style.css";
+import { NavLink } from "react-router-dom";
 
 function JoinResult() {
   return (
@@ -15,7 +16,7 @@ function JoinResult() {
       </div>
       <div className="user-content">
         <p> 회원가입이 완료되었습니다. </p>
-        <a href="/"> 지금 로그인 하기 </a>
+        <NavLink to="/login">지금 로그인 하기 </NavLink> 
         <a href="/"> 메인 페이지로 </a>
       </div>
     </div>

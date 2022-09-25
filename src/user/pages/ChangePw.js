@@ -1,4 +1,5 @@
 import "../style.css";
+import { NavLink } from "react-router-dom";
 
 function ChangePw() {
   return (
@@ -23,7 +24,7 @@ function ChangePw() {
           ></input>
         </div>
         <div className="agreement-btns input-submit">
-          <input type="submit" value="다음" />
+          <NavLink to="/findpw/result"> <input type="submit" value="다음" /></NavLink>
         </div>
       </form>
     </div>

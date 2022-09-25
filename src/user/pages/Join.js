@@ -1,4 +1,5 @@
 import "../style.css";
+import { NavLink } from "react-router-dom";
 
 function Join() {
   return (
@@ -7,10 +8,10 @@ function Join() {
         <p>회원가입</p>
       </div>
       <div className="join-mainboard">
-        <button>Main Board 회원가입</button>
+        <NavLink to="/join/agreement"> <button>Main Board 회원가입</button></NavLink>
         <div className="join-line"></div>
         <button className="kakao-login"> 카카오 계정으로 회원가입</button>
-        <a href="/"> 이미 회원이신가요? 로그인 </a>
+        <NavLink to="/login"> 이미 회원이신가요? 로그인 </NavLink>
       </div>
     </div>
   );
