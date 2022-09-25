@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Login from "./user/pages/Login"; 
+import Login from "./user/pages/Login";
 import Join from "./user/pages/Join";
 import Agreement from "./user/pages/Agreement";
 import InputInfo from "./user/pages/InputInfo";
@@ -15,6 +15,9 @@ import BoardgameList from "./boardgame/pages/BoardgameList";
 import Layout from "./layouts/Layout";
 import Main from "./main/pages/Main";
 import OrderInfo from "./order/pages/order-info";
+import Mypage from "./layouts/Mypage"
+import EditProfile from './mypage/pages/EditProfile';
+import Unregist from './mypage/pages/Unregist';
 
 function App() {
   return (
@@ -41,6 +44,10 @@ function App() {
             <Route index element={<FindPw />} />
             <Route path="changepw" element={<ChangePw />} />
             <Route path="result" element={<ChangePwResult />} />
+          </Route>
+          <Route path="mypage" element={<Mypage />}>
+            <Route index element={<EditProfile />} />
+            <Route path="unregist" element={<Unregist/>} />
           </Route>
         </Route>
       </Routes>

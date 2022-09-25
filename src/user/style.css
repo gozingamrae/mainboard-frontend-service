@@ -61,7 +61,7 @@
   font-family: "GmarketSansMedium";
 }
 
-.login-remember {
+.login-remember, .agreement-checkbox {
   width: 25px !important;
   height: 25px !important;
   margin-bottom: 0 !important;
@@ -261,9 +261,56 @@
 
 .agreement-content {
   width: 845px;
-  height: 709px;
+  text-align-last: left;
+}
 
-  background: #ebe9f2;
+.agreement-form-all{
+  margin-top: 30px;
+}
+
+.agreement-form-all, .agreement-form-part{
+  margin-bottom: 30px;
+}
+
+.agreement-form-checkandlabel > label{
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.agreement-form-checkandlabel > span{
+  margin-right: 5px;
+}
+
+
+.agreement-checkbox{
+  margin-right: 10px;
+}
+
+.lable-small{
+  font-family: 'Gmarket Sans TTF';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  align-items: center;
+  text-align: center;
+  margin-left: 5px;
+}
+
+.agreement-form > div > textarea{
+  width: 845px ;
+  height: 128px;
+  resize: none;
+  overflow: scroll;
+  background-color: #ffffff;
+  font-size: 12px;
+  margin-top: 15px;
+}
+
+
+.agreement-form-checkandlabel{
+  display: flex;
+  align-items: center;
 }
 
 .agreement-auth {

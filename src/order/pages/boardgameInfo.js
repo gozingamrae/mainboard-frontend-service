@@ -25,6 +25,9 @@ function boardgameInfo(){
         <div className='layout'>       
          <div className='contentBox'>
 
+            <hr/>
+
+
             <img className="image" src={부루마블} alt="사진출력오류"/>
 
             <div className='content'>
