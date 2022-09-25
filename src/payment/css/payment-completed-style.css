@@ -1,23 +1,22 @@
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.message{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.paymentContent{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 30px;
-    margin:0px;
-    padding:0px;
-}
-.paymentContent:hover{
-    text-decoration: underline;
+.message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.paymentContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  margin: 0px;
+  padding: 0px;
+}
+.paymentContent:hover {
+  text-decoration: underline;
+}
