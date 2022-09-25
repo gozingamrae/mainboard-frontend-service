@@ -33,8 +33,8 @@ function Navbar() {
             <div className="content-line"></div>
             <h1> 회원 정보 </h1>
             <ul>
-            <Link to="/"><li> 회원정보 변경 </li></Link>
-            <Link to="/"><li> 회원 탈퇴 </li></Link>
+            <Link to="/mypage"><li> 회원정보 변경 </li></Link>
+            <Link to="/mypage/unregist"><li> 회원 탈퇴 </li></Link>
             <Link to="/"><li> 배송지 관리 </li></Link>
             </ul>
         </div>
