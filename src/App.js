@@ -15,9 +15,10 @@ import BoardgameList from "./boardgame/pages/BoardgameList";
 import Layout from "./layouts/Layout";
 import Main from "./main/pages/Main";
 import OrderInfo from "./order/pages/order-info";
-import Mypage from "./layouts/Mypage"
+import Mypage from "./layouts/Mypage";
 import EditProfile from './mypage/pages/EditProfile';
 import Unregist from './mypage/pages/Unregist';
+import OrderReport from './mypage/pages/orderreport';
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
           <Route path="mypage" element={<Mypage />}>
             <Route index element={<EditProfile />} />
             <Route path="unregist" element={<Unregist/>} />
+            <Route path="orderreport" element={<OrderReport/>} />
           </Route>
         </Route>
       </Routes>

@@ -10,7 +10,7 @@ function Navbar() {
             <div className="content-line"></div>
             <h1> 쇼핑정보 </h1>
             <ul>
-                <Link to="/"><li> 주문 내역 </li></Link>
+                <Link to="/mypage/orderreport"><li> 주문 내역 </li></Link>
                 <Link to="/"><li> 찜 리스트</li></Link>
             </ul>
         </div>
