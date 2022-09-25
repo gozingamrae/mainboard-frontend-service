@@ -1,4 +1,5 @@
 import "../style.css";
+import { NavLink } from "react-router-dom";
 
 function FindPw() {
   return (
@@ -17,9 +18,9 @@ function FindPw() {
         <div className="find-input">
           <input type="text" name="id" placeholder="아이디 입력"></input>
         </div>
-        <a href="/"> 아이디를 모르시나요? 아이디 찾기</a>
+        <NavLink to="/findid"> 아이디를 모르시나요? 아이디 찾기</NavLink>
         <div className="agreement-btns input-submit">
-          <input type="submit" value="다음" />
+          <NavLink to="/findpw/changepw"> <input type="submit" value="다음" /></NavLink>
         </div>
       </form>
     </div>

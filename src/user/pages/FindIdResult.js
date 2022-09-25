@@ -1,4 +1,5 @@
 import "../style.css";
+import { NavLink } from "react-router-dom";
 
 function FindIdResult() {
   const name = "이유리";
