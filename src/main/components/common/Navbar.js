@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   ON_NAVBAR,
   OFF_NAVBAR,
+  // SET_FILTER,
 } from "../../../modules/mainModules/navbarModule";
 
 function Navbar() {
@@ -48,7 +49,7 @@ function Navbar() {
       { type: "value", name: "쉬움", parameter: "easy" },
       { type: "value", name: "중간", parameter: "medium" },
       { type: "value", name: "어려움", parameter: "hard" },
-      { type: "value", name: "매우어려움", parameter: "very-hard" },
+      { type: "value", name: "매우어려움", parameter: "veryHard" },
       { type: "value", name: "", parameter: "" },
       { type: "value", name: "", parameter: "" },
       { type: "value", name: "", parameter: "" },
@@ -69,10 +70,10 @@ function Navbar() {
 
   const location = useLocation(); // URL 변경 감지하여 URL 정보 제공
   const openNavbar = useSelector((state) => state.navbarReducer); // Navbar 열고 닫기를 담당하는 state
-  const useFilter = useSelector((state) => state.hiddenNavbarReducer);
+  const filter = useSelector((state) => state.hiddenNavbarReducer);
   const [searchParams, setSearchParams] = useSearchParams();
-  console.log(searchParams.get("category"));
-  console.log(window.location.search);
+  // console.log(searchParams.get("category"));
+  // console.log(window.location.search);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -88,6 +89,10 @@ function Navbar() {
 
   const offHiddennNavbar = () => {
     dispatch({ type: OFF_NAVBAR });
+  };
+
+  const setFilter = (menu) => {
+    // dispatch({ type: SET_FILTER, payload: menu.parameter });
   };
 
   // 일반 화면에서는 onMouseOver Event 발생 시 보드게임 필터 목록이 나타난다.
@@ -108,18 +113,17 @@ function Navbar() {
               return (
                 <div>
                   <div id="row" className={hiddenStyle.row}>
-                    {menuList.map((menu) => {
+                    {menuList.map((menu, index) => {
                       return menu.type == "value" && menu.name != "" ? (
                         <NavLink
                           id="menu"
                           className={hiddenStyle.menu}
                           to={
-                            location.pathname.includes("/boardgame/list")
-                              ? `${location.pathname}${location.search}&category=${menu.parameter}`
-                              : `/boardgame/list?query=${"search"}&category=${
-                                  menu.parameter
-                                }`
+                            location.search.includes("?query=")
+                              ? location.pathname + location.search
+                              : "/boardgame/list?query="
                           }
+                          onClick={setFilter(index)}
                         >
                           {menu.name}
                         </NavLink>
@@ -157,9 +161,9 @@ function Navbar() {
         <div className={style.framebox1}>
           <NavLink
             to={
-              location.pathname != "/boardgame/list"
-                ? "/boardgame/list?search=&category=all"
-                : location.pathname + location.search
+              location.search.includes("?query=")
+                ? location.pathname + location.search
+                : "/boardgame/list?query="
             } // 보드게임 전체 목록 URL
             className={style.frame1}
             onMouseEnter={onHiddenNavbar}
@@ -206,7 +210,7 @@ function Navbar() {
         <div className={style.line7} />
 
         <NavLink
-          to="/main" // 1대1문의 URL
+          to="/" // 1대1문의 URL
           className={style.frame7}
         >
           <div className={style.button7}>1:1문의</div>

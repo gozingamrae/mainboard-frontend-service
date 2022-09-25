@@ -3,7 +3,7 @@ import { createActions, handleActions } from "redux-actions";
 const initialState = [
   { status: false },
   {
-    allProduct: false, // 전체 상품
+    all: false, // 전체 상품
 
     strategy: false, // 전략
     reasoning: false, // 추리
@@ -29,12 +29,12 @@ const initialState = [
 
 export const ON_NAVBAR = "navbar/ON_NAVBAR";
 export const OFF_NAVBAR = "navbar/OFF_NAVBAR";
-export const USE_FILTER = "navbar/USE_FILTER";
+export const SET_FILTER = "navbar/SET_FILTER";
 
 const actions = createActions({
   [ON_NAVBAR]: () => {},
   [OFF_NAVBAR]: () => {},
-  [USE_FILTER]: () => {},
+  [SET_FILTER]: () => {},
 });
 
 export const navbarReducer = handleActions(
@@ -53,8 +53,10 @@ export const navbarReducer = handleActions(
 
 export const hiddenNavbarReducer = handleActions(
   {
-    [USE_FILTER]: (state, { payload }) => {
-      return state;
+    [SET_FILTER]: (state, { payload }) => {
+      // console.log(payload);
+
+      return { ...state };
     },
   },
   initialState[1]
