@@ -6,7 +6,6 @@ import { emailDomainReducer } from "./orderModules/orderModule";
 import { navbarReducer, hiddenNavbarReducer } from "./mainModules/navbarModule";
 import { agreementReducer } from "./userModules/userModule";
 
-
 const rootReducer = combineReducers({
   subPriceReducer,
   emailIdReducer,

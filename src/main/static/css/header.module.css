@@ -12,9 +12,6 @@
   justify-content: center;
 }
 
-.searchArea {
-}
-
 .logo {
   /* logo type */
   background-image: url(../images/mainlogo.png);
@@ -36,7 +33,7 @@
   cursor: pointer;
 
   position: relative;
-  left: 380px;
+  left: 485px;
   top: -36px;
 }
 
@@ -54,6 +51,9 @@
 
   padding-left: 30px;
   padding-top: 5px;
+
+  margin-left: 105px;
+  margin-right: 192px;
 
   color: #7332c3;
   line-height: 15px;
@@ -83,7 +83,9 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 18px;
+
   display: flex;
+  justify-content: center;
   align-items: center;
   text-align: center;
 
@@ -99,7 +101,9 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 18px;
+
   display: flex;
+  justify-content: center;
   align-items: center;
   text-align: center;
 
