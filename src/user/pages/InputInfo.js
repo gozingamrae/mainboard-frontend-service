@@ -1,24 +1,61 @@
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { INPUT_INFO } from "../../modules/userModules/userModule";
 import "../style.css";
 import { NavLink } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+
+import { callRegisterAPI } from "../../apis/member/MemberAPICalls";
 
 function InputInfo() {
 
   const user = useSelector(state => state.agreementReducer); 
   const dispatch = useDispatch();
   let passwordConfirm = ""
+  const member = useSelector(state => state.memberAPIReducer);
 
+  const [form, setForm] = useState({
+    memberId: '',
+    memberPwd: '',
+    memberName: '',
+    email: '',
+    phone: ''
+  });
+
+  useEffect(() => {
+    if(member.status == 201){
+      console.log("[Login] Register SUCCESS {}", member);
+      Navigate("/join/result", { replace: true })
+    }
+  },
+  [member]);
+
+
+  // const onChangeHandler = (e) => {
+  //   dispatch({
+  //     type: INPUT_INFO,
+  //     payload: {
+  //       name: e.target.name,
+  //       value: e.target.value
+  //     }
+  //   });  
+  //   console.log(user);
+  // }
+
+  
   const onChangeHandler = (e) => {
-    dispatch({
-      type: INPUT_INFO,
-      payload: {
-        name: e.target.name,
-        value: e.target.value
-      }
-    });  
-    console.log(user);
+    setForm({
+        ...form,
+        [e.target.name]: e.target.value
+    });
+  };    
+
+  const onClickRegisterHandler = () => {
+    console.log("onClickRegisterHandler + ", form);
+    dispatch(callRegisterAPI({
+      form: form
+    }));
   }
 
   // useEffect(
@@ -45,27 +82,27 @@ function InputInfo() {
       <div className="agreement-body">
         <div className="agreement-title">정보입력</div>
       </div>
-      <form className="join-form">
+      <div className="join-form">
         <div className="join-input">
           <label>* 아이디 </label>
-          <input type="text" name="userId" id="userId" onChange={ onChangeHandler } required />
+          <input type="text" name="memberId" id="memberId" onChange={ onChangeHandler } required />
         </div>
         <div className="join-input">
           <label>* 비밀번호 </label>
-          <input type="password" name="password1" id="password1"  onChange={ onChangeHandler } required />
+          <input type="password" name="memberPwd" id="memberPwd"  onChange={ onChangeHandler } required />
         </div>
         <div className="join-input">
           <label>* 비밀번호 </label>
-          <input type="password" name="password2" id="password2" onChange={ onChangeHandler } required />
+          <input type="password" name="memberPwd2" id="memberPwd2" onChange={ onChangeHandler } required />
           <span> { passwordConfirm }</span>
         </div>
         <div className="join-input">
           <label>* 이름 </label>
-          <input type="text" name="name" id="name" onChange={ onChangeHandler } required />
+          <input type="text" name="memberName" id="memberName" onChange={ onChangeHandler } required />
         </div>
         <div className="join-input">
           <label>* 이메일 </label>
-          <input type="text" name="mail" id="mail" onChange={ onChangeHandler } required />
+          <input type="text" name="email" id="email" onChange={ onChangeHandler } required />
         </div>
         <div className="join-input">
           <label>* 전화번호 </label>
@@ -92,9 +129,9 @@ function InputInfo() {
         </div>
         <div className="agreement-btns input-submit">
           <button> 이전 단계 </button>
-          <NavLink to="/join/result"> <input type="submit" value="다음 단계" /></NavLink>
+          <button onClick = { onClickRegisterHandler }> 다음단계  </button>
         </div>
-      </form>
+      </div>
     </div>
   );
 }
