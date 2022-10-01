@@ -5,7 +5,7 @@ function DeliveryAddressUpdate() {
     <div className={style.layout}>
       <div className={style.title}>배송지 관리</div>
       <div className={style.subTitleBox}>
-        <div className={style.subTitle}>배송지 추가</div>
+        <div className={style.subTitle}>배송지 수정</div>
       </div>
       <div>
         <table className={style.addressList}>

@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 function Error() {
   return (
     <div style={{ textAlign: "center" }}>
@@ -8,6 +10,23 @@ function Error() {
         <span style={{ color: "blue" }}> 라우터 연결을 </span>
         확인해주시기 바랍니다.
       </h1>
+      <NavLink
+        style={{
+          display: "inline-flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "120px",
+          height: "40px",
+          backgroundColor: "#A086F1",
+          borderRadius: "0.7rem",
+          border: "2px solid black",
+          boxSizing: "border-box",
+          color: "white",
+        }}
+        to={-1}
+      >
+        뒤로가기
+      </NavLink>
     </div>
   );
 }
