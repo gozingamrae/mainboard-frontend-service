@@ -2,11 +2,11 @@ import {
     GET_MEMBER
   , POST_LOGIN
   , POST_REGISTER
-} from '../../modules/userModules/memberAPIModule';
+} from '../../modules/memberModules/memberAPIModule';
 
 
 export const callRegisterAPI = ({form}) => {
-    const requestURL = `http://localhost:8080/auth/join`;
+    const requestURL = `http://localhost:8080/v1/auth/join`;
     console.log(requestURL+"21312");
     return async (dispatch, getState) => {
 
@@ -36,7 +36,7 @@ export const callRegisterAPI = ({form}) => {
 }
 
 export const callLoginAPI = ({form}) => {
-    const requestURL = `http://localhost:8080/auth/login`;
+    const requestURL = `http://localhost:8080/v1/auth/login`;
     console.log(requestURL);
     return async (dispatch, getState) => {
 

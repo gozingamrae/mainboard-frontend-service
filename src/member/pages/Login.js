@@ -1,6 +1,6 @@
 import "../style.css";
 import { NavLink } from "react-router-dom";
-import { POST_LOGIN } from "../../modules/userModules/memberAPIModule";
+import { POST_LOGIN } from "../../modules/memberModules/memberAPIModule";
 import { callLoginAPI } from "../../apis/member/MemberAPICalls";
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from "react"; 

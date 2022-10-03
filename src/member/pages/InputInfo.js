@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
-import { INPUT_INFO } from "../../modules/userModules/userModule";
+import { INPUT_INFO } from "../../modules/memberModules/memberModule";
 import "../style.css";
 import { NavLink } from "react-router-dom";
 import { callRegisterAPI } from "../../apis/member/MemberAPICalls";

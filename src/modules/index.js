@@ -4,8 +4,8 @@ import { emailReducer } from "./orderModules/orderModule";
 import { emailIdReducer } from "./orderModules/orderModule";
 import { emailDomainReducer } from "./orderModules/orderModule";
 import { navbarReducer, hiddenNavbarReducer } from "./mainModules/navbarModule";
-import { agreementReducer } from "./userModules/userModule";
-import { memberAPIReducer } from "./userModules/memberAPIModule";
+import { agreementReducer } from "./memberModules/memberModule";
+import { memberAPIReducer } from "./memberModules/memberAPIModule";
 
 const rootReducer = combineReducers({
   subPriceReducer,
