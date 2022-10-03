@@ -4,14 +4,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { INPUT_INFO } from "../../modules/userModules/userModule";
 import "../style.css";
 import { NavLink } from "react-router-dom";
-import { Navigate } from "react-router-dom";
-
 import { callRegisterAPI } from "../../apis/member/MemberAPICalls";
 
 function InputInfo() {
 
   const user = useSelector(state => state.agreementReducer); 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   let passwordConfirm = ""
   const member = useSelector(state => state.memberAPIReducer);
 
@@ -26,7 +25,7 @@ function InputInfo() {
   useEffect(() => {
     if(member.status == 201){
       console.log("[Login] Register SUCCESS {}", member);
-      Navigate("/join/result", { replace: true })
+      navigate("/join/result", { replace: true })
     }
   },
   [member]);
