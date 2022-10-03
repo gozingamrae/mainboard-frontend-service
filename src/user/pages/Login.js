@@ -1,17 +1,56 @@
 import "../style.css";
 import { NavLink } from "react-router-dom";
+import { POST_LOGIN } from "../../modules/userModules/memberAPIModule";
+import { callLoginAPI } from "../../apis/member/MemberAPICalls";
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from "react"; 
+import { useSelector, useDispatch } from 'react-redux';
 
 function Login() {
+
+  const navigate = useNavigate(); 
+  const dispatch = useDispatch();
+  const member = useSelector(state => state.memberAPIReducer);
+  const [form, setForm] = useState({
+    memberId: '',
+    memberPwd: '',
+  });
+  useEffect(() => {
+        
+    if(member.status === 200){
+        console.log("[Login] Login SUCCESS {}", member);
+        navigate("/", { replace: true });
+    }
+  }
+  ,[member]);
+
+  if(member.length > 0) {
+      console.log("[Login] Login is already authenticated by the server");        
+      return navigate("/", { replace: true });
+  }
+
+  const onChangeHandler = (e) => {
+      setForm({
+          ...form,
+          [e.target.name]: e.target.value
+      });
+  };
+    const onClickLoginHandler = () => { 
+        dispatch(callLoginAPI({	
+            form: form
+        }));
+    }
+  
   return (
     <div className="login">
       <div className="login-title">
         <p>로그인</p>
       </div>
-      <form className="login-form">
+      <div className="login-form">
         <div className="login-input">
-          <input type="text" name="id" placeholder="아이디"></input>
-          <br />
-          <input type="password" name="password" placeholder="비밀번호"></input>
+          <input type="text" name="memberId" placeholder="아이디" onChange={onChangeHandler}></input>
+          <br/>
+          <input type="password" name="memberPwd" placeholder="비밀번호" onChange={onChangeHandler}></input>
           <br />
           <input
             type="checkbox"
@@ -20,13 +59,13 @@ function Login() {
           ></input>
           <label> 아이디 저장 </label>
         </div>
-        <input
+        <button
           className="login-submit"
           type="submit"
           name="login"
-          value="로그인"
-        ></input>
-      </form>
+          onClick={onClickLoginHandler}
+        >로그인</button>
+      </div>
       <div className="kakao">
         <button className="kakao-login"> 카카오 계정으로 로그인</button>
         <div className="login-line"></div>
