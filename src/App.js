@@ -22,8 +22,8 @@ import DeliveryAddressUpdate from "./mypage/pages/DeliveryAddressUpdate";
 import Mypage from "./layouts/Mypage";
 import EditProfile from "./mypage/pages/EditProfile";
 import Unregist from "./mypage/pages/Unregist";
-import OrderReport from './mypage/pages/orderreport';
-
+import OrderReport from "./mypage/pages/orderreport";
+import Error from "./error/page/Error";
 
 function App() {
   return (
@@ -34,9 +34,7 @@ function App() {
           <Route path="/boardgame/list" element={<BoardgameList />} />
           <Route path="/boardgame/list/:1" element={<BoardgameInfo />} />
           <Route path="/order-info" element={<OrderInfo />} />
-
           <Route path="/payment" element={<Payment/>} />
-
           <Route path="/payment-completed" element={<PaymentCompleted />} />
           <Route path="login" element={<Login />} />
           <Route path="join">
@@ -70,8 +68,9 @@ function App() {
               path="delivery-address-update"
               element={<DeliveryAddressUpdate />}
             />
-            <Route path="orderreport" element={<OrderReport/>} />
+            <Route path="orderreport" element={<OrderReport />} />
           </Route>
+          <Route path="/*" element={<Error />} exact />
         </Route>
       </Routes>
     </BrowserRouter>
