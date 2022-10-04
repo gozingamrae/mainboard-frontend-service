@@ -6,7 +6,7 @@ import {
 
 
 export const callRegisterAPI = ({form}) => {
-    const requestURL = `http://localhost:8080/v1/auth/join`;
+    const requestURL = `http://localhost:8080/auth/join`;
     console.log(requestURL+"21312");
     return async (dispatch, getState) => {
 
@@ -22,7 +22,10 @@ export const callRegisterAPI = ({form}) => {
                 memberPwd: form.memberPwd,
                 memberName: form.memberName,
                 email: form.email,
-                phone: form.phone                
+                phone: form.phone,
+                gender: form.gender,
+                birthDateTime: form.birthDateTime,
+                job: form.job        
             })
         })
         .then(response => response.json());
@@ -36,7 +39,7 @@ export const callRegisterAPI = ({form}) => {
 }
 
 export const callLoginAPI = ({form}) => {
-    const requestURL = `http://localhost:8080/v1/auth/login`;
+    const requestURL = `http://localhost:8080/auth/login`;
     console.log(requestURL);
     return async (dispatch, getState) => {
 
