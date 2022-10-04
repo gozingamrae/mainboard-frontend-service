@@ -10,9 +10,12 @@ import {
 function Header() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [login, setLogin] = useState(false);
   const filter = useSelector((state) => state.hiddenNavbarReducer);
   const dispatch = useDispatch();
+
+  const isLogin = window.localStorage.getItem('accessToken');
+
+  console.log("islogin:", isLogin);
 
   useEffect(() => {
     // 검색으로 접근하지 않을 시 검색어 초기화
@@ -37,8 +40,14 @@ function Header() {
     }
   };
 
-  const userButton = (login) => {
-    if (!login) {
+  const onLogoutHandler = () => {
+    window.localStorage.setItem("accessToken",null);
+    console.log("logout");
+    window.location.reload();
+  }
+
+  const userButton = (isLogin) => {
+    if (isLogin == 'null' || isLogin == undefined || isLogin == null) {
       return (
         <>
           <NavLink className={style.loginButton} to="/login">
@@ -58,15 +67,10 @@ function Header() {
           <NavLink className={style.button} to="/mypage">
             마이페이지
           </NavLink>
-          <NavLink
-            className={style.button}
-            to="/"
-            onClick={() => {
-              setLogin(false);
-            }}
+          <button className={style.button} onClick={ onLogoutHandler }
           >
             로그아웃
-          </NavLink>
+          </button>
         </>
       );
     }
@@ -77,9 +81,6 @@ function Header() {
       <NavLink
         className={style.logo}
         to="/"
-        onClick={() => {
-          setLogin(true);
-        }}
       ></NavLink>
       <div className={style.searchArea}>
         <input
@@ -90,7 +91,7 @@ function Header() {
         />
         <div className={style.searchButton} onClick={searchByKeyword} />
       </div>
-      <div className={style.userButton}>{userButton(login)}</div>
+      <div className={style.userButton}>{userButton(isLogin)}</div>
     </div>
   );
 }

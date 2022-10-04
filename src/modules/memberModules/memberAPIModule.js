@@ -5,11 +5,13 @@ const initialState = [];
 export const GET_MEMBER     = 'member/GET_MEMBER';
 export const POST_LOGIN     = 'member/POST_LOGIN';
 export const POST_REGISTER  = 'member/POST_REGISTER';
+export const DELETE_TOKEN  = 'member/DELETE_TOKEN';
 
 const actions = createActions({
     [GET_MEMBER]: () => {},
     [POST_LOGIN]: () => {},
-    [POST_REGISTER]: () => {}
+    [POST_REGISTER]: () => {},
+    [DELETE_TOKEN]: () => {}
 });
 export const memberAPIReducer = handleActions(
     {
@@ -25,7 +27,10 @@ export const memberAPIReducer = handleActions(
             
             return payload;
         },
-
+        [DELETE_TOKEN] : (state, { payload }) => {
+            state = null; 
+            return state;
+        }
     },
     initialState
 );

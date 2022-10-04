@@ -101,6 +101,8 @@
   color: #7332c3;
   width: 120px;
   height: 40px;
+  background: none;
+  border: none;
 }
 
 .loginButton {
