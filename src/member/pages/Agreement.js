@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { CHECK_ALL, CHECK_USE,CHECK_MARKETING, CHECK_PRIVACY } from "../../modules/userModules/userModule";
+import { CHECK_ALL, CHECK_USE,CHECK_MARKETING, CHECK_PRIVACY } from "../../modules/memberModules/memberModule";
 import "../style.css";
 import { NavLink } from "react-router-dom";
 
