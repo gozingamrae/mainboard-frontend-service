@@ -19,7 +19,10 @@ function InputInfo() {
     memberPwd: '',
     memberName: '',
     email: '',
-    phone: ''
+    phone: '',
+    gender: '',
+    birthDateTime: '',
+    job: ''
   });
 
   useEffect(() => {
@@ -110,7 +113,7 @@ function InputInfo() {
         </div>
         <div className="join-input">
           <label> 생년월일 </label>
-          <input type="date" name="birth" id="birth" onChange={ onChangeHandler } />
+          <input type="date" name="birthDateTime" id="birthDateTime" onChange={ onChangeHandler } />
           <br />
         </div>
         <div className="join-input">
