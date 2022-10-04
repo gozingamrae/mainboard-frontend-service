@@ -501,13 +501,13 @@
 }
 
 .find-form > a {
-  width: 414px;
+  /* width: 414px; */
   font-family: "Gmarket Sans TTF";
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
-  display: inline-flex;
+  /* display: inline-flex; */
   align-items: center;
   color: #635970;
 }

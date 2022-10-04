@@ -2,7 +2,7 @@ import "../style.css";
 import { NavLink } from "react-router-dom";
 
 function FindIdResult() {
-  const name = "이유리";
+  const name = "ㅁㅁㅁ";
   const id = "xxxxxxxxxxxxxxxx";
   return (
     <div className="result-container">
