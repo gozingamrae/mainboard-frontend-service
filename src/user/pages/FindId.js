@@ -14,12 +14,13 @@ function FindId() {
           <input type="text" name="phone" placeholder="가입 전화번호"></input>
           <br />
         </div>
-        <input
+        <NavLink to ="/findid/result"><input
           className="find-submit"
           type="submit"
           name="find"
           value="아이디 찾기"
         ></input>
+        </NavLink>
       </form>
       <div className="agreement-btns input-submit">
         <NavLink to="/findpw"> <button> 비밀번호 찾기 </button></NavLink>
