@@ -1,16 +1,17 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "./user/pages/Login";
-import Join from "./user/pages/Join";
-import Agreement from "./user/pages/Agreement";
-import InputInfo from "./user/pages/InputInfo";
-import JoinResult from "./user/pages/JoinResult";
-import FindId from "./user/pages/FindId";
-import FindIdResult from "./user/pages/FindIdResult";
-import FindPw from "./user/pages/FindPw";
-import ChangePw from "./user/pages/ChangePw";
+
+import Login from "./member/pages/Login";
+import Join from "./member/pages/Join";
+import Agreement from "./member/pages/Agreement";
+import InputInfo from "./member/pages/InputInfo";
+import JoinResult from "./member/pages/JoinResult";
+import FindId from "./member/pages/FindId";
+import FindIdResult from "./member/pages/FindIdResult";
+import FindPw from "./member/pages/FindPw";
+import ChangePw from "./member/pages/ChangePw";
 import Payment from "./payment/pages/payment";
 import PaymentCompleted from "./payment/pages/payment-completed";
-import ChangePwResult from "./user/pages/ChangePwResult";
+import ChangePwResult from "./member/pages/ChangePwResult";
 import BoardgameInfo from "./order/pages/boardgameInfo";
 import BoardgameList from "./boardgame/pages/BoardgameList";
 import Layout from "./layouts/Layout";
