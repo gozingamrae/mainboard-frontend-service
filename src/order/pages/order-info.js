@@ -7,8 +7,10 @@ import {
   EMAILDOMAIN,
 } from "../../modules/orderModules/orderModule";
 import "../css/order-info-style.css";
+import { useNavigate } from "react-router-dom";
 
 function OrderInfo() {
+  const navigate = useNavigate();
   const arr = [
     {
       info: "부루마블",
@@ -43,9 +45,23 @@ function OrderInfo() {
   const emailIdResult = useSelector((state) => state.emailIdReducer);
   const emailDomainResult = useSelector((state) => state.emailDomainReducer);
   const emailResult = useSelector((state) => state.emailReducer);
+  const orderIdResult = useSelector((state) => state.orderIdReducer);
+
+  const orderInfoResult = useSelector((state) => state.orderInfoReducer);
 
   //Dispatch -> reducer를 호출하는 함수.
   const dispatch = useDispatch();
+
+  // useEffect(
+  //   ()=>
+  //   {
+  //     dispatch(getOrderInfo());
+  //   },
+  //   []
+  // );
+
+  console.log(orderInfoResult)
+  console.log("OrderInfo입니다 !! : ", orderInfoResult);
 
   for (var i = 0; i < arr.length; i++) {
     TOTALPRICE = TOTALPRICE + arr[i].totalPrice;
@@ -107,9 +123,14 @@ function OrderInfo() {
 
   console.log(emailResult.email);
 
+ 
   function paymentButtonOnChangeHandler() {
-    window.location.href = "/payment";
+    
+    navigate('/payment')
   }
+
+  console.log("znznznznzn", orderIdResult);
+
   function cancelButtonOnChangeHandler() {
     window.location.href = "/boardgame/list";
   }
@@ -350,8 +371,7 @@ function OrderInfo() {
           onClick={paymentButtonOnChangeHandler}
           className="paymentButton"
         >
-          {" "}
-          결제하기{" "}
+          결제하기
         </button>
       </div>
     </div>
