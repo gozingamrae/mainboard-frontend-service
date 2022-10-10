@@ -59,14 +59,6 @@ function InputInfo() {
         }
       });
     }
-    if(member.memberPwd != member.memberPwd2) {
-      dispatch({
-        type: INPUT_INFO,
-        payload: {
-
-        }
-      });
-    }
   }, [member.memberPwd, member.memberPwd2]);
 
 

@@ -27,9 +27,6 @@ export const CHECK_PRIVACY = "agreement/CHECK_PRIVACY"
 export const CHECK_MARKETING = "agreement/CHECK_MARKETING"
 export const INPUT_INFO = "join/INPUT_INFO"
 
-
-
-
 export const agreementReducer = handleActions(
     {
         [CHECK_ALL]: (state, { payload }) => {

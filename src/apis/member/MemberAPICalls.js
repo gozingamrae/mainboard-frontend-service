@@ -3,7 +3,30 @@ import {
   , POST_LOGIN
   , POST_REGISTER
   , POST_KAKAOLOGIN
+  , PUT_MEMBER
 } from '../../modules/memberModules/memberAPIModule';
+
+export const callGetMemberAPI = ({memberId}) => {
+    const requestURL = `http://localhost:8080/members`;
+
+    return async (dispatch, getState) => {
+        const result = await fetch(requestURL,{
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Authorization": "Bearer " + window.localStorage.getItem("accessToken"),
+                "Access-Control-Allow-Origin": "*",
+                "memberId" : `${memberId}`  
+            }
+        })
+        .then(res => res.json());
+        
+        console.log('[MemberAPICalls] callGetMemberAPI RESULT : ', result);
+        
+        dispatch({ type: GET_MEMBER,  payload: result });
+    };
+}
 
 
 export const callRegisterAPI = ({form}) => {
@@ -74,10 +97,44 @@ export const callLoginAPI = ({form}) => {
     };
 }
 
+export const callUpdateAPI = ({form}) => {
+    const requestURL = `http://localhost:8080/members/update`;
+    console.log(requestURL);
+    return async (dispatch, getState) => {
+
+        const result = await fetch(requestURL, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Access-Control-Allow-Origin": "*"    
+            },
+            body: JSON.stringify({
+                memberId: form.memberId,
+                phone: form.phone,
+                job: form.job,
+                birthDateTime: form.birthDateTime,
+                gender: form.gender
+            })
+        })
+        .then(response => response.json());
+
+        console.log('[MemberAPICalls] callUpdateAPI RESULT : ', result);   
+
+        if(result.status === 500){
+            alert(result.message);
+        }       
+        if(result.status === 200){
+           alert(result.message);          
+        }
+        dispatch({ type: PUT_MEMBER,  payload: result });   
+    };
+}
+
 
 export const callKakaoLoginAPI = () => {
-    // const requestURL =  `http://localhost:8080/oauth/kakaoAPICall`;
-    const requestURL = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=dec28fd3dd5d81e0b10184358994c44c&redirect_uri=http://localhost:8080/oauth/kakao`;
+   const requestURL =  `http://localhost:8080/oauth/kakaoAPICall`;
+    // const requestURL = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=dec28fd3dd5d81e0b10184358994c44c&redirect_uri=http://localhost:8080/oauth/kakao`;
     console.log(requestURL);
     return async (dispatch, getState) => {
 
