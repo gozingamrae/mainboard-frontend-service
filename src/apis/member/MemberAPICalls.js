@@ -4,6 +4,7 @@ import {
   , POST_REGISTER
   , POST_KAKAOLOGIN
   , PUT_MEMBER
+  , DELETE_MEMBER
 } from '../../modules/memberModules/memberAPIModule';
 
 export const callGetMemberAPI = ({memberId}) => {
@@ -131,6 +132,33 @@ export const callUpdateAPI = ({form}) => {
     };
 }
 
+export const callDeleteAPI = ({memberId}) => {
+    const requestURL = `http://localhost:8080/members/delete`;
+
+    return async (dispatch, getState) => {
+        const result = await fetch(requestURL,{
+            method: 'delete',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Authorization": "Bearer " + window.localStorage.getItem("accessToken"),
+                "Access-Control-Allow-Origin": "*",
+                "memberId" : `${memberId}`  
+            }
+        })
+        .then(res => res.json());
+        
+        console.log('[MemberAPICalls] callDeleteAPI RESULT : ', result);
+
+        if(result.status === 200){
+            alert(result.message);          
+        }
+        window.localStorage.setItem("accessToken",null);
+        window.location.reload();
+
+        dispatch({ type: DELETE_MEMBER,  payload: result });
+    };
+}
 
 export const callKakaoLoginAPI = () => {
    const requestURL =  `http://localhost:8080/oauth/kakaoAPICall`;
