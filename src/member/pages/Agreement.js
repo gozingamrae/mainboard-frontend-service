@@ -48,7 +48,7 @@ useEffect(
 
 
 const onSubmitHandler = (e) => {
-  if(checkUse == false || checkPrivacy === false){
+  if(checkUse != true || checkPrivacy != true){
      alert(" 필수 동의 항목을 체크해주세요 "); 
   } else{
     navigate("/join/inputinfo", { replace: true });

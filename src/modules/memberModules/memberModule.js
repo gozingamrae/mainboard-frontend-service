@@ -11,6 +11,7 @@ const initialState = [
         userId : '',
         password1: '',
         password2: '',
+        passwordConfirm: '',
         name: '',
         mail: '',
         phone: '',

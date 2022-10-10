@@ -9,7 +9,7 @@ import FindId from "./member/pages/FindId";
 import FindIdResult from "./member/pages/FindIdResult";
 import FindPw from "./member/pages/FindPw";
 import ChangePw from "./member/pages/ChangePw";
-// import PaymentCompleted from "./payment/pages/payment-completed";
+import PaymentCompleted from "./payment/pages/payment-completed";
 import ChangePwResult from "./member/pages/ChangePwResult";
 import BoardgameInfo from "./order/pages/boardgameInfo";
 import BoardgameList from "./boardgame/pages/BoardgameList";

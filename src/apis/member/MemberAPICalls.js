@@ -2,12 +2,12 @@ import {
     GET_MEMBER
   , POST_LOGIN
   , POST_REGISTER
+  , POST_KAKAOLOGIN
 } from '../../modules/memberModules/memberAPIModule';
 
 
 export const callRegisterAPI = ({form}) => {
     const requestURL = `http://localhost:8080/auth/join`;
-    console.log(requestURL+"21312");
     return async (dispatch, getState) => {
 
         const result = await fetch(requestURL, {
@@ -32,6 +32,9 @@ export const callRegisterAPI = ({form}) => {
 
         console.log('[MemberAPICalls] callRegisterAPI RESULT : ', result);        
         
+        if(result.status === 500){
+            alert(result.message);
+        }
         if(result.status === 201){
             dispatch({ type: POST_REGISTER,  payload: result });
         }        
@@ -57,11 +60,42 @@ export const callLoginAPI = ({form}) => {
         })
         .then(response => response.json());
 
-        console.log('[MemberAPICalls] callRegisterAPI RESULT : ', result);        
-        
+        console.log('[MemberAPICalls] callRegisterAPI RESULT : ', result);   
+
+        if(result.status === 500){
+            alert(result.message);
+        }
         if(result.status === 200){
             window.localStorage.setItem('accessToken', result.data.accessToken);            
         }
+
+
+        dispatch({ type: POST_LOGIN,  payload: result });   
+    };
+}
+
+
+export const callKakaoLoginAPI = () => {
+    // const requestURL =  `http://localhost:8080/oauth/kakaoAPICall`;
+    const requestURL = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=dec28fd3dd5d81e0b10184358994c44c&redirect_uri=http://localhost:8080/oauth/kakao`;
+    console.log(requestURL);
+    return async (dispatch, getState) => {
+
+        const result = await fetch(requestURL,{
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Access-Control-Allow-Origin": "*"    
+            },
+        })
+        .then(response => response.json());
+
+        console.log('[KAKAO Login APICalls] callRegisterAPI RESULT : ', result);        
+        if(result.status === 200){
+            window.localStorage.setItem('accessToken', result.data.accessToken);            
+        }
+
         dispatch({ type: POST_LOGIN,  payload: result });   
     };
 }
