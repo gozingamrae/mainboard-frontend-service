@@ -7,6 +7,7 @@ import {
   EMAILDOMAIN,
 } from "../../modules/orderModules/orderModule";
 import "../css/order-info-style.css";
+
 import { useNavigate } from "react-router-dom";
 
 function OrderInfo() {
@@ -46,10 +47,12 @@ function OrderInfo() {
   const emailIdResult = useSelector((state) => state.emailIdReducer);
   const emailDomainResult = useSelector((state) => state.emailDomainReducer);
   const emailResult = useSelector((state) => state.emailReducer);
+
   const orderInfoResult = useSelector((state) => state.orderInfoReducer);
 
   //Dispatch -> reducer를 호출하는 함수.
   const dispatch = useDispatch();
+
 
   // useEffect(
   //   ()=>
@@ -121,7 +124,11 @@ function OrderInfo() {
 
   console.log(emailResult.email);
 
- 
+
+  function paymentButtonOnChangeHandler() {
+    window.location.href = "/payment";
+  }
+
   function paymentButtonOnChangeHandler() {
     
     navigate('/payment')
@@ -134,7 +141,11 @@ function OrderInfo() {
   }
 
   var finalPrice = TOTALPRICE - subPriceResult.subPrice;
+
+  console.log(subPriceResult.subPrice);
+
   console.log("할인된 가격 결과 : ", subPriceResult.subPrice);
+
 
   return (
     <div className="orderInfo">
@@ -369,6 +380,9 @@ function OrderInfo() {
           onClick={paymentButtonOnChangeHandler}
           className="paymentButton"
         >
+
+          {" "}
+          결제하기{" "}
           결제하기
         </button>
       </div>

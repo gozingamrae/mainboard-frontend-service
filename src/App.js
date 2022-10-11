@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+
 import Login from "./member/pages/Login";
 import Join from "./member/pages/Join";
 import Agreement from "./member/pages/Agreement";
@@ -23,9 +24,14 @@ import DeliveryAddressUpdate from "./mypage/pages/DeliveryAddressUpdate";
 import Mypage from "./layouts/Mypage";
 import EditProfile from "./mypage/pages/EditProfile";
 import Unregist from "./mypage/pages/Unregist";
+
+// import Rental from "./rental/shoppingcart";
+import Shoppingcart from "./rental/pages/Shoppingcart";
+
 import OrderReport from "./mypage/pages/orderreport";
 import Error from "./error/page/Error";
 import PaymentCanceled from "./payment/pages/payment-canceled";
+
 
 
 function App() {
@@ -36,6 +42,7 @@ function App() {
           <Route index element={<Main />} />
           <Route path="/boardgame/list" element={<BoardgameList />} />
           <Route path="/boardgame/list/:1" element={<BoardgameInfo />} />
+
           <Route path="/order-info" element={<OrderInfo />} />
           <Route path="/payment" element={<Payment/>} />
           <Route path="/payment-completed" element={<PaymentCompleted />} />
@@ -72,6 +79,10 @@ function App() {
               path="delivery-address-update"
               element={<DeliveryAddressUpdate />}
             />
+
+
+          <Route path="Shoppingcart" element={<Shoppingcart/>}/>
+
             <Route path="orderreport" element={<OrderReport />} />
           </Route>
           <Route path="/*" element={<Error />} exact />

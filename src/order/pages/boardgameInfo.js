@@ -1,5 +1,6 @@
 import "../css/boardgameInfo-style.css";
 import 부루마블 from "../image/burumavel.jpg";
+
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {getOrderInfo} from "../../apis/order/OrderInfoAPICalls";
@@ -39,10 +40,10 @@ export function BoardgameInfo() {
   //   });
   // };
 
+
   return (
     <div className="layout">
       <div className="contentBox">
-
         <img className="image" src={부루마블} alt="사진출력오류" />
 
         <div className="content">

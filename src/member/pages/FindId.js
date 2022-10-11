@@ -1,6 +1,6 @@
 import "../style.css";
-import { NavLink } from "react-router-dom";
 
+import { NavLink } from "react-router-dom";
 function FindId() {
   return (
     <div className="find">

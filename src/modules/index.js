@@ -4,12 +4,11 @@ import { emailReducer } from "./orderModules/orderModule";
 import { emailIdReducer } from "./orderModules/orderModule";
 import { emailDomainReducer } from "./orderModules/orderModule";
 import { navbarReducer, hiddenNavbarReducer } from "./mainModules/navbarModule";
+
 import { agreementReducer } from "./memberModules/memberModule";
 import { memberAPIReducer } from "./memberModules/memberAPIModule";
 import { orderInfoReducer } from "./orderModules/orderInfoModule";
 import { paymentInfoReducer } from "./paymentModules/paymentInfoModule";
-
-
 
 const rootReducer = combineReducers({
   subPriceReducer,

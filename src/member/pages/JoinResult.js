@@ -16,7 +16,8 @@ function JoinResult() {
       </div>
       <div className="user-content">
         <p> 회원가입이 완료되었습니다. </p>
-        <NavLink to="/login"> 지금 로그인 하기 </NavLink> 
+        <NavLink to="/login">지금 로그인 하기 </NavLink> 
+
         <a href="/"> 메인 페이지로 </a>
       </div>
     </div>
