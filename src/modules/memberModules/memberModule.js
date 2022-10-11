@@ -11,7 +11,8 @@ const initialState = [
         userId : '',
         password1: '',
         password2: '',
-        name: '',
+        passwordConfirm: '',
+        memberName: '',
         mail: '',
         phone: '',
         birth: '',
@@ -25,9 +26,6 @@ export const CHECK_USE = "agreement/CHECK_USE"
 export const CHECK_PRIVACY = "agreement/CHECK_PRIVACY"
 export const CHECK_MARKETING = "agreement/CHECK_MARKETING"
 export const INPUT_INFO = "join/INPUT_INFO"
-
-
-
 
 export const agreementReducer = handleActions(
     {
@@ -48,9 +46,9 @@ export const agreementReducer = handleActions(
             return { ...state };
         },
         [INPUT_INFO]: (state, { payload }) => {
+            state[0][(payload.name)] = payload.value;
             return{
-                ...state,
-                [payload.name] : payload.value
+                ...state
             }
         }
     },
