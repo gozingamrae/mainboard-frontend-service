@@ -25,10 +25,6 @@ function EditProfile() {
           memberId : token.sub
         }));
       }
-      updateMember.phone = memberDetail.phone
-      updateMember.gender = memberDetail.gender
-      updateMember.birthDateTime = memberDetail.birthDateTime
-      updateMember.job = memberDetail.job
     },[]
   )
 
@@ -79,7 +75,7 @@ function EditProfile() {
             </div>
             <div className="edit-input">
               <label> 이메일 </label>
-              <div className="user-info"> {memberDetail.email} </div>
+              <div className="user-info"> {updateMember.email} </div>
             </div>
             <div className="edit-input">
               <label> 핸드폰 번호 </label>
