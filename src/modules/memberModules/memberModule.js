@@ -8,9 +8,9 @@ const initialState = [
         marketing_status: false,
     },
     {
-        userId : '',
-        password1: '',
-        password2: '',
+        memberId : '',
+        memberPwd: '',
+        memberPwd2: '',
         passwordConfirm: '',
         memberName: '',
         mail: '',
@@ -46,7 +46,7 @@ export const agreementReducer = handleActions(
             return { ...state };
         },
         [INPUT_INFO]: (state, { payload }) => {
-            state[0][(payload.name)] = payload.value;
+            state[1][(payload.name)] = payload.value;
             return{
                 ...state
             }

@@ -22,6 +22,8 @@ function InputInfo() {
   [member1]);
 
   const onChangeHandler = (e) => {
+    
+    console.log(member);
     dispatch({
       type: INPUT_INFO,
       payload: {
@@ -29,21 +31,22 @@ function InputInfo() {
         value: e.target.value
       }
     });
-    console.log(member);
-  }
+    }
 
   const onClickRegisterHandler = () => {
     
     let body = {
-      memberId: member.memberId,
-      memberPwd: member.memberPwd,
-      memberName: member.memberName,
-      email: member.email,
-      phone: member.phone,
-      gender: member.gender,
-      birthDateTime: member.birthDateTime,
-      job: member.job
+      memberId: member[1].memberId,
+      memberPwd: member[1].memberPwd,
+      memberName: member[1].memberName,
+      email: member[1].email,
+      phone: member[1].phone,
+      gender: member[1].gender,
+      birthDateTime: member[1].birthDateTime,
+      job: member[1].job
     }
+
+    console.log("body",body);
 
     dispatch(callRegisterAPI({
       form: body
