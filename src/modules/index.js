@@ -7,6 +7,7 @@ import { navbarReducer, hiddenNavbarReducer } from "./mainModules/navbarModule";
 import { agreementReducer } from "./memberModules/memberModule";
 import { memberAPIReducer } from "./memberModules/memberAPIModule";
 import { memberUpdateReducer } from "./memberModules/memberUpdateModule";
+import { findReducer } from "./memberModules/memberFindIdModule"; 
 
 const rootReducer = combineReducers({
   subPriceReducer,
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
   hiddenNavbarReducer,
   agreementReducer,
   memberAPIReducer,
-  memberUpdateReducer
+  memberUpdateReducer,
+  findReducer
 });
 
 export default rootReducer;

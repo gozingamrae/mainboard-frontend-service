@@ -7,6 +7,11 @@ import {
   , DELETE_MEMBER
 } from '../../modules/memberModules/memberAPIModule';
 
+import {
+    GET_ID
+} from '../../modules/memberModules/memberFindIdModule';
+
+
 export const callGetMemberAPI = ({memberId}) => {
     const requestURL = `http://localhost:8080/members`;
 
@@ -92,8 +97,6 @@ export const callLoginAPI = ({form}) => {
         if(result.status === 200){
             window.localStorage.setItem('accessToken', result.data.accessToken);            
         }
-
-
         dispatch({ type: POST_LOGIN,  payload: result });   
     };
 }
@@ -159,6 +162,36 @@ export const callDeleteAPI = ({memberId}) => {
         dispatch({ type: DELETE_MEMBER,  payload: result });
     };
 }
+
+export const callGetMemberIdAPI = ({form}) => {
+    const requestURL = `http://localhost:8080/members/findId`;
+
+    return async (dispatch, getState) => {
+        const result = await fetch(requestURL,{
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Access-Control-Allow-Origin": "*"
+            },
+            body: JSON.stringify({
+                memberName: form.memberName,
+                phone: form.phone
+            })
+        })
+        .then(res => res.json());
+        
+        console.log('[MemberAPICalls] callGetMemberIdAPI RESULT : ', result);
+        
+        if(result.data == null || result.data == undefined){
+            alert('조회된 회원정보가 없습니다.');
+        }
+
+        console.log(result.data);
+        dispatch({ type: GET_ID,  payload: result.data });
+    };
+}
+
 
 export const callKakaoLoginAPI = () => {
    const requestURL =  `http://localhost:8080/oauth/kakaoAPICall`;

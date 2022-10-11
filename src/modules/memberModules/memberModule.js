@@ -12,7 +12,7 @@ const initialState = [
         password1: '',
         password2: '',
         passwordConfirm: '',
-        name: '',
+        memberName: '',
         mail: '',
         phone: '',
         birth: '',
@@ -46,9 +46,9 @@ export const agreementReducer = handleActions(
             return { ...state };
         },
         [INPUT_INFO]: (state, { payload }) => {
+            state[0][(payload.name)] = payload.value;
             return{
-                ...state,
-                [payload.name] : payload.value
+                ...state
             }
         }
     },
