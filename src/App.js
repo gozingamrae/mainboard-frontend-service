@@ -25,6 +25,8 @@ import EditProfile from "./mypage/pages/EditProfile";
 import Unregist from "./mypage/pages/Unregist";
 import OrderReport from "./mypage/pages/orderreport";
 import Error from "./error/page/Error";
+import PaymentCanceled from "./payment/pages/payment-canceled";
+
 
 function App() {
   return (
@@ -37,6 +39,7 @@ function App() {
           <Route path="/order-info" element={<OrderInfo />} />
           <Route path="/payment" element={<Payment/>} />
           <Route path="/payment-completed" element={<PaymentCompleted />} />
+          <Route path="/payment-canceled" element={<PaymentCanceled />} />
           <Route path="login" element={<Login />} />
           <Route path="join">
             <Route index element={<Join />} />

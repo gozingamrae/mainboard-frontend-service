@@ -7,6 +7,8 @@ import { navbarReducer, hiddenNavbarReducer } from "./mainModules/navbarModule";
 import { agreementReducer } from "./memberModules/memberModule";
 import { memberAPIReducer } from "./memberModules/memberAPIModule";
 import { orderInfoReducer } from "./orderModules/orderInfoModule";
+import { paymentInfoReducer } from "./paymentModules/paymentInfoModule";
+
 
 
 const rootReducer = combineReducers({
@@ -19,6 +21,7 @@ const rootReducer = combineReducers({
   agreementReducer,
   memberAPIReducer,
   orderInfoReducer,
+  paymentInfoReducer
 });
 
 export default rootReducer;

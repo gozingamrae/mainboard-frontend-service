@@ -26,6 +26,7 @@ export function BoardgameInfo() {
   }
   const onClickHandler3 = async (e)=> {
      dispatch(getOrderInfo())
+     console.log("버튼을 눌러서 orderId를 부여합니다");
     navigate("/order-info");
   }
   //   const 요청메소드이름 = () => {

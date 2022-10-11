@@ -1,14 +1,26 @@
 import "../css/payment-completed-style.css";
+import { useDispatch, useSelector } from "react-redux";
+import { PostPaymentInfo } from "../../apis/payment/PaymentInfoAPICalls";
+import { POST_PAYMENTINFO } from "../../modules/paymentModules/paymentInfoModule";
 
-const onClickHandler1 = (e) => {
-  window.location.href = "/payment-info";
-};
 
 const onClickHandler2 = (e) => {
   window.location.href = "/";
 };
 
-function paymentCompleted() {
+function PaymentCompleted() {
+
+  const dispatch = useDispatch();
+
+  const url = new URL(window.location.href);
+  const paymentKey = url.searchParams.get('paymentKey');
+  const orderId = url.searchParams.get('orderId');
+  const amount = url.searchParams.get('amount');
+
+  dispatch({type: POST_PAYMENTINFO , payload: {paymentKey: paymentKey, amount: amount, orderId: orderId}});
+
+  dispatch(PostPaymentInfo());
+
   return (
     <div>
       <br />
@@ -23,4 +35,4 @@ function paymentCompleted() {
   );
 }
 
-export default paymentCompleted;
+export default PaymentCompleted;
