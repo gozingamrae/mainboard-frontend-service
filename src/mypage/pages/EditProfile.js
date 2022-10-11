@@ -21,9 +21,7 @@ function EditProfile() {
     ()=>{
       console.log('token: ' + token.sub);
       if(token != null){
-        dispatch(callGetMemberAPI({
-          memberId : token.sub
-        }));
+        dispatch(callGetMemberAPI());
       }
     },[]
   )
@@ -75,7 +73,7 @@ function EditProfile() {
             </div>
             <div className="edit-input">
               <label> 이메일 </label>
-              <div className="user-info"> {updateMember.email} </div>
+              <div className="user-info"> {memberDetail.email} </div>
             </div>
             <div className="edit-input">
               <label> 핸드폰 번호 </label>
@@ -83,7 +81,7 @@ function EditProfile() {
             </div>
             <div className="edit-input">
               <label> 직업 </label>
-              <input type="text" name="job" id="job" value= {updateMember.job} onChange={ onChangeHandler } />
+              <input type="text" name="job" id="job"  value= {updateMember.job} onChange={ onChangeHandler } />
             </div>
             <div className="edit-input">
             <label> 생년월일 </label>

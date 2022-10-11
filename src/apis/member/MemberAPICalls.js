@@ -12,7 +12,7 @@ import {
 } from '../../modules/memberModules/memberFindIdModule';
 
 
-export const callGetMemberAPI = ({memberId}) => {
+export const callGetMemberAPI = () => {
     const requestURL = `http://localhost:8080/members`;
 
     return async (dispatch, getState) => {
@@ -23,7 +23,7 @@ export const callGetMemberAPI = ({memberId}) => {
                 "Accept": "*/*",
                 "Authorization": "Bearer " + window.localStorage.getItem("accessToken"),
                 "Access-Control-Allow-Origin": "*",
-                "memberId" : `${memberId}`  
+                "accessToken": window.localStorage.getItem('accessToken')
             }
         })
         .then(res => res.json());
@@ -36,6 +36,7 @@ export const callGetMemberAPI = ({memberId}) => {
 
 
 export const callRegisterAPI = ({form}) => {
+
     const requestURL = `http://localhost:8080/auth/join`;
     return async (dispatch, getState) => {
 
