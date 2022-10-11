@@ -1,5 +1,9 @@
 import "../style.css";
 import { NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux"
+import { INPUT_INFO } from "../../modules/memberModules/memberFindIdModule";
+import { callGetMemberIdAPI } from "../../apis/member/MemberAPICalls";
+import { useNavigate } from 'react-router-dom';
 
 function FindId() {
 
