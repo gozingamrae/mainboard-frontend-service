@@ -76,6 +76,7 @@ export const hiddenNavbarReducer = handleActions(
         });
       }
 
+
       state[payload] = !state[payload];
       console.log("키값 :", Object.keys(state));
 
