@@ -11,6 +11,15 @@ import { findReducer } from "./memberModules/memberFindIdModule";
 import { orderInfoReducer } from "./orderModules/orderInfoModule";
 import { paymentInfoReducer } from "./paymentModules/paymentInfoModule";
 
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage"; 
+
+const persistConfig = {
+  key: "root",
+  // localStorage에 저장
+  storage: storage,
+  whitelist: ["memberAPIReducer"]
+};
 
 const rootReducer = combineReducers({
   subPriceReducer,
@@ -27,4 +36,4 @@ const rootReducer = combineReducers({
   paymentInfoReducer
 });
 
-export default rootReducer;
+export default persistReducer(persistConfig, rootReducer);
