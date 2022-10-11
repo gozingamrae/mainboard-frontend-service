@@ -3,21 +3,20 @@ import axios from "axios"
 
 export function getOrderInfo(){
 
-    const resultsURL = "http://localhost:8080/order/info";
-
     return async function getOrderInfo(dispatch){
 
         const results = await axios({
             method: "POST",
-            url: "http://127.0.0.1:8080/order/info",
+            url: "http://localhost:8080/order/info",
             headers: {
               'Content-Type': 'application/json'
             },
             data : {
               orderPrice: 19000
+              //주문 가격은 값을 받아 입력한다.
             }
           });
-        console.log("결제 정보 결과..! : ", results);
+        console.log("주문 정보 결과..! : ", results);
 
         dispatch({type: GET_ORDERINFO, payload: results.data});
     }

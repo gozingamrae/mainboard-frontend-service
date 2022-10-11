@@ -10,6 +10,7 @@ import "../css/order-info-style.css";
 import { useNavigate } from "react-router-dom";
 
 function OrderInfo() {
+
   const navigate = useNavigate();
   const arr = [
     {
@@ -45,8 +46,6 @@ function OrderInfo() {
   const emailIdResult = useSelector((state) => state.emailIdReducer);
   const emailDomainResult = useSelector((state) => state.emailDomainReducer);
   const emailResult = useSelector((state) => state.emailReducer);
-  const orderIdResult = useSelector((state) => state.orderIdReducer);
-
   const orderInfoResult = useSelector((state) => state.orderInfoReducer);
 
   //Dispatch -> reducer를 호출하는 함수.
@@ -60,8 +59,7 @@ function OrderInfo() {
   //   []
   // );
 
-  console.log(orderInfoResult)
-  console.log("OrderInfo입니다 !! : ", orderInfoResult);
+  console.log("(/order-info) OrderInfo입니다 !! : ", orderInfoResult);
 
   for (var i = 0; i < arr.length; i++) {
     TOTALPRICE = TOTALPRICE + arr[i].totalPrice;
@@ -129,14 +127,14 @@ function OrderInfo() {
     navigate('/payment')
   }
 
-  console.log("znznznznzn", orderIdResult);
+  console.log("orderId가 잘 넘어 오는지? (/order-info)", orderInfoResult.data);
 
   function cancelButtonOnChangeHandler() {
     window.location.href = "/boardgame/list";
   }
 
   var finalPrice = TOTALPRICE - subPriceResult.subPrice;
-  console.log(subPriceResult.subPrice);
+  console.log("할인된 가격 결과 : ", subPriceResult.subPrice);
 
   return (
     <div className="orderInfo">

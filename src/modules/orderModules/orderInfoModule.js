@@ -16,7 +16,15 @@ export const actions = createActions({
 
 export const orderInfoReducer = handleActions(
     {
-        [GET_ORDERINFO]: (state, {payload}) => payload,
+        [GET_ORDERINFO]: (state, {payload}) => {
+
+            state.orderInfo = payload.orderInfo;
+            state.data=payload.data;
+            state.message = payload.message;
+            state.price = payload.price;
+
+            return {...state}
+        },
         [SET_ORDERINFO]: (state, {payload}) =>{
 
             console.log("aaa", payload)
