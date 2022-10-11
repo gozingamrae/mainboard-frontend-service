@@ -12,7 +12,7 @@ import {
 } from '../../modules/memberModules/memberFindIdModule';
 
 
-export const callGetMemberAPI = ({memberId}) => {
+export const callGetMemberAPI = () => {
     const requestURL = `http://localhost:8080/members`;
 
     return async (dispatch, getState) => {

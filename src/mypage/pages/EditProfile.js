@@ -21,9 +21,7 @@ function EditProfile() {
     ()=>{
       console.log('token: ' + token.sub);
       if(token != null){
-        dispatch(callGetMemberAPI({
-          memberId : token.sub
-        }));
+        dispatch(callGetMemberAPI());
       }
     },[]
   )
