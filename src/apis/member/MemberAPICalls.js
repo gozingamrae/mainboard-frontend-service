@@ -5,6 +5,7 @@ import {
   , POST_KAKAOLOGIN
   , PUT_MEMBER
   , DELETE_MEMBER
+  , PUT_PWD
 } from '../../modules/memberModules/memberAPIModule';
 
 import {
@@ -136,6 +137,40 @@ export const callUpdateAPI = ({form}) => {
     };
 }
 
+
+export const callUpdatePwdAPI = ({form}) => {
+    const requestURL = `http://localhost:8080/members/changePwd`;
+    console.log(requestURL);
+    return async (dispatch, getState) => {
+
+        const result = await fetch(requestURL, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Access-Control-Allow-Origin": "*"    
+            },
+            body: JSON.stringify({
+                memberId: form.memberId,
+                originPwd: form.originPwd,
+                memberPwd: form.memberPwd
+            })
+        })
+        .then(response => response.json());
+
+        console.log('[MemberAPICalls] callUpdateAPI RESULT : ', result);   
+
+        if(result.status === 500){
+            alert(result.message);
+        }       
+        if(result.status === 200){
+           alert(result.message);          
+        }
+        dispatch({ type: PUT_PWD,  payload: result });   
+    };
+}
+
+
 export const callDeleteAPI = ({memberId}) => {
     const requestURL = `http://localhost:8080/members/delete`;
 
@@ -147,7 +182,7 @@ export const callDeleteAPI = ({memberId}) => {
                 "Accept": "*/*",
                 "Authorization": "Bearer " + window.localStorage.getItem("accessToken"),
                 "Access-Control-Allow-Origin": "*",
-                "memberId" : `${memberId}`  
+                "accessToken": window.localStorage.getItem('accessToken')
             }
         })
         .then(res => res.json());

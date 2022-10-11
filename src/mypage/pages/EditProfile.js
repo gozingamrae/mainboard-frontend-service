@@ -7,6 +7,7 @@ import { callGetMemberAPI } from "../../apis/member/MemberAPICalls"
 import { NavLink } from "react-router-dom";
 import { callUpdateAPI  } from "../../apis/member/MemberAPICalls";
 import { UPDATE_INFO } from "../../modules/memberModules/memberUpdateModule";
+import { callUpdatePwdAPI } from "../../apis/member/MemberAPICalls";
 
 function EditProfile() {
 
@@ -41,10 +42,10 @@ function EditProfile() {
     
     let body = {
       memberId: token.sub,
-      phone: updateMember.phone,
-      gender: updateMember.gender,
-      birthDateTime: updateMember.birthDateTime,
-      job: updateMember.job
+      phone: updateMember[0].phone,
+      gender: updateMember[0].gender,
+      birthDateTime: updateMember[0].birthDateTime,
+      job: updateMember[0].job
     }
 
     dispatch(callUpdateAPI({
@@ -55,6 +56,22 @@ function EditProfile() {
       navigate("/", { replace: true })
     }
   
+  }
+
+  const onClickUpdatePwdHandler = () => {
+    let body = {
+      memberId: token.sub,
+      originPwd : updateMember[0].originPwd,
+      memberPwd: updateMember[0].memberPwd
+    }
+  
+    dispatch(callUpdatePwdAPI({
+      form: body
+    }));
+
+    if(updateMember.status == 200){
+      navigate("/", { replace: true })
+    }
   }
 
 
@@ -95,23 +112,26 @@ function EditProfile() {
             <option value="female">여</option>
           </select>
             </div>
-
-            <h1> 비밀번호 변경 </h1>
-            <div className="edit-input">
-              <label> 현재 비밀번호 </label>
-              <input type="password" name="password" id="password1" />
-            </div>
-            <div className="edit-input">
-              <label> 새 비밀번호 </label>
-              <input type="password" name="password" id="password2" />
-            </div>
-            <div className="edit-input">
-              <label> 새 비밀번호 확인 </label>
-              <input type="password" name="password" id="password3" />
-            </div>
             <div className="agreement-btns input-submit">
             <NavLink to="/"> <button> 취소  </button></NavLink>
             <button onClick = { onClickUpdateHandler }> 정보수정  </button>
+          </div>
+            <h1> 비밀번호 변경 </h1>
+            <div className="edit-input">
+              <label> 현재 비밀번호 </label>
+              <input type="password" name="originPwd" id="originPwd" value={updateMember.originPwd}  onChange={ onChangeHandler } />
+            </div>
+            <div className="edit-input">
+              <label> 새 비밀번호 </label>
+              <input type="password" name="memberPwd" id="memberPwd" value={updateMember.memberPwd}  onChange={ onChangeHandler }/>
+            </div>
+            <div className="edit-input">
+              <label> 새 비밀번호 확인 </label>
+              <input type="password" name="memberPwd2" id="memberPwd2" value={updateMember.memberPwd2}  onChange={ onChangeHandler } />
+            </div>
+            <div className="agreement-btns input-submit">
+            <NavLink to="/"> <button> 취소  </button></NavLink>
+            <button onClick = { onClickUpdatePwdHandler }> 비밀번호 변경  </button>
           </div>
         </div>
     </div>

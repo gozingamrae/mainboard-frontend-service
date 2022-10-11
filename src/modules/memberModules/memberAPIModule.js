@@ -9,6 +9,7 @@ export const DELETE_TOKEN  = 'member/DELETE_TOKEN';
 export const PUT_MEMBER = 'member/PUT_MEMBER';
 export const DELETE_MEMBER = 'member/DELETE_MEMBER';
 export const GET_ID = 'member/GET_ID';
+export const PUT_PWD = 'member/PUT_PWD';
 
 const actions = createActions({
     [GET_MEMBER]: () => {},
@@ -16,7 +17,8 @@ const actions = createActions({
     [POST_REGISTER]: () => {},
     [DELETE_TOKEN]: () => {},
     [PUT_MEMBER]: () => {},
-    [DELETE_MEMBER]: () => {}
+    [DELETE_MEMBER]: () => {},
+    [PUT_PWD] : () => {}
 });
 export const memberAPIReducer = handleActions(
     {
@@ -41,6 +43,9 @@ export const memberAPIReducer = handleActions(
         },
         [DELETE_MEMBER]: (state, { payload }) => {
             state = null;
+            return state;
+        },
+        [PUT_PWD]: (state, { payload }) => {
             return state;
         }
     },

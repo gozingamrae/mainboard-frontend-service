@@ -19,9 +19,7 @@ function Unregist() {
     
     if(window.confirm("회원 탈퇴를 진행하시겠습니까?")){
       console.log("!!");
-      dispatch(callDeleteAPI({
-        memberId : token.sub
-      }));
+      dispatch(callDeleteAPI());
       navigate("/", { replace: true })
 
     }
