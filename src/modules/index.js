@@ -5,6 +5,11 @@ import { emailIdReducer } from "./orderModules/orderModule";
 import { emailDomainReducer } from "./orderModules/orderModule";
 import { navbarReducer, hiddenNavbarReducer } from "./mainModules/navbarModule";
 import { agreementReducer } from "./userModules/userModule";
+import {
+  deliveryReducer,
+  deliveryTargetReducer,
+} from "./deliveryModules/deliveryModule";
+import { modalReducer } from "./modalModules/modalModule";
 
 const rootReducer = combineReducers({
   subPriceReducer,
@@ -13,7 +18,10 @@ const rootReducer = combineReducers({
   emailReducer,
   navbarReducer,
   hiddenNavbarReducer,
-  agreementReducer
+  agreementReducer,
+  deliveryReducer,
+  deliveryTargetReducer,
+  modalReducer,
 });
 
 export default rootReducer;
