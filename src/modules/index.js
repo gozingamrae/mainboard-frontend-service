@@ -8,6 +8,9 @@ import { agreementReducer } from "./memberModules/memberModule";
 import { memberAPIReducer } from "./memberModules/memberAPIModule";
 import { memberUpdateReducer } from "./memberModules/memberUpdateModule";
 import { findReducer } from "./memberModules/memberFindIdModule"; 
+import { orderInfoReducer } from "./orderModules/orderInfoModule";
+import { paymentInfoReducer } from "./paymentModules/paymentInfoModule";
+
 
 const rootReducer = combineReducers({
   subPriceReducer,
@@ -19,7 +22,9 @@ const rootReducer = combineReducers({
   agreementReducer,
   memberAPIReducer,
   memberUpdateReducer,
-  findReducer
+  findReducer,
+  orderInfoReducer,
+  paymentInfoReducer
 });
 
 export default rootReducer;

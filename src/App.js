@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+
 import Login from "./member/pages/Login";
 import Join from "./member/pages/Join";
 import Agreement from "./member/pages/Agreement";
@@ -9,9 +10,10 @@ import FindId from "./member/pages/FindId";
 import FindIdResult from "./member/pages/FindIdResult";
 import FindPw from "./member/pages/FindPw";
 import ChangePw from "./member/pages/ChangePw";
+import Payment from "./payment/pages/payment";
 import PaymentCompleted from "./payment/pages/payment-completed";
 import ChangePwResult from "./member/pages/ChangePwResult";
-import BoardgameInfo from "./order/pages/boardgameInfo";
+import BoardgameInfo from "./order/pages/BoardgameInfo";
 import BoardgameList from "./boardgame/pages/BoardgameList";
 import Layout from "./layouts/Layout";
 import Main from "./main/pages/Main";
@@ -22,8 +24,15 @@ import DeliveryAddressUpdate from "./mypage/pages/DeliveryAddressUpdate";
 import Mypage from "./layouts/Mypage";
 import EditProfile from "./mypage/pages/EditProfile";
 import Unregist from "./mypage/pages/Unregist";
+
+// import Rental from "./rental/shoppingcart";
+import Shoppingcart from "./rental/pages/Shoppingcart";
+
 import OrderReport from "./mypage/pages/orderreport";
 import Error from "./error/page/Error";
+import PaymentCanceled from "./payment/pages/payment-canceled";
+
+
 
 function App() {
   return (
@@ -33,8 +42,11 @@ function App() {
           <Route index element={<Main />} />
           <Route path="/boardgame/list" element={<BoardgameList />} />
           <Route path="/boardgame/list/:1" element={<BoardgameInfo />} />
+
           <Route path="/order-info" element={<OrderInfo />} />
+          <Route path="/payment" element={<Payment/>} />
           <Route path="/payment-completed" element={<PaymentCompleted />} />
+          <Route path="/payment-canceled" element={<PaymentCanceled />} />
           <Route path="login" element={<Login />} />
           <Route path="join">
             <Route index element={<Join />} />
@@ -67,6 +79,10 @@ function App() {
               path="delivery-address-update"
               element={<DeliveryAddressUpdate />}
             />
+
+
+          <Route path="Shoppingcart" element={<Shoppingcart/>}/>
+
             <Route path="orderreport" element={<OrderReport />} />
           </Route>
           <Route path="/*" element={<Error />} exact />

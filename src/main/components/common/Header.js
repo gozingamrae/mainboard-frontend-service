@@ -10,6 +10,7 @@ import {
 function Header() {
   const navigate = useNavigate();
   const location = useLocation();
+
   const filter = useSelector((state) => state.hiddenNavbarReducer);
   const dispatch = useDispatch();
 
@@ -39,6 +40,7 @@ function Header() {
       searchByKeyword();
     }
   };
+
 
   const onLogoutHandler = () => {
     window.localStorage.setItem("accessToken",null);

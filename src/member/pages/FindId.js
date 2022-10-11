@@ -1,10 +1,5 @@
 import "../style.css";
-import { useEffect, useState, useRef } from "react";
-import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { callGetMemberIdAPI } from "../../apis/member/MemberAPICalls";
-import { INPUT_INFO } from "../../modules/memberModules/memberFindIdModule";
 
 function FindId() {
 
@@ -53,7 +48,7 @@ function FindId() {
           type="submit"
           name="find"
           value="아이디 찾기"
-        onClick={onClickSubmitHandler}></input>
+        onClick={onClickSubmitHandler} ></input>
       </div>
       <div className="agreement-btns input-submit">
         <NavLink to="/findpw"> <button> 비밀번호 찾기 </button></NavLink>
