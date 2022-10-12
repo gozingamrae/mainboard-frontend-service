@@ -1,8 +1,24 @@
 import { NavLink } from "react-router-dom";
+import { useState , useEffect} from "react";
+import {useSelector, useDispatch} from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 import Pagenation from "../items/Pagenation";
 import style from "../static/css/boardgame-list.module.css";
+import {callProductListAPI,
+    callSearchProductListAPI 
+} from "../../apis/boardgame/ProductAPICalls";
 
 function BoardgameList() {
+
+  const data = useSelector(state => state.productReducer); 
+  const products = data.data;
+  console.log(data);
+  const nav = useNavigate();
+  const dispatch = useDispatch();
+
+  const [currentPage, setCurrentPage] = useState(1);
+
   const exampleProduct = [
     {
       boardgameCode: 1,
@@ -125,6 +141,14 @@ function BoardgameList() {
       boardgameTime: "30분~1시간",
     },
   ];
+  useEffect(
+    () => {         
+        dispatch(callProductListAPI({
+            currentPage: 1
+        }));        
+    }
+    ,[currentPage]
+);
 
   return (
     <div className={style.layout}>
