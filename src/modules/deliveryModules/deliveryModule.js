@@ -15,6 +15,7 @@ const initialState = [
     defaultAddressYn: "N", // 기본 배송지 여부
     deliveryLocation: "", // 받는 위치
     deliveryRecipient: "", // 받는 사람
+    deliveryMessage: "", // 배송 메시지
     memberCode: 0, // 회원 번호
 
     // 임시 저장
@@ -29,6 +30,8 @@ export const INIT_ADDRESS = "delivery/INIT_ADDRESS";
 export const GET_ADDRESS = "delivery/GET_ADDRESS";
 export const SET_TARGET_ADDRESS = "delivery/SET_TARGET_ADDRESS";
 export const SET_LOCATION = "delivery/SET_LOCATION";
+export const SET_ZIPCODE = "delivery/SET_ZIPCODE";
+export const SET_DEFAULT_ADDRESS_YN = "delivery/SET_DEFAULT_ADDRESS_YN";
 export const SET_FROM_TEMP_ADDRESS = "delivery/SET_FROM_TEMP_ADDRESS";
 export const INIT_FROM_TEMP_ADDRESS = "delivery/INIT_FROM_TEMP_ADDRESS";
 export const VIEW_ADDRESS = "delivery/VIEW_ADDRESS";
@@ -39,6 +42,8 @@ const actions = createActions({
   [GET_ADDRESS]: () => {},
   [SET_TARGET_ADDRESS]: () => {},
   [SET_LOCATION]: () => {},
+  [SET_ZIPCODE]: () => {},
+  [SET_DEFAULT_ADDRESS_YN]: () => {},
   [SET_FROM_TEMP_ADDRESS]: () => {},
   [INIT_FROM_TEMP_ADDRESS]: () => {},
   [VIEW_ADDRESS]: () => {},
@@ -55,7 +60,22 @@ export const deliveryReducer = handleActions(
     [GET_ADDRESS]: (state, { payload }) => {
       state.addressList = payload.data;
 
-      return { ...state }.addressList;
+      return { ...state };
+    },
+    [SET_ZIPCODE]: (state, { payload }) => {
+      state.addressZipCode = state.addressList.addressLocation.split("%")[2];
+      state.addressDetailLocation =
+        state.addressList.addressLocation.split("%")[1];
+      state.addressLocationTemp =
+        state.addressList.addressLocation.split("%")[0];
+      state.addressLocation = "";
+
+      return { ...state };
+    },
+    [SET_DEFAULT_ADDRESS_YN]: (state, { payload }) => {
+      state.addressList.defaultAddressYn = state.defaultAddressYn;
+
+      return { ...state };
     },
     [SET_TARGET_ADDRESS]: (state, { payload }) => {
       state.addressZipCode = payload.addressZipCode;
@@ -65,6 +85,7 @@ export const deliveryReducer = handleActions(
       return { ...state };
     },
     [SET_LOCATION]: (state, { payload }) => {
+      console.log(payload.value);
       if (payload.roadAddress && payload.zonecode) {
         state.addressLocation = payload.roadAddress;
         state.addressZipCode = payload.zonecode;

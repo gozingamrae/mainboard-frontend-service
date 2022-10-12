@@ -8,6 +8,7 @@ import {
   GET_ADDRESS,
   INIT_ADDRESS,
   INIT_FROM_TEMP_ADDRESS,
+  SET_DEFAULT_ADDRESS_YN,
   SET_FROM_TEMP_ADDRESS,
   SET_LOCATION,
   SET_TARGET_ADDRESS,
@@ -51,7 +52,7 @@ function DeliveryAddressUpdate() {
     const res = await axios({
       method: "PUT",
       url: "http://localhost:8080/deliveries/addresses",
-      data: address,
+      data: address.addressList,
     });
     if (res.data) {
       alert("배송지가 수정 되었습니다.");
@@ -67,6 +68,9 @@ function DeliveryAddressUpdate() {
 
   const setAddressData = (e) => {
     dispatch({ type: [SET_LOCATION], payload: e.target });
+    if (e.target.id == "defaultAddressYn") {
+      dispatch({ type: [SET_DEFAULT_ADDRESS_YN] });
+    }
   };
 
   const modalStyle = {
@@ -119,7 +123,11 @@ function DeliveryAddressUpdate() {
                 type="text"
                 className={style.inputType1}
                 onChange={setAddressData}
-                value={address.addressName}
+                value={
+                  address.addressName
+                    ? address.addressName
+                    : address.addressList.addressName
+                }
               />
               <input
                 id="defaultAddressYn"
@@ -127,7 +135,7 @@ function DeliveryAddressUpdate() {
                 className={style.inputRadio}
                 onChange={setAddressData}
                 value={
-                  address.defaultAddressYn == "Y"
+                  address.addressList.defaultAddressYn == "Y"
                     ? (document.getElementById(
                         "defaultAddressYn"
                       ).checked = true)
@@ -147,7 +155,11 @@ function DeliveryAddressUpdate() {
                 type="text"
                 className={style.inputType2}
                 onChange={setAddressData}
-                value={address.deliveryRecipient}
+                value={
+                  address.deliveryRecipient
+                    ? address.deliveryRecipient
+                    : address.addressList.deliveryRecipient
+                }
               />
             </div>
           </div>
@@ -219,7 +231,11 @@ function DeliveryAddressUpdate() {
                 type="text"
                 className={style.inputType2}
                 onChange={setAddressData}
-                value={address.addressPhone}
+                value={
+                  address.addressPhone
+                    ? address.addressPhone
+                    : address.addressList.addressPhone
+                }
               />
             </div>
           </div>
@@ -236,10 +252,10 @@ function DeliveryAddressUpdate() {
                 onClick={setModal2}
                 value={
                   "배송정보 : " +
-                  address.deliveryLocation +
-                  (address.commonEntranceAccessNumberYn == "Y"
+                  address.addressList.deliveryLocation +
+                  (address.addressList.commonEntranceAccessNumberYn == "Y"
                     ? ", 공동현관 비밀번호 : " +
-                      address.commonEntranceAccessNumber
+                      address.addressList.commonEntranceAccessNumber
                     : "")
                 }
                 placeholder="배송 정보 입력"
@@ -346,10 +362,10 @@ function DeliveryAddressUpdate() {
                       dispatch({ type: [INIT_FROM_TEMP_ADDRESS] });
                       document.getElementById("deliveryInfo").value =
                         "배송위치 : " +
-                        address.deliveryLocation +
-                        (address.commonEntranceAccessNumberYn == "Y"
+                        address.addressList.deliveryLocation +
+                        (address.addressList.commonEntranceAccessNumberYn == "Y"
                           ? ", 공동현관 비밀번호 : " +
-                            address.commonEntranceAccessNumber
+                            address.addressList.commonEntranceAccessNumber
                           : "");
                     }}
                   >

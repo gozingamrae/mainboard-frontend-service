@@ -38,6 +38,12 @@ function DeliveryAddressList() {
     axios({
       method: "GET",
       url: "http://localhost:8080/deliveries/addresses",
+      // headers: {
+      //   "Content-Type": "application/json",
+      //   "Access-Control-Allow-Origin": "*",
+      //   Authorization: `Bearer ${window.localStorage.getItem("accessToken")}`,
+      //   Accept: "*/*",
+      // },
     }).then((res) => dispatch({ type: [GET_ADDRESS], payload: res.data }));
   }, []);
 
@@ -64,9 +70,9 @@ function DeliveryAddressList() {
             <th>연락처</th>
             <th>수정/삭제</th>
           </tr>
-          {addressList.memberCode == 0
+          {addressList.addressList.memberCode == 0
             ? null
-            : addressList.map((address) => {
+            : addressList.addressList.map((address) => {
                 const splitAddress = address.addressLocation.split("%");
                 console.log(splitAddress);
                 return (
