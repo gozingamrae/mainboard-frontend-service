@@ -1,7 +1,11 @@
 import "../css/boardgameInfo-style.css";
 import 부루마블 from "../image/burumavel.jpg";
 
-function boardgameInfo() {
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {getOrderInfo} from "../../apis/order/OrderInfoAPICalls";
+
+export function BoardgameInfo() {
   const boardGameName = "부루마블";
   const benefit = 5;
   const loanPrice = 4000;
@@ -10,22 +14,36 @@ function boardgameInfo() {
   const details = " . . . 상세정보 . . . ";
   const points = loanPrice * (benefit / 100);
 
+  const orderInfo = useSelector(state => state.orderInfoReducer)
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
   function onClickHandler1(e) {
-    window.location.href = "/shoppingcart";
+    navigate("/shoppingcart");
   }
   function onClickHandler2(e) {
-    window.location.href = "/wishlist";
+    navigate("/wishlist");
   }
-  function onClickHandler3(e) {
-    window.location.href = "/order-info";
+  const onClickHandler3 = async (e)=> {
+     dispatch(getOrderInfo())
+     console.log("버튼을 눌러서 orderId를 부여합니다");
+    navigate("/order-info");
   }
+  //   const 요청메소드이름 = () => {
+  //   axios({
+  //     method: "POST", 
+  //     url: "http://localhost:8080/deliveries/addresses",
+  //     data: {
+  //       키값: 결제정보변수명, //결제 정보
+  //     },
+  //   });
+  // };
+
 
   return (
     <div className="layout">
       <div className="contentBox">
-        <h1>+++ HEADER +++</h1>
-        <hr />
-
         <img className="image" src={부루마블} alt="사진출력오류" />
 
         <div className="content">
@@ -53,4 +71,4 @@ function boardgameInfo() {
   );
 }
 
-export default boardgameInfo;
+export default BoardgameInfo;

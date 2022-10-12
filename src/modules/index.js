@@ -12,11 +12,17 @@ import { modalReducer } from "./modalModules/modalModule";
 import { agreementReducer } from "./memberModules/memberModule";
 import { memberAPIReducer } from "./memberModules/memberAPIModule";
 import storage from "redux-persist/lib/storage";
-import persistReducer from "redux-persist/es/persistReducer";
+import { memberUpdateReducer } from "./memberModules/memberUpdateModule";
+import { findReducer } from "./memberModules/memberFindIdModule";
+import { orderInfoReducer } from "./orderModules/orderInfoModule";
+import { paymentInfoReducer } from "./paymentModules/paymentInfoModule";
+import { persistReducer } from "redux-persist";
 
 const persistConfig = {
   key: "root",
+  // localStorage에 저장
   storage: storage,
+  whitelist: ["memberAPIReducer"],
 };
 
 const rootReducer = combineReducers({
@@ -31,6 +37,11 @@ const rootReducer = combineReducers({
   deliveryTargetReducer,
   modalReducer,
   memberAPIReducer,
+  memberAPIReducer,
+  memberUpdateReducer,
+  findReducer,
+  orderInfoReducer,
+  paymentInfoReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);

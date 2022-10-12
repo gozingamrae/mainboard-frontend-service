@@ -72,3 +72,4 @@ export const emailReducer = handleActions(
   },
   initialState[3]
 );
+

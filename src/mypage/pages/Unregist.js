@@ -1,6 +1,31 @@
 import "../css/style.css";
 
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from "react-router-dom";
+import { decodeJwt } from '../../utils/tokenUtils';
+import { callGetMemberAPI, callUpdateAPI } from "../../apis/member/MemberAPICalls"
+import { NavLink } from "react-router-dom";
+import { callDeleteAPI  } from "../../apis/member/MemberAPICalls";
+
+
 function Unregist() {
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const token = decodeJwt(window.localStorage.getItem('accessToken'));
+
+  const onClickDeleteHandler = (e) => {
+    
+    if(window.confirm("회원 탈퇴를 진행하시겠습니까?")){
+      console.log("!!");
+      dispatch(callDeleteAPI());
+      navigate("/", { replace: true })
+
+    }
+  }
+
+
   return (
     <div className="mypage-contents"> 
         <h1> 회원 탈퇴 </h1>
@@ -17,7 +42,7 @@ function Unregist() {
             삭제되는 내용을 확인하시고 필요한 데이터는 미리 백업을 해주세요.<br/>
             </p>
             <div className="agreement-btns input-submit">
-            <button> 탈퇴하기  </button>
+            <button onClick={onClickDeleteHandler}> 탈퇴하기  </button>
             </div>
         </form>
         
