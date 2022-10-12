@@ -6,10 +6,20 @@ import { emailDomainReducer } from "./orderModules/orderModule";
 import { navbarReducer, hiddenNavbarReducer } from "./mainModules/navbarModule";
 import { agreementReducer } from "./memberModules/memberModule";
 import { memberAPIReducer } from "./memberModules/memberAPIModule";
+import { memberUpdateReducer } from "./memberModules/memberUpdateModule";
+import { findReducer } from "./memberModules/memberFindIdModule"; 
 import { orderInfoReducer } from "./orderModules/orderInfoModule";
 import { paymentInfoReducer } from "./paymentModules/paymentInfoModule";
 
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage"; 
 
+const persistConfig = {
+  key: "root",
+  // localStorage에 저장
+  storage: storage,
+  whitelist: ["memberAPIReducer"]
+};
 
 const rootReducer = combineReducers({
   subPriceReducer,
@@ -20,8 +30,10 @@ const rootReducer = combineReducers({
   hiddenNavbarReducer,
   agreementReducer,
   memberAPIReducer,
+  memberUpdateReducer,
+  findReducer,
   orderInfoReducer,
   paymentInfoReducer
 });
 
-export default rootReducer;
+export default persistReducer(persistConfig, rootReducer);

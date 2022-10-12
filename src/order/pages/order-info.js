@@ -7,7 +7,13 @@ import {
   EMAILDOMAIN,
 } from "../../modules/orderModules/orderModule";
 import "../css/order-info-style.css";
+
 import { useNavigate } from "react-router-dom";
+
+/* 회원 정보 불러올 때 사용되는 모듈 */
+import { callGetMemberAPI } from "../../apis/member/MemberAPICalls"
+import { decodeJwt } from '../../utils/tokenUtils';
+import { useEffect } from 'react';
 
 function OrderInfo() {
 
@@ -46,10 +52,12 @@ function OrderInfo() {
   const emailIdResult = useSelector((state) => state.emailIdReducer);
   const emailDomainResult = useSelector((state) => state.emailDomainReducer);
   const emailResult = useSelector((state) => state.emailReducer);
+
   const orderInfoResult = useSelector((state) => state.orderInfoReducer);
 
   //Dispatch -> reducer를 호출하는 함수.
   const dispatch = useDispatch();
+
 
   // useEffect(
   //   ()=>
@@ -58,6 +66,21 @@ function OrderInfo() {
   //   },
   //   []
   // );
+
+  /* 회원정보를 불러올 리듀서와 회원 토큰 */
+  const member = useSelector(state => state.memberAPIReducer); 
+  const token = decodeJwt(window.localStorage.getItem('accessToken'));
+  const memberDetail = member.data; 
+
+  useEffect(
+    ()=>{
+      console.log('token: ' + token.sub);
+      if(token != null){
+        dispatch(callGetMemberAPI());
+      }
+    },[]
+  )
+
 
   console.log("(/order-info) OrderInfo입니다 !! : ", orderInfoResult);
 
@@ -121,7 +144,11 @@ function OrderInfo() {
 
   console.log(emailResult.email);
 
- 
+
+  function paymentButtonOnChangeHandler() {
+    window.location.href = "/payment";
+  }
+
   function paymentButtonOnChangeHandler() {
     
     navigate('/payment')
@@ -134,7 +161,11 @@ function OrderInfo() {
   }
 
   var finalPrice = TOTALPRICE - subPriceResult.subPrice;
+
+  console.log(subPriceResult.subPrice);
+
   console.log("할인된 가격 결과 : ", subPriceResult.subPrice);
+
 
   return (
     <div className="orderInfo">
@@ -175,7 +206,7 @@ function OrderInfo() {
               {" "}
               <td className="InfoFirstColumn">*주문하시는 분 </td>{" "}
               <td className="InfoSecondColumn">
-                <input name="orderName" className="InputBox" />
+                <input name="orderName" className="InputBox" value={memberDetail.memberName} />
               </td>{" "}
             </tr>
 
@@ -189,7 +220,7 @@ function OrderInfo() {
             <tr>
               <td className="InfoFirstColumn">*휴대전화 번호 </td>
               <td className="InfoSecondColumn">
-                <input name="orderPhoneNum" className="InputBox" />
+                <input name="orderPhoneNum" className="InputBox" value={memberDetail.phone}/>
               </td>
             </tr>
 
@@ -199,7 +230,8 @@ function OrderInfo() {
                 <input
                   name="orderEmailId"
                   className="InputBox"
-                  value={emailIdResult.emailId}
+                  // value={emailIdResult.emailId}
+                  value={memberDetail.email}
                   onChange={emailOnChangeHandler1}
                 />
                 @
@@ -369,6 +401,9 @@ function OrderInfo() {
           onClick={paymentButtonOnChangeHandler}
           className="paymentButton"
         >
+
+          {" "}
+          결제하기{" "}
           결제하기
         </button>
       </div>

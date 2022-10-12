@@ -69,7 +69,6 @@
     color: #000000;
     width: 1041px;
     border-bottom: 2px solid #000000;
-    margin-bottom: 61px;
 }
 
 .edit-form{
@@ -83,6 +82,7 @@
     font-size: 20px;
     line-height: 23px;
     text-align: left;
+    margin-top: 61px;
 
     color: #000000;
     

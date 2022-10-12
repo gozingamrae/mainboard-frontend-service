@@ -1,5 +1,5 @@
 import "../css/payment-completed-style.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { PostPaymentInfo } from "../../apis/payment/PaymentInfoAPICalls";
 import { POST_PAYMENTINFO } from "../../modules/paymentModules/paymentInfoModule";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 const onClickHandler2 = (e) => {
   useNavigate = "/";
 };
+
 
 function PaymentCompleted() {
 
@@ -21,7 +22,6 @@ function PaymentCompleted() {
   dispatch({type: POST_PAYMENTINFO , payload: {paymentKey: paymentKey, amount: amount, orderId: orderId}});
 
   dispatch(PostPaymentInfo());
-
   return (
     <div>
       <br />
@@ -37,3 +37,4 @@ function PaymentCompleted() {
 }
 
 export default PaymentCompleted;
+
