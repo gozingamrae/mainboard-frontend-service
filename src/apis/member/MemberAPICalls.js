@@ -12,6 +12,8 @@ import {
     GET_ID
 } from '../../modules/memberModules/memberFindIdModule';
 
+import { UPDATE_INFO } from "../../modules/memberModules/memberUpdateModule";
+
 
 export const callGetMemberAPI = () => {
     const requestURL = `http://localhost:8080/members`;
@@ -32,6 +34,7 @@ export const callGetMemberAPI = () => {
         console.log('[MemberAPICalls] callGetMemberAPI RESULT : ', result);
         
         dispatch({ type: GET_MEMBER,  payload: result });
+        dispatch({ type: UPDATE_INFO,  payload: result.data });
     };
 }
 
@@ -98,6 +101,7 @@ export const callLoginAPI = ({form}) => {
         }
         if(result.status === 200){
             window.localStorage.setItem('accessToken', result.data.accessToken);            
+            window.location.replace("/");
         }
         dispatch({ type: POST_LOGIN,  payload: result });   
     };

@@ -24,6 +24,10 @@ function EditProfile() {
       if(token != null){
         dispatch(callGetMemberAPI());
       }
+      updateMember[0].phone = memberDetail.phone;
+      updateMember[0].job = memberDetail.job;
+      updateMember[0].birthDateTime = memberDetail.birthDateTime;
+      updateMember[0].gender = memberDetail.gender;
     },[]
   )
 
@@ -52,7 +56,7 @@ function EditProfile() {
       form: body
     }));
 
-    if(updateMember.status == 200){
+    if(member.status == 200){
       navigate("/", { replace: true })
     }
   
@@ -69,7 +73,7 @@ function EditProfile() {
       form: body
     }));
 
-    if(updateMember.status == 200){
+    if(member.status == 200){
       navigate("/", { replace: true })
     }
   }
@@ -94,20 +98,20 @@ function EditProfile() {
             </div>
             <div className="edit-input">
               <label> 핸드폰 번호 </label>
-              <input type="text" name="phone" id="phone" value={updateMember.phone} onChange={ onChangeHandler }/>
+              <input type="text" name="phone" id="phone" value={updateMember[0].phone} onChange={ onChangeHandler }/>
             </div>
             <div className="edit-input">
               <label> 직업 </label>
-              <input type="text" name="job" id="job"  value= {updateMember.job} onChange={ onChangeHandler } />
+              <input type="text" name="job" id="job"  value= {updateMember[0].job} onChange={ onChangeHandler } />
             </div>
             <div className="edit-input">
             <label> 생년월일 </label>
-            <input type="date" name="birthDateTime" id="birthDateTime" value={updateMember.birthDateTime} onChange={ onChangeHandler } />
+            <input type="date" name="birthDateTime" id="birthDateTime" value={updateMember[0].birthDateTime} onChange={ onChangeHandler } />
           <br />
             </div>
             <div className="edit-input">
             <label> 성별 </label>
-          <select name="gender" id="gender" value={updateMember.gender} onChange={ onChangeHandler }>
+          <select name="gender" id="gender" value={updateMember[0].gender} onChange={ onChangeHandler }>
             <option value="male">남</option>
             <option value="female">여</option>
           </select>
@@ -119,15 +123,15 @@ function EditProfile() {
             <h1> 비밀번호 변경 </h1>
             <div className="edit-input">
               <label> 현재 비밀번호 </label>
-              <input type="password" name="originPwd" id="originPwd" value={updateMember.originPwd}  onChange={ onChangeHandler } />
+              <input type="password" name="originPwd" id="originPwd" value={updateMember[0].originPwd}  onChange={ onChangeHandler } />
             </div>
             <div className="edit-input">
               <label> 새 비밀번호 </label>
-              <input type="password" name="memberPwd" id="memberPwd" value={updateMember.memberPwd}  onChange={ onChangeHandler }/>
+              <input type="password" name="memberPwd" id="memberPwd" value={updateMember[0].memberPwd}  onChange={ onChangeHandler }/>
             </div>
             <div className="edit-input">
               <label> 새 비밀번호 확인 </label>
-              <input type="password" name="memberPwd2" id="memberPwd2" value={updateMember.memberPwd2}  onChange={ onChangeHandler } />
+              <input type="password" name="memberPwd2" id="memberPwd2" value={updateMember[0].memberPwd2}  onChange={ onChangeHandler } />
             </div>
             <div className="agreement-btns input-submit">
             <NavLink to="/"> <button> 취소  </button></NavLink>
