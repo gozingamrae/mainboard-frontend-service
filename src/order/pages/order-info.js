@@ -16,17 +16,22 @@ import { FinalOrderInfo} from "../../apis/order/OrderFinalAPICalls";
 import { callGetMemberAPI } from "../../apis/member/MemberAPICalls"
 import { decodeJwt } from '../../utils/tokenUtils';
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 function OrderInfo() {
+  const location = useLocation();
+  const productInfo = location.state.productInfo;
+  const grade = location.state.grade;
+  console.log('state', location.state)
 
   const navigate = useNavigate();
   const arr = [
     {
-      info: "부루마블",
-      quantity: "2",
-      price: "4000",
+      info: productInfo.boardgameName + "  <" + grade + ">",
+      quantity: "1",
+      price: grade == "최상"? productInfo.srentalFee :grade == "상"? productInfo.arentalFee :productInfo.brentalFee,
       points: 400,
-      totalPrice: 8000,
+      totalPrice: grade == "최상"? productInfo.srentalFee :grade == "상"? productInfo.arentalFee :productInfo.brentalFee,
     },
   ];
 
@@ -118,7 +123,7 @@ function OrderInfo() {
     window.location.href = "/boardgame/list";
   }
 
-  var finalPrice = TOTALPRICE - subPriceResult.subPrice;
+  var finalPrice = TOTALPRICE - subPriceResult.subPrice + deliveryCharge;
 
 // ===============================================================
   // console.log("orderId 값은 ?? ", orderInfoResult.data);
@@ -190,7 +195,7 @@ function OrderInfo() {
               </td>
               <td>{list.quantity}</td>
               <td>{list.price}</td>
-              <td>{list.points}</td>
+              <td>{(list.totalPrice)*0.05}</td>
               <td>{list.totalPrice}</td>
             </tr>
           ))}

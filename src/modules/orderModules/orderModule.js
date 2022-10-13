@@ -15,6 +15,9 @@ const initialState = [
   {
     email: "",
   },
+  {
+    finalOrderAmount: 0,
+  }
 ];
 
 //useState에서 state값을 변경해 주는 함수명
@@ -23,6 +26,8 @@ export const SUBPRICE = "subprice/SUBPRICE";
 export const EMAILID = "emailId/EMAILID";
 export const EMAILDOMAIN = "emailDomain/EMAILDOMAIN";
 export const EMAIL = "email/EMAIL";
+export const FINAL_ORDER_AMOUNT = "finalOrderAmount/FINAL_ORDER_AMOUNT";
+
 
 export const subPriceReducer = handleActions(
   {
@@ -71,5 +76,15 @@ export const emailReducer = handleActions(
     },
   },
   initialState[3]
+);
+
+export const finalOrderAmountReducer = handleActions(
+  {
+    [FINAL_ORDER_AMOUNT]: (state, { payload }) => {
+      state.finalOrderAmount = payload;
+      return { ...state };
+    },
+  },
+  initialState[4]
 );
 
