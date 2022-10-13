@@ -5,39 +5,14 @@ import {
 } from '../../modules/productModules/ProductModule.js';
 
 
-export const callProductRegistAPI = ({form}) => {
-    console.log('[ProduceAPICalls] callProductRegistAPI Call');
-
-    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/products`;
-
-    return async (dispatch, getState) => {
-
-        const result = await fetch(requestURL, {
-            method: "POST",
-            headers: {
-                "Accept": "*/*"
-            },
-            body: form
-        })
-        .then(response => response.json());
-
-        console.log('[ProduceAPICalls] callProductRegistAPI RESULT : ', result);
-
-        dispatch({ type: POST_PRODUCT,  payload: result });
-        
-    };    
-}
-
-
-
 export const callProductListAPI = ({currentPage}) => {
     
     let requestURL;
 
     if(currentPage !== undefined || currentPage !== null){
-        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/products?offset=${currentPage}`;
+        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/products?offset=${currentPage}&limit=15`;
     }else {
-        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/products?offset=${currentPage}`;
+        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/products?offset=${currentPage}&limit=15`;
     }
     
     console.log('[ProduceAPICalls] requestURL : ', requestURL);
