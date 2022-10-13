@@ -27,6 +27,7 @@ export function BoardgameInfo() {
 
   const orderInfo = useSelector(state => state.orderInfoReducer)
   const productInfo = useSelector(state => state.productReducer)
+  const [ grade, setGrade] = useState("최상");
   console.log(productInfo);
 
   const dispatch = useDispatch();
@@ -40,7 +41,7 @@ export function BoardgameInfo() {
   }
   const onClickHandler3 = async (e)=> {
      dispatch(getOrderInfo())
-    navigate("/order-info");
+    navigate("/order-info" , {state : {"productInfo" : productInfo, "grade":grade}});
   }
   //   const 요청메소드이름 = () => {
   //   axios({
@@ -72,6 +73,12 @@ export function BoardgameInfo() {
           <p className="loanPrice">대여료 : {`${productInfo.defaultRentalFee}`}</p>
           <p>대여혜택 : {`적립 포인트 ${benefit}% (${points}원)`}</p>
           <p>배송비 : {`${deliveredPrice}`}</p>
+          <p>등급</p>
+          <select onChange={(e)=>{setGrade(e.target.value)}}>
+            <option value="최상">최상</option>
+            <option value="상">상</option>
+            <option value="중">중</option>
+          </select>
           {/* <p>보드게임 코드 : {`${productInfo.boardgameTypeCode}`}</p> */}
           {/* <p>제품 상세 정보 : {`${details}`}</p> */}
           <hr />
