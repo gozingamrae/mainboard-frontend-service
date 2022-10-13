@@ -24,11 +24,12 @@ export function BoardgameInfo() {
   const details = " . . . 상세정보 . . . ";
   const points = loanPrice * (benefit / 100);
 
+
   const orderInfo = useSelector(state => state.orderInfoReducer)
   const productInfo = useSelector(state => state.productReducer)
   console.log(productInfo);
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   function onClickHandler1(e) {
@@ -39,7 +40,6 @@ export function BoardgameInfo() {
   }
   const onClickHandler3 = async (e)=> {
      dispatch(getOrderInfo())
-     console.log("버튼을 눌러서 orderId를 부여합니다");
     navigate("/order-info");
   }
   //   const 요청메소드이름 = () => {

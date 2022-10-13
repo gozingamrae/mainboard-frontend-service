@@ -10,6 +10,7 @@ import { memberUpdateReducer } from "./memberModules/memberUpdateModule";
 import { findReducer } from "./memberModules/memberFindIdModule"; 
 import { orderInfoReducer } from "./orderModules/orderInfoModule";
 import { paymentInfoReducer } from "./paymentModules/paymentInfoModule";
+import { orderFinalReducer } from "./orderModules/orderFinalModule";
 import {productReducer} from "./productModules/ProductModule";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage"; 
@@ -34,7 +35,9 @@ const rootReducer = combineReducers({
   findReducer,
   orderInfoReducer,
   paymentInfoReducer,
+  orderFinalReducer,
   productReducer
+
 });
 
 export default persistReducer(persistConfig, rootReducer);

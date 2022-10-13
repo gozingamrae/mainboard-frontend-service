@@ -1,4 +1,3 @@
-
 import { useDispatch, useSelector } from "react-redux";
 import {
   SUBPRICE,
@@ -6,9 +5,12 @@ import {
   EMAILID,
   EMAILDOMAIN,
 } from "../../modules/orderModules/orderModule";
+import{
+  ORDER_FINAL,
+} from "../../modules/orderModules/orderFinalModule";
 import "../css/order-info-style.css";
-
 import { useNavigate } from "react-router-dom";
+import { FinalOrderInfo} from "../../apis/order/OrderFinalAPICalls";
 
 /* 회원 정보 불러올 때 사용되는 모듈 */
 import { callGetMemberAPI } from "../../apis/member/MemberAPICalls"
@@ -26,63 +28,31 @@ function OrderInfo() {
       points: 400,
       totalPrice: 8000,
     },
-    {
-      info: "할리갈리",
-      quantity: "3",
-      price: "3000",
-      points: 450,
-      totalPrice: 9000,
-    },
-    {
-      info: "쿼리도",
-      quantity: "1",
-      price: "2000",
-      points: 100,
-      totalPrice: 2000,
-    },
   ];
+
 
   const deliveryCharge = 2500;
   const holdingPoints = 5000;
   var TOTALPRICE = 0;
   var TOTALPOINTS = 0;
+  var deliveryStart = "N";
 
   //useSelector는 현재 state값을 받아올 수 있는 react hook이다. -> subPrice, email등등의  state를 가져옴.
   const subPriceResult = useSelector((state) => state.subPriceReducer);
   const emailIdResult = useSelector((state) => state.emailIdReducer);
   const emailDomainResult = useSelector((state) => state.emailDomainReducer);
   const emailResult = useSelector((state) => state.emailReducer);
-
   const orderInfoResult = useSelector((state) => state.orderInfoReducer);
+  const orderFinalResult = useSelector((state) => state.orderFinalReducer);
+
 
   //Dispatch -> reducer를 호출하는 함수.
   const dispatch = useDispatch();
-
-
-  // useEffect(
-  //   ()=>
-  //   {
-  //     dispatch(getOrderInfo());
-  //   },
-  //   []
-  // );
 
   /* 회원정보를 불러올 리듀서와 회원 토큰 */
   const member = useSelector(state => state.memberAPIReducer); 
   const token = decodeJwt(window.localStorage.getItem('accessToken'));
   const memberDetail = member.data; 
-
-  useEffect(
-    ()=>{
-      console.log('token: ' + token.sub);
-      if(token != null){
-        dispatch(callGetMemberAPI());
-      }
-    },[]
-  )
-
-
-  console.log("(/order-info) OrderInfo입니다 !! : ", orderInfoResult);
 
   for (var i = 0; i < arr.length; i++) {
     TOTALPRICE = TOTALPRICE + arr[i].totalPrice;
@@ -96,12 +66,10 @@ function OrderInfo() {
   const pointsOnChangeHandler = (e) => {
     //reducer에서 key값으로 액션을 실행시키고, payload에 원하는 값을 넣어 state를 변경시킨다.
     dispatch({ type: SUBPRICE, payload: e.target.value });
-    console.log(subPriceResult);
   };
 
   const pointsOnClickHandler = (e) => {
     const inputText = document.getElementById("usingPoints");
-    console.log(inputText);
 
     if (e.target.checked) {
       inputText.value = holdingPoints;
@@ -142,19 +110,9 @@ function OrderInfo() {
     });
   };
 
-  console.log(emailResult.email);
-
-
   function paymentButtonOnChangeHandler() {
-    window.location.href = "/payment";
+     navigate('/payment')
   }
-
-  function paymentButtonOnChangeHandler() {
-    
-    navigate('/payment')
-  }
-
-  console.log("orderId가 잘 넘어 오는지? (/order-info)", orderInfoResult.data);
 
   function cancelButtonOnChangeHandler() {
     window.location.href = "/boardgame/list";
@@ -162,11 +120,53 @@ function OrderInfo() {
 
   var finalPrice = TOTALPRICE - subPriceResult.subPrice;
 
-  console.log(subPriceResult.subPrice);
+// ===============================================================
+  // console.log("orderId 값은 ?? ", orderInfoResult.data);
+  // console.log("orderAmount 값은 ?? ", orderInfoResult.price);
+  // console.log("couponUsedRate 값은 ?? ", "0%"); //값 받아서 넣기!!
+  // console.log("pointsUsedAmount 값은 ?? ", subPriceResult.subPrice);
+  // console.log("orderDate 값은 ?? ", orderInfoResult.data && orderInfoResult.data.substr(6,8));
+  // console.log("selectedProduct 값은 ?? ", 1);
+  // console.log("memberCode 값은 ?? ", memberDetail.memberCode);
+  // console.log("paymentMethod 값은 ?? ", "카드");
+  // console.log("deliveryCharge 값은 ?? ", deliveryCharge);
+  // console.log("usedCouponCode 값은 ?? ", "usedCouponCode");
+  // console.log("deliveryCode 값은 ?? ", deliveryStart);
+  // console.log("finalOrderAmount 값은 ?? ", finalPrice);
 
-  console.log("할인된 가격 결과 : ", subPriceResult.subPrice);
 
+  const orderFinal = {
+    orderId: orderInfoResult.data,
+    orderAmount: orderInfoResult.price,
+    pointsUsedAmount: subPriceResult.subPrice,
+    couponUsedRate: 0,
+    orderDate: orderInfoResult.data && orderInfoResult.data.substr(6,8),
+    selectedProduct: 1,
+    memberCode:  memberDetail.memberCode,
+    paymentMethod: "카드",
+    deliveryCharge: deliveryCharge,
+    usedCouponCode: "usedCouponCode",
+    deliveryStartYn: deliveryStart,
+    finalOrderAmount: finalPrice
+    
+  };
 
+  useEffect(
+    ()=>{
+      console.log('token: ' + token.sub);
+      if(token != null){
+        dispatch(callGetMemberAPI());
+        
+      }
+
+      dispatch({type: ORDER_FINAL, payload: orderFinal});
+    },[orderFinal.orderId]
+  )
+
+  const data = FinalOrderInfo(); 
+  data();
+
+  
   return (
     <div className="orderInfo">
       <h3 className="orderInfoSubTitle">주문 상세 내역</h3>
@@ -174,7 +174,7 @@ function OrderInfo() {
       <table className="orderInfoTable">
         <thead>
           <tr className="orderInfoHeader">
-            <th width="600">상품/옵션 정보</th>
+            <th width="600">상품/옵션 정보 </th>
             <th>수량</th>
             <th>상품 금액</th>
             <th>적립 포인트</th>
@@ -401,7 +401,6 @@ function OrderInfo() {
           onClick={paymentButtonOnChangeHandler}
           className="paymentButton"
         >
-
           {" "}
           결제하기{" "}
           결제하기
