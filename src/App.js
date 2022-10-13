@@ -13,7 +13,7 @@ import ChangePw from "./member/pages/ChangePw";
 import Payment from "./payment/pages/payment";
 import PaymentCompleted from "./payment/pages/payment-completed";
 import ChangePwResult from "./member/pages/ChangePwResult";
-import BoardgameInfo from "./order/pages/BoardgameInfo";
+import BoardgameInfo from "./order/pages/boardgameInfo";
 import BoardgameList from "./boardgame/pages/BoardgameList";
 import Layout from "./layouts/Layout";
 import Main from "./main/pages/Main";

@@ -1,4 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from 'react-router-dom';
+
 import {
   SUBPRICE,
   EMAIL,
@@ -18,15 +20,19 @@ import { decodeJwt } from '../../utils/tokenUtils';
 import { useEffect } from 'react';
 
 function OrderInfo() {
+  const location = useLocation();
+  const productInfo = location.state.productInfo;
+  const grade = location.state.grade;
+  console.log('state', location.state)
 
   const navigate = useNavigate();
   const arr = [
     {
-      info: "부루마블",
-      quantity: "2",
-      price: "4000",
+      info: productInfo.boardgameName + "  <" + grade + ">",
+      quantity: "1",
+      price: grade == "최상"? productInfo.srentalFee :grade == "상"? productInfo.arentalFee :productInfo.brentalFee,
       points: 400,
-      totalPrice: 8000,
+      totalPrice: grade == "최상"? productInfo.srentalFee :grade == "상"? productInfo.arentalFee :productInfo.brentalFee,
     },
   ];
 
