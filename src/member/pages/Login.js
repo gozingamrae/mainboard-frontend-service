@@ -15,18 +15,9 @@ function Login() {
     memberId: '',
     memberPwd: '',
   });
-  useEffect(() => {
-        
-    if(member.status === 200){
-        console.log("[Login] Login SUCCESS {}", member);
-        navigate("/", { replace: true });
-    }
-  }
-  ,[member]);
 
   if(member.length > 0) {
       console.log("[Login] Login is already authenticated by the server");        
-      return navigate("/", { replace: true });
   }
 
   const onChangeHandler = (e) => {
@@ -39,6 +30,10 @@ function Login() {
         dispatch(callLoginAPI({	
             form: form
         }));
+        if(member.status === 200){
+          console.log("[Login] Login SUCCESS {}", member);
+          console.log(window.localStorage.getItem('accessToken'))
+      }
     }
   
   return (
