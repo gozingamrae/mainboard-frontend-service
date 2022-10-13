@@ -81,6 +81,10 @@ export function BoardgameInfo() {
             바로 구매
           </button>
         </div>
+        <div>
+          <h1>상세 정보</h1>
+          <img src={productInfo.productDetailImageUrl}></img>
+        </div>
       </div>
     </div>
   );
