@@ -2,7 +2,8 @@ import { NavLink } from "react-router-dom";
 import { useState , useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import { useNavigate } from "react-router-dom";
-
+import { useLocation , useParams} from 'react-router';
+import qs from "query-string"; 
 import "../css/boardgameInfo-style.css";
 import 부루마블 from "../image/burumavel.jpg";
 import {callDetailProductAPI
@@ -11,7 +12,11 @@ import {callDetailProductAPI
 import {getOrderInfo} from "../../apis/order/OrderInfoAPICalls";
 
 export function BoardgameInfo() {
-  const boardGameName = "부루마블";
+  
+  //쿼리 스트링 추출
+  const params = useParams();
+  console.log(params);
+
   const benefit = 5;
   const loanPrice = 4000;
   const deliveredPrice = "2500";
@@ -50,7 +55,7 @@ export function BoardgameInfo() {
   useEffect(
     () => {         
         dispatch(callDetailProductAPI({
-            productCode: 2
+            productCode: params[1]
         }));        
     }
     ,[]
