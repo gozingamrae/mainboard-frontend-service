@@ -24,10 +24,6 @@ function EditProfile() {
       if(token != null){
         dispatch(callGetMemberAPI());
       }
-      updateMember[0].phone = memberDetail.phone;
-      updateMember[0].job = memberDetail.job;
-      updateMember[0].birthDateTime = memberDetail.birthDateTime;
-      updateMember[0].gender = memberDetail.gender;
     },[]
   )
 
@@ -57,7 +53,7 @@ function EditProfile() {
     }));
 
     if(member.status == 200){
-      navigate("/", { replace: true })
+      window.location.reload();
     }
   
   }

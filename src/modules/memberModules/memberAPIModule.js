@@ -23,7 +23,6 @@ const actions = createActions({
 export const memberAPIReducer = handleActions(
     {
         [GET_MEMBER]: (state, { payload }) => {
-            
             return payload;
         },
         [POST_LOGIN]: (state, { payload }) => {

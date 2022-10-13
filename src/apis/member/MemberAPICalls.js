@@ -12,7 +12,7 @@ import {
     GET_ID
 } from '../../modules/memberModules/memberFindIdModule';
 
-import { UPDATE_INFO } from "../../modules/memberModules/memberUpdateModule";
+import { INIT_INFO } from "../../modules/memberModules/memberUpdateModule";
 
 
 export const callGetMemberAPI = () => {
@@ -34,7 +34,7 @@ export const callGetMemberAPI = () => {
         console.log('[MemberAPICalls] callGetMemberAPI RESULT : ', result);
         
         dispatch({ type: GET_MEMBER,  payload: result });
-        dispatch({ type: UPDATE_INFO,  payload: result.data });
+        dispatch({ type: INIT_INFO,  payload: result.data });
     };
 }
 
