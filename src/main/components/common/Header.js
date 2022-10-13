@@ -45,7 +45,7 @@ function Header() {
   const onLogoutHandler = () => {
     window.localStorage.setItem("accessToken",null);
     console.log("logout");
-    window.location.reload();
+    navigate("/", { replace: true });
   }
 
   const userButton = (isLogin) => {
