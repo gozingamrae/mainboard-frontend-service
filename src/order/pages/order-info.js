@@ -1,42 +1,60 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from 'react-router-dom';
-
+import { useLocation } from "react-router-dom";
+import style from "../../mypage/css/delivery-address-insert.module.css";
+import Modal from "react-modal";
+import DaumPostcodeEmbed from "react-daum-postcode";
+import { SET_MODAL1, SET_MODAL2 } from "../../modules/modalModules/modalModule";
 import {
   SUBPRICE,
   EMAIL,
   EMAILID,
   EMAILDOMAIN,
 } from "../../modules/orderModules/orderModule";
-import{
-  ORDER_FINAL,
-} from "../../modules/orderModules/orderFinalModule";
+import { ORDER_FINAL } from "../../modules/orderModules/orderFinalModule";
 import "../css/order-info-style.css";
 import { useNavigate } from "react-router-dom";
-import { FinalOrderInfo} from "../../apis/order/OrderFinalAPICalls";
+import { FinalOrderInfo } from "../../apis/order/OrderFinalAPICalls";
 
 /* 회원 정보 불러올 때 사용되는 모듈 */
-import { callGetMemberAPI } from "../../apis/member/MemberAPICalls"
-import { decodeJwt } from '../../utils/tokenUtils';
-import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { callGetMemberAPI } from "../../apis/member/MemberAPICalls";
+import { decodeJwt } from "../../utils/tokenUtils";
+import { useEffect, useState } from "react";
+import {
+  GET_ADDRESS,
+  INIT_ADDRESS,
+  INIT_FROM_TEMP_ADDRESS,
+  SET_FROM_TEMP_ADDRESS,
+  SET_LOCATION,
+  SET_ZIPCODE,
+} from "../../modules/deliveryModules/deliveryModule";
+import axios from "axios";
 
 function OrderInfo() {
   const location = useLocation();
   const productInfo = location.state.productInfo;
   const grade = location.state.grade;
-  console.log('state', location.state)
+  console.log("state", location.state);
 
   const navigate = useNavigate();
   const arr = [
     {
       info: productInfo.boardgameName + "  <" + grade + ">",
       quantity: "1",
-      price: grade == "최상"? productInfo.srentalFee :grade == "상"? productInfo.arentalFee :productInfo.brentalFee,
+      price:
+        grade == "최상"
+          ? productInfo.srentalFee
+          : grade == "상"
+          ? productInfo.arentalFee
+          : productInfo.brentalFee,
       points: 400,
-      totalPrice: grade == "최상"? productInfo.srentalFee :grade == "상"? productInfo.arentalFee :productInfo.brentalFee,
+      totalPrice:
+        grade == "최상"
+          ? productInfo.srentalFee
+          : grade == "상"
+          ? productInfo.arentalFee
+          : productInfo.brentalFee,
     },
   ];
-
 
   const deliveryCharge = 2500;
   const holdingPoints = 5000;
@@ -45,6 +63,8 @@ function OrderInfo() {
   var deliveryStart = "N";
 
   //useSelector는 현재 state값을 받아올 수 있는 react hook이다. -> subPrice, email등등의  state를 가져옴.
+  const address = useSelector((state) => state.deliveryReducer);
+  const modal = useSelector((state) => state.modalReducer);
   const subPriceResult = useSelector((state) => state.subPriceReducer);
   const emailIdResult = useSelector((state) => state.emailIdReducer);
   const emailDomainResult = useSelector((state) => state.emailDomainReducer);
@@ -52,14 +72,13 @@ function OrderInfo() {
   const orderInfoResult = useSelector((state) => state.orderInfoReducer);
   const orderFinalResult = useSelector((state) => state.orderFinalReducer);
 
-
   //Dispatch -> reducer를 호출하는 함수.
   const dispatch = useDispatch();
 
   /* 회원정보를 불러올 리듀서와 회원 토큰 */
-  const member = useSelector(state => state.memberAPIReducer); 
-  const token = decodeJwt(window.localStorage.getItem('accessToken'));
-  const memberDetail = member.data; 
+  const member = useSelector((state) => state.memberAPIReducer);
+  const token = decodeJwt(window.localStorage.getItem("accessToken"));
+  const memberDetail = member.data;
 
   for (var i = 0; i < arr.length; i++) {
     TOTALPRICE = TOTALPRICE + arr[i].totalPrice;
@@ -118,16 +137,84 @@ function OrderInfo() {
   };
 
   function paymentButtonOnChangeHandler() {
-     navigate('/payment')
+    navigate("/payment");
   }
 
   function cancelButtonOnChangeHandler() {
     window.location.href = "/boardgame/list";
   }
 
-  var finalPrice = TOTALPRICE - subPriceResult.subPrice + deliveryCharge;
+  var finalPrice = TOTALPRICE - subPriceResult.subPrice;
 
-// ===============================================================
+  const setModal1 = () => {
+    dispatch({ type: [SET_MODAL1] });
+  };
+
+  const setModal2 = () => {
+    dispatch({ type: [SET_MODAL2] });
+    document.getElementById("deliveryInfo").disabled = true;
+  };
+
+  const closeModal = (data) => {
+    console.log(data);
+    dispatch({ type: [SET_LOCATION], payload: data });
+    dispatch({ type: [SET_MODAL1] });
+
+    document.getElementById("addressLocation").value = address.addressLocation;
+    document.getElementById("addressZipCode").value = address.addressZipCode;
+  };
+
+  const setAddressData = (e) => {
+    dispatch({ type: [SET_LOCATION], payload: e.target });
+  };
+
+  const [defaultAddress, setDefaultAddress] = useState(true);
+  const [directAddress, setDirectAddress] = useState(false);
+
+  const defaultAddressMode = (e) => {
+    if (e.target.checked) {
+      setDefaultAddress(true);
+      setDirectAddress(false);
+
+      document.getElementById("saveLocation").checked = true;
+    }
+  };
+
+  const directAddressMode = (e) => {
+    dispatch({ type: [INIT_ADDRESS] });
+    if (e.target.checked) {
+      setDefaultAddress(false);
+      setDirectAddress(true);
+
+      document.getElementById("addressName").value = "";
+      document.getElementById("deliveryRecipient").value = "";
+      document.getElementById("addressZipCode").value = "";
+      document.getElementById("addressLocation").value = "";
+      document.getElementById("addressDetailLocation").value = "";
+      document.getElementById("addressPhone").value = "";
+      document.getElementById("deliveryInfo").value = "";
+      document.getElementById("deliveryMessage").value = "";
+
+      document.getElementById("saveLocation").checked = false;
+    }
+  };
+
+  const modalStyle = {
+    overlay: {
+      backgroundColor: "#00000077",
+    },
+    content: {
+      margin: "auto",
+      width: "500px",
+      height: "520px",
+      padding: "0",
+      top: "25%",
+      border: "2px solid #000000",
+      borderRadius: "1rem",
+    },
+  };
+
+  // ===============================================================
   // console.log("orderId 값은 ?? ", orderInfoResult.data);
   // console.log("orderAmount 값은 ?? ", orderInfoResult.price);
   // console.log("couponUsedRate 값은 ?? ", "0%"); //값 받아서 넣기!!
@@ -141,39 +228,46 @@ function OrderInfo() {
   // console.log("deliveryCode 값은 ?? ", deliveryStart);
   // console.log("finalOrderAmount 값은 ?? ", finalPrice);
 
-
   const orderFinal = {
     orderId: orderInfoResult.data,
     orderAmount: orderInfoResult.price,
     pointsUsedAmount: subPriceResult.subPrice,
     couponUsedRate: 0,
-    orderDate: orderInfoResult.data && orderInfoResult.data.substr(6,8),
+    orderDate: orderInfoResult.data && orderInfoResult.data.substr(6, 8),
     selectedProduct: 1,
-    memberCode:  memberDetail.memberCode,
+    memberCode: memberDetail.memberCode,
     paymentMethod: "카드",
     deliveryCharge: deliveryCharge,
     usedCouponCode: "usedCouponCode",
     deliveryStartYn: deliveryStart,
-    finalOrderAmount: finalPrice
-    
+    finalOrderAmount: finalPrice,
   };
 
-  useEffect(
-    ()=>{
-      console.log('token: ' + token.sub);
-      if(token != null){
-        dispatch(callGetMemberAPI());
-        
+  useEffect(() => {
+    console.log("token: " + token.sub);
+    if (token != null) {
+      dispatch(callGetMemberAPI());
+    }
+
+    dispatch({ type: ORDER_FINAL, payload: orderFinal });
+    axios({
+      method: "GET",
+      url: "http://localhost:8080/deliveries/addresses/default",
+    }).then((res) => {
+      console.log("=================");
+      dispatch({ type: [GET_ADDRESS], payload: res.data });
+      dispatch({ type: [SET_ZIPCODE] });
+      console.log("=================");
+      console.log("=================", res);
+      if (directAddress && !modal.isOpen2) {
+        dispatch({ type: [INIT_ADDRESS] });
       }
+    });
+  }, [orderFinal.orderId]);
 
-      dispatch({type: ORDER_FINAL, payload: orderFinal});
-    },[orderFinal.orderId]
-  )
-
-  const data = FinalOrderInfo(); 
+  const data = FinalOrderInfo();
   data();
 
-  
   return (
     <div className="orderInfo">
       <h3 className="orderInfoSubTitle">주문 상세 내역</h3>
@@ -197,7 +291,7 @@ function OrderInfo() {
               </td>
               <td>{list.quantity}</td>
               <td>{list.price}</td>
-              <td>{(list.totalPrice)*0.05}</td>
+              <td>{list.points}</td>
               <td>{list.totalPrice}</td>
             </tr>
           ))}
@@ -213,7 +307,11 @@ function OrderInfo() {
               {" "}
               <td className="InfoFirstColumn">*주문하시는 분 </td>{" "}
               <td className="InfoSecondColumn">
-                <input name="orderName" className="InputBox" value={memberDetail.memberName} />
+                <input
+                  name="orderName"
+                  className="InputBox"
+                  value={memberDetail.memberName}
+                />
               </td>{" "}
             </tr>
 
@@ -227,7 +325,11 @@ function OrderInfo() {
             <tr>
               <td className="InfoFirstColumn">*휴대전화 번호 </td>
               <td className="InfoSecondColumn">
-                <input name="orderPhoneNum" className="InputBox" value={memberDetail.phone}/>
+                <input
+                  name="orderPhoneNum"
+                  className="InputBox"
+                  value={memberDetail.phone}
+                />
               </td>
             </tr>
 
@@ -273,65 +375,318 @@ function OrderInfo() {
             <tr>
               <td className="InfoFirstColumn">배송지 확인</td>
               <td className="InfoSecondColumn">
-                {" "}
                 &nbsp; &nbsp;
-                <input type="radio" name="deliveryLocation" value="default" />
-                기본배송지 &nbsp; &nbsp;
-                <input type="radio" name="deliveryLocation" value="last" />
-                최근배송지 &nbsp; &nbsp;
-                <input type="radio" name="deliveryLocation" value="direct" />
-                직접입력 &nbsp; &nbsp;
                 <input
+                  id="defaultAddress"
                   type="radio"
-                  name="deliveryLocation"
-                  value="sameAsOrder"
+                  name="deliveryLocation2"
+                  checked={defaultAddress}
+                  onClick={defaultAddressMode}
                 />
-                주문자정보와동일&nbsp; &nbsp;
-              </td>
-            </tr>
-            <tr>
-              <td className="InfoFirstColumn">*받으시는 분</td>
-              <td className="InfoSecondColumn">
-                <input name="deliveryName" className="InputBox" />
-              </td>
-            </tr>
-            <tr>
-              <td className="InfoFirstColumn">*받으실 곳</td>
-              <td className="InfoSecondColumn">
-                <input name="deliveryLocation" className="InputBox" />{" "}
-                <button>우편번호 검색</button> <br />
-                <input name="deliveryLocation" className="InputBox" />
+                기본배송지 &nbsp; &nbsp;
+                {/* <input type="radio" name="deliveryLocation" value="last" />
+                최근배송지 &nbsp; &nbsp; */}
                 <input
-                  name="deliveryLocationDetail"
-                  placeholder="상세주소입력"
-                  className="InputBox"
+                  id="directAddress"
+                  type="radio"
+                  name="deliveryLocation2"
+                  checked={directAddress}
+                  onClick={directAddressMode}
+                  onChange={directAddressMode}
                 />
+                직접입력 &nbsp; &nbsp;
+                {/* <input type="radio" name="deliveryLocation" />
+                주문자정보와동일&nbsp; &nbsp; */}
               </td>
             </tr>
-            <tr>
-              <td className="InfoFirstColumn">전화번호</td>
-              <td className="InfoSecondColumn">
-                <input name="deliveryTelephone" className="InputBox" />
-              </td>
-            </tr>
-            <tr>
-              <td className="InfoFirstColumn">*휴대전화 번호</td>
-              <td className="InfoSecondColumn">
-                <input name="deliveryPhoneNum" className="InputBox" />
-              </td>
-            </tr>
-            <tr>
-              <td className="InfoFirstColumn">배송메시지</td>
-              <td className="InfoSecondColumn">
-                <input name="deliveryMessage" className="InputBox" />
-              </td>
-            </tr>
-            <tr>
-              <td className="InfoFirstColumn">배송지 저장</td>
-              <td className="InfoSecondColumn">
-                <input name="saveLocation" type="checkBox" /> 배송지 저장
-              </td>
-            </tr>
+
+            <>
+              <tr>
+                <td className="InfoFirstColumn">*배송지 이름</td>
+                <td className="InfoSecondColumn">
+                  <input
+                    id="addressName"
+                    name="deliveryName"
+                    className="InputBox"
+                    value={
+                      defaultAddress
+                        ? address.addressList.addressName
+                        : address.addressName
+                    }
+                    onChange={setAddressData}
+                    disabled={defaultAddress ? true : false}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td className="InfoFirstColumn">*받으시는 분</td>
+                <td className="InfoSecondColumn">
+                  <input
+                    id="deliveryRecipient"
+                    name="deliveryName"
+                    className="InputBox"
+                    onChange={setAddressData}
+                    value={
+                      defaultAddress
+                        ? address.addressList.deliveryRecipient
+                        : address.deliveryRecipient
+                    }
+                    disabled={defaultAddress ? true : false}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td className="InfoFirstColumn">*받으실 곳</td>
+                {
+                  <td className="InfoSecondColumn">
+                    <input
+                      id="addressZipCode"
+                      className="InputBox"
+                      value={
+                        defaultAddress
+                          ? address.addressZipCode
+                          : address.addressLocation.split("%")[2]
+                      }
+                      disabled
+                    />
+                    <button
+                      onClick={setModal1}
+                      disabled={defaultAddress ? true : false}
+                    >
+                      우편번호 검색
+                    </button>
+                    <Modal
+                      isOpen={modal.isOpen1}
+                      ariaHideApp={false}
+                      style={modalStyle}
+                    >
+                      <div className={style.modalTitle}>
+                        우편번호 검색
+                        <button
+                          className={style.modalButton}
+                          onClick={setModal1}
+                        />
+                      </div>
+
+                      <DaumPostcodeEmbed
+                        onComplete={closeModal}
+                        style={{ height: "90%" }}
+                        autoClose
+                      />
+                    </Modal>
+                    <br />
+                    <input
+                      id="addressLocation"
+                      className="InputBox"
+                      value={
+                        defaultAddress
+                          ? address.addressLocationTemp
+                          : address.addressLocation.split("%")[0]
+                      }
+                      disabled
+                    />
+                    <input
+                      id="addressDetailLocation"
+                      name="deliveryLocationDetail"
+                      className="InputBox"
+                      value={
+                        defaultAddress
+                          ? address.addressDetailLocation
+                          : address.addressLocation.split("%")[1]
+                      }
+                      placeholder="상세 주소 입력"
+                      disabled={defaultAddress ? true : false}
+                    />
+                  </td>
+                }
+              </tr>
+              <tr>
+                <td className="InfoFirstColumn">*휴대전화 번호</td>
+                <td className="InfoSecondColumn">
+                  <input
+                    id="addressPhone"
+                    name="deliveryPhoneNum"
+                    className="InputBox"
+                    style={{ width: "570px" }}
+                    onChange={setAddressData}
+                    value={
+                      defaultAddress
+                        ? address.addressList.addressPhone
+                        : address.addressPhone
+                    }
+                    disabled={defaultAddress ? true : false}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td className="InfoFirstColumn">배송정보</td>
+                <td className="InfoSecondColumn">
+                  <input
+                    id="deliveryInfo"
+                    name="deliveryMessage"
+                    className="InputBox"
+                    style={{ width: "570px" }}
+                    value={
+                      defaultAddress
+                        ? "배송정보 : " +
+                          address.addressList.deliveryLocation +
+                          (address.addressList.commonEntranceAccessNumberYn ==
+                          "Y"
+                            ? ", 공동현관 비밀번호 : " +
+                              address.addressList.commonEntranceAccessNumber
+                            : "")
+                        : "배송정보 : " +
+                          address.deliveryLocation +
+                          (address.commonEntranceAccessNumberYn == "Y"
+                            ? ", 공동현관 비밀번호 : " +
+                              address.commonEntranceAccessNumber
+                            : "")
+                    }
+                    onChange={setAddressData}
+                    onClick={setModal2}
+                    placeholder="배송 정보 입력"
+                    disabled={defaultAddress ? true : false}
+                  />
+                  <Modal
+                    isOpen={modal.isOpen2}
+                    ariaHideApp={false}
+                    style={modalStyle}
+                  >
+                    <div className={style.modalTitle}>
+                      배송정보 입력
+                      <button
+                        className={style.modalButton}
+                        onClick={() => {
+                          setModal2();
+
+                          dispatch({ type: [INIT_FROM_TEMP_ADDRESS] });
+                        }}
+                      />
+                    </div>
+                    <div className={style.modalContentBox}>
+                      <div className={style.modalContent}>
+                        <div>
+                          <input
+                            id="문앞"
+                            type="radio"
+                            name="deliveryLocation"
+                            onChange={setAddressData}
+                          />
+                          <label className={style.modalLabel}>문앞</label>
+                        </div>
+                        <div>
+                          <input
+                            id="경비실"
+                            type="radio"
+                            name="deliveryLocation"
+                            onChange={setAddressData}
+                          />
+                          <label id="경비실" className={style.modalLabel}>
+                            경비실
+                          </label>
+                        </div>
+                        <div>
+                          <input
+                            id="택배함"
+                            type="radio"
+                            name="deliveryLocation"
+                            onChange={setAddressData}
+                          />
+                          <label className={style.modalLabel}>택배함</label>
+                        </div>
+                        <div>
+                          <input
+                            id="기타사항"
+                            type="radio"
+                            name="deliveryLocation"
+                            onChange={setAddressData}
+                          />
+                          <label className={style.modalLabel}>기타사항</label>
+                        </div>
+                        <div>
+                          <label className={style.modalLabel}>
+                            기타사항 입력 :
+                          </label>
+                          <input
+                            id="etcLocation"
+                            type="text"
+                            placeholder="소화전/EPS/TPS 등은 안전상 불가합니다."
+                            disabled
+                            onChange={setAddressData}
+                          />
+                        </div>
+
+                        <div>
+                          <input
+                            id="commonEntranceAccessNumberYn"
+                            type="checkbox"
+                            onChange={setAddressData}
+                          />
+                          <label className={style.modalLabel}>
+                            공동현관 비밀번호 여부
+                          </label>
+                        </div>
+                        <div>
+                          <label className={style.modalLabel}>
+                            공동현관 비밀번호 입력 :
+                          </label>
+                          <input
+                            id="commonEntranceAccessNumber"
+                            type="text"
+                            onChange={setAddressData}
+                            placeholder="공동현관 번호를 입력해주세요."
+                            disabled
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className={style.modalSaveBox}>
+                      <button
+                        className={style.modalSave}
+                        onFocus={() => {
+                          setModal2();
+                          dispatch({ type: [SET_FROM_TEMP_ADDRESS] });
+                          // dispatch({ type: [INIT_FROM_TEMP_ADDRESS] });
+                          document.getElementById("deliveryInfo").value =
+                            "배송위치 : " +
+                            address.deliveryLocationTemp +
+                            (address.commonEntranceAccessNumberYnTemp == "Y"
+                              ? ", 공동현관 비밀번호 : " +
+                                address.commonEntranceAccessNumberTemp
+                              : "");
+                        }}
+                      >
+                        동의하고 저장하기
+                      </button>
+                    </div>
+                  </Modal>
+                </td>
+              </tr>
+              <tr>
+                <td className="InfoFirstColumn">배송 메시지</td>
+                <td className="InfoSecondColumn">
+                  <input
+                    id="deliveryMessage"
+                    name="deliveryMessage"
+                    className="InputBox"
+                    style={{ width: "570px" }}
+                    onChange={setAddressData}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td className="InfoFirstColumn">배송지 저장</td>
+                <td className="InfoSecondColumn">
+                  <input
+                    id="saveLocation"
+                    name="saveLocation"
+                    type="checkBox"
+                    disabled={defaultAddress ? true : false}
+                  />
+                  배송지 저장
+                </td>
+              </tr>
+            </>
           </tbody>
         </table>
       </div>
@@ -409,8 +764,7 @@ function OrderInfo() {
           className="paymentButton"
         >
           {" "}
-          결제하기{" "}
-          결제하기
+          결제하기 결제하기
         </button>
       </div>
     </div>

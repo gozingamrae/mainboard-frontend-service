@@ -5,14 +5,14 @@ import { POST_PAYMENTINFO } from "../../modules/paymentModules/paymentInfoModule
 import { useNavigate } from "react-router-dom";
 
 
-const onClickHandler2 = (e) => {
-  useNavigate = "/";
-};
-
-
 function PaymentCompleted() {
 
   const dispatch = useDispatch();
+
+
+const onClickHandler2 = (e) => {
+  window.location.href = "/";
+};
 
   const url = new URL(window.location.href);
   const paymentKey = url.searchParams.get('paymentKey');
