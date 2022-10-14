@@ -1,18 +1,66 @@
 import "../css/orderreport-style.css";
 
+import { useEffect} from 'react';
+import { callGetOrderListAPI } from "../../apis/order/OrderAPICalls";
+import { callSearchOrderAPI } from '../../apis/order/OrderSearchAPICalls';
+import { useSelector, useDispatch } from 'react-redux';
 
-function orderReportTable(){
-    return(
+var myOrderList =[];
+
+function OrderReportTable() {
+
+    const orderList = useSelector(state => state.orderReducer);
+    const orderSearch = useSelector(state => state.orderSearchReducer);
+    const dispatch = useDispatch();
+    console.log("=====state===")
+    console.log(orderList);
+
+    useEffect(
+        ()=>
+        {
+             dispatch(callGetOrderListAPI());
+             console.log("==effect")
+             console.log(orderList);
+
+             dispatch(callSearchOrderAPI());
+             console.log("==eserch")
+             console.log(orderSearch);
+        },
+        []
+    );
+
+    for(var i = 0; i < orderList.length; i++) {
+
+    if(orderList[i].memberCode=="41"){
+        myOrderList[i] = orderList[i];
+        console.log("if문 들어옴");
+    } 
+}
+
+     console.log("===OrderListMYMYMYMYMY");
+     console.log(myOrderList);
+
+    return orderList && (
         <div className="box">
             <table>
-                <tr><th>칼럼1</th><th>칼럼2</th><th>칼럼3</th><th>칼럼4</th><th>칼럼5</th><th>칼럼6</th></tr>
-                <tr><td>값1</td><td>값2</td><td>값3</td><td>값4</td><td>값5</td><td>값6</td></tr>
-                <tr><td>값1</td><td>값2</td><td>값3</td><td>값4</td><td>값5</td><td>값6</td></tr>
-                <tr><td>값1</td><td>값2</td><td>값3</td><td>값4</td><td>값5</td><td>값6</td></tr>
-                <tr><td>값1</td><td>값2</td><td>값3</td><td>값4</td><td>값5</td><td>값6</td></tr>
-                <tr><td>값1</td><td>값2</td><td>값3</td><td>값4</td><td>값5</td><td>값6</td></tr>
-
+                <tr><th>주문번호</th><th>주문금액</th><th>결제수단</th><th>포인트사용금액</th><th>주문날짜</th><th>회원번호</th><th>배송정보</th></tr>
+                {myOrderList.map(list => {
+                    return(
+                        <tr>
+                            <td>{list.orderId}</td>
+                            <td>{list.orderAmount}</td>
+                            <td>{list.paymentMethod}</td>
+                            <td>{list.pointsUsedAmount}</td>
+                            <td>{list.orderDate}</td>
+                            <td>{list.memberCode}</td>
+                            <td><button>배송정보</button></td>
+                        </tr>
+                    )
+                })
+            
+            }
             </table>
+
             <div className="pageButtonBox">
                 <img src="/common/left_arrow.png"/>
                 <button>1</button>
@@ -27,6 +75,5 @@ function orderReportTable(){
         </div>
     )
 
-
 }
-export default orderReportTable;
+export default OrderReportTable;

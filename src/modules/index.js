@@ -46,6 +46,7 @@ const rootReducer = combineReducers({
   paymentInfoReducer,
   orderFinalReducer,
   productReducer
+
 });
 
 export default persistReducer(persistConfig, rootReducer);
