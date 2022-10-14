@@ -135,7 +135,8 @@ export const callUpdateAPI = ({form}) => {
             alert(result.message);
         }       
         if(result.status === 200){
-           alert(result.message);          
+           alert(result.message);      
+           window.location.reload();    
         }
         dispatch({ type: PUT_MEMBER,  payload: result });   
     };
@@ -169,13 +170,14 @@ export const callUpdatePwdAPI = ({form}) => {
         }       
         if(result.status === 200){
            alert(result.message);          
+           window.location.reload();  
         }
         dispatch({ type: PUT_PWD,  payload: result });   
     };
 }
 
 
-export const callDeleteAPI = ({memberId}) => {
+export const callDeleteAPI = () => {
     const requestURL = `http://localhost:8080/members/delete`;
 
     return async (dispatch, getState) => {
@@ -195,9 +197,9 @@ export const callDeleteAPI = ({memberId}) => {
 
         if(result.status === 200){
             alert(result.message);          
+            window.localStorage.setItem("accessToken",null);
+            window.location.href = "/";
         }
-        window.localStorage.setItem("accessToken",null);
-        window.location.reload();
 
         dispatch({ type: DELETE_MEMBER,  payload: result });
     };

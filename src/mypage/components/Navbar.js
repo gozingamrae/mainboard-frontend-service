@@ -1,7 +1,14 @@
 import "../css/style.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { GET_ADDRESSLIST } from "../../modules/deliveryModules/deliveryModule";
 
 function Navbar() {
+  const navigate = useNavigate();
+  const addressList = useSelector((state) => state.deliveryReducer);
+  const dispatch = useDispatch();
+
   return (
     <div className="mypage-navbar">
       <h1> 마이페이지 </h1>

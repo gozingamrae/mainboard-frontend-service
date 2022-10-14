@@ -31,6 +31,8 @@ export const memberUpdateReducer = handleActions(
             state[0].job = payload.job;
             state[0].gender = payload.gender;
             state[0].birthDateTime = payload.birthDateTime;
+            state[0].memberName = payload.memberName;
+            state[0].email = payload.email;
             return {
                 ...state
             }
