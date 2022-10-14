@@ -70,6 +70,7 @@ function Main() {
             {exampleProduct.map((product) => {
               return (
                 <NavLink
+                  key={product.boardgameCode}
                   to={`/boardgame/list/${product.boardgameCode}`}
                   className={mainStyle.product}
                 >
@@ -113,6 +114,7 @@ function Main() {
             {exampleProduct.map((product) => {
               return (
                 <NavLink
+                  key={product.boardgameCode}
                   to={`/boardgame/list/${product.boardgameCode}`}
                   className={mainStyle.product}
                 >
