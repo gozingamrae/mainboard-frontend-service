@@ -61,22 +61,6 @@ export const navbarReducer = handleActions(
 export const hiddenNavbarReducer = handleActions(
   {
     [SET_FILTER]: (state, { payload }) => {
-      // 같은 카테고리 기적용 필터 해제
-      if (Object.keys(state.theme).includes(payload)) {
-        Object.keys(state.theme).map((key) => {
-          state[key] = false;
-        });
-      } else if (Object.keys(state.level).includes(payload)) {
-        Object.keys(state.level).map((key) => {
-          state[key] = false;
-        });
-      } else if (Object.keys(state.time).includes(payload)) {
-        Object.keys(state.time).map((key) => {
-          state[key] = false;
-        });
-      }
-
-
       state[payload] = !state[payload];
       console.log("키값 :", Object.keys(state));
 
