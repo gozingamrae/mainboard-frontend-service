@@ -27,6 +27,8 @@ import Shoppingcart from "./rental/pages/Shoppingcart";
 import OrderReport from "./mypage/pages/orderreport";
 import Error from "./error/page/Error";
 import PaymentCanceled from "./payment/pages/payment-canceled";
+import Notice from "./community/Notice";
+import FAQ from "./community/FAQ";
 
 function App() {
   return (
@@ -77,6 +79,8 @@ function App() {
 
             <Route path="orderreport" element={<OrderReport />} />
           </Route>
+          <Route path="notice" element={<Notice />} />
+          <Route path="faq" element={<FAQ/>}/>
           <Route path="/*" element={<Error />} exact />
         </Route>
       </Routes>

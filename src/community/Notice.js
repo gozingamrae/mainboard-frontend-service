@@ -31,7 +31,7 @@ function Notice() {
 
   return (
     <div>
-      <div>
+      <div className={style.titlediv}>
         <h1 className={style.title}>공지시항</h1>
       </div>
       <table className={style.table}>

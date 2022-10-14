@@ -1,12 +1,12 @@
 .title {
+  margin-left: 400px;
   width: 197px;
   height: 50px;
 }
 
 .table {
-  position: absolute;
+  margin:auto;
   width: 1064px;
-
   left: 428px;
   top: 269px;
 }
@@ -23,4 +23,9 @@
 .noticerow {
   text-align: center;
   height: 50px;
+}
+
+.titlediv{
+  width: 1000px;
+  text-align: center;
 }
