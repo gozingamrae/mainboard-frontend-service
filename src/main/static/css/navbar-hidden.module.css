@@ -11,7 +11,7 @@
   width: calc(90% - 1280px / 2);
   height: calc(100% - 1280px / 2);
   left: calc(55.7% - 1280px / 2);
-  top: 0px;
+  top: 1px;
 
   z-index: 1;
 

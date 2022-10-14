@@ -5,14 +5,20 @@
   padding-bottom: 38px;
   padding-left: 330px;
   padding-right: 330px;
+
+  position: sticky;
+  width: 1280px;
+  height: 44.02px;
+  top: 0px;
+
+  background-color: #ffffff;
+
+  z-index: 2;
 }
 
 .userButton {
   display: flex;
   justify-content: center;
-}
-
-.searchArea {
 }
 
 .logo {
@@ -36,7 +42,7 @@
   cursor: pointer;
 
   position: relative;
-  left: 380px;
+  left: 485px;
   top: -36px;
 }
 
@@ -54,6 +60,9 @@
 
   padding-left: 30px;
   padding-top: 5px;
+
+  margin-left: 105px;
+  margin-right: 80px;
 
   color: #7332c3;
   line-height: 15px;
@@ -76,14 +85,15 @@
   outline: none;
 }
 
-.login {
-  /* 로그인 */
-
+.button {
+  /* 회원가입 */
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
   line-height: 18px;
+
   display: flex;
+  justify-content: center;
   align-items: center;
   text-align: center;
 
@@ -91,17 +101,43 @@
   color: #7332c3;
   width: 120px;
   height: 40px;
+  background: none;
+  border: none;
 }
 
-.join {
+.loginButton {
   /* 회원가입 */
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
   line-height: 18px;
+
   display: flex;
+  justify-content: center;
   align-items: center;
   text-align: center;
+
+  margin-left: 120px;
+
+  /* 메인컬러 */
+  color: #7332c3;
+  width: 120px;
+  height: 40px;
+}
+
+.loginButton {
+  /* 회원가입 */
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 18px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  margin-left: 120px;
 
   /* 메인컬러 */
   color: #7332c3;

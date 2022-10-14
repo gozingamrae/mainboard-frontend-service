@@ -1,0 +1,167 @@
+
+.mypage-navbar{
+    width: 214px;
+}
+
+
+.mypage-navbar > h1 {
+
+    font-family: 'Gmarket Sans TTF';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+
+    color: #000000;
+}
+
+.line{
+    width: 150px;
+    height: 0px;
+    border-bottom: 2px solid #ECECEC;
+    margin-bottom: 45.81px;
+}
+
+.contents{
+    margin-bottom: 45.81px;
+}
+
+.content-line{
+    width: 30px;
+    height: 0px;
+    left: 345px;
+    top: 307.43px;
+    border-top: 2px solid #635970;
+}
+
+.contents > h1 {
+    font-family: 'Gmarket Sans TTF';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 18px;
+
+    color: #000000;
+}
+
+.contents > ul {
+    padding-left: 20px;
+}
+
+.contents > ul> li {
+    margin-bottom: 7.63px;
+}
+
+/* 마이페이지 - 정보수정 */
+
+.mypage-contents{
+    text-align: -webkit-center;
+}
+
+.mypage-contents > h1 {
+    font-family: 'Gmarket Sans TTF';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: left;
+
+    color: #000000;
+    width: 1041px;
+    border-bottom: 2px solid #000000;
+}
+
+.edit-form{
+    width: 757px;
+}
+
+.edit-form > h1{ 
+    font-family: 'Gmarket Sans TTF';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: left;
+    margin-top: 61px;
+
+    color: #000000;
+    
+    width: 100%;
+    border-bottom: 2px solid #000000;
+}
+
+/* 수정 입력 폼 */
+
+.edit-input > label{
+    width: 200px;
+    height: 46px;
+    display: flex;
+    
+    background: #F8F5FF;
+    font-family: 'Gmarket Sans TTF';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 15px;
+    align-items: center;
+
+    color: #000000;
+}
+
+.edit-input{
+    text-align: left;
+    align-items: center;
+    display: flex;
+    border-bottom: 1px solid #DADADA;
+}
+
+.edit-input > input{
+    box-sizing: border-box;
+    width: 413px;
+    height: 32px;
+    /* 흰색 */
+    
+    background: #FFFFFF;
+    /* 설명색 */
+    
+    border: 1px solid #635970;
+}
+
+.user-info{
+    font-family: 'Gmarket Sans TTF';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+}
+
+.agreement-btns > button{
+    border: 1px solid #635970;
+}
+
+.agreement-btns > button,
+.agreement-btns > input[type="submit"] {
+  width: 197px;
+  height: 40px;
+  font-family: "Gmarket Sans TTF";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  align-items: center;
+  text-align: center;
+  border-radius: 0px;
+  margin-left: 20px;
+  margin-top: 82px;
+  /* 설명색 */
+
+  color: #635970;
+}
+.edit-form > p {
+    text-align-last: left;
+    line-height: 2;
+}
