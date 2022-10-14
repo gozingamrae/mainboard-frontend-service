@@ -18,10 +18,7 @@ function Unregist() {
   const onClickDeleteHandler = (e) => {
     
     if(window.confirm("회원 탈퇴를 진행하시겠습니까?")){
-      console.log("!!");
       dispatch(callDeleteAPI());
-      navigate("/", { replace: true })
-
     }
   }
 
@@ -29,7 +26,7 @@ function Unregist() {
   return (
     <div className="mypage-contents"> 
         <h1> 회원 탈퇴 </h1>
-        <form className="edit-form">
+        <div className="edit-form">
             <h1> 회원 탈퇴 안내 </h1>
             <p>
             회원탈퇴를 신청하기 전에 안내 사항을 꼭 확인해주세요.<br/>
@@ -44,7 +41,7 @@ function Unregist() {
             <div className="agreement-btns input-submit">
             <button onClick={onClickDeleteHandler}> 탈퇴하기  </button>
             </div>
-        </form>
+        </div>
         
     </div>
   );

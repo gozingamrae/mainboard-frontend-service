@@ -51,10 +51,6 @@ function EditProfile() {
     dispatch(callUpdateAPI({
       form: body
     }));
-
-    if(member.status == 200){
-      window.location.reload();
-    }
   
   }
 
@@ -69,9 +65,6 @@ function EditProfile() {
       form: body
     }));
 
-    if(member.status == 200){
-      navigate("/", { replace: true })
-    }
   }
 
 

@@ -18,6 +18,8 @@ import { FinalOrderInfo} from "../../apis/order/OrderFinalAPICalls";
 import { callGetMemberAPI } from "../../apis/member/MemberAPICalls"
 import { decodeJwt } from '../../utils/tokenUtils';
 import { useEffect } from 'react';
+import { callUpdateAPI  } from "../../apis/member/MemberAPICalls";
+import { UPDATE_INFO } from "../../modules/memberModules/memberUpdateModule";
 
 function OrderInfo() {
   const location = useLocation();
@@ -59,6 +61,27 @@ function OrderInfo() {
   const member = useSelector(state => state.memberAPIReducer); 
   const token = decodeJwt(window.localStorage.getItem('accessToken'));
   const memberDetail = member.data; 
+  const updateMember = useSelector(state => state.memberUpdateReducer); 
+
+  useEffect(
+    ()=>{
+      console.log('token: ' + token.sub);
+      if(token != null){
+        dispatch(callGetMemberAPI());
+      }
+    },[]
+  )
+
+  const onChangeInfoHandler = (e) => {
+    dispatch({
+      type: UPDATE_INFO,
+      payload: {
+        name: e.target.name,
+        value: e.target.value
+      }
+    });
+    console.log(updateMember);
+  }
 
   for (var i = 0; i < arr.length; i++) {
     TOTALPRICE = TOTALPRICE + arr[i].totalPrice;
@@ -212,21 +235,21 @@ function OrderInfo() {
               {" "}
               <td className="InfoFirstColumn">*주문하시는 분 </td>{" "}
               <td className="InfoSecondColumn">
-                <input name="orderName" className="InputBox" value={memberDetail.memberName} />
+                <input name="memberName" className="InputBox" onChange={onChangeInfoHandler} value={updateMember[0].memberName} />
               </td>{" "}
             </tr>
 
             <tr>
               <td className="InfoFirstColumn"> 전화번호 </td>{" "}
               <td className="InfoSecondColumn">
-                <input name="orderTelephone" className="InputBox" />
+                <input name="orderTelephone" className="InputBox" onChange={onChangeInfoHandler}/>
               </td>
             </tr>
 
             <tr>
               <td className="InfoFirstColumn">*휴대전화 번호 </td>
               <td className="InfoSecondColumn">
-                <input name="orderPhoneNum" className="InputBox" value={memberDetail.phone}/>
+                <input name="phone" className="InputBox" onChange={onChangeInfoHandler} value={updateMember[0].phone}/>
               </td>
             </tr>
 
@@ -234,11 +257,12 @@ function OrderInfo() {
               <td className="InfoFirstColumn">이메일 </td>
               <td className="InfoSecondColumn">
                 <input
-                  name="orderEmailId"
+                  name="email"
                   className="InputBox"
                   // value={emailIdResult.emailId}
-                  value={memberDetail.email}
-                  onChange={emailOnChangeHandler1}
+                  value={updateMember[0].email}
+                  // onChange={emailOnChangeHandler1}
+                  onChange={onChangeInfoHandler}
                 />
                 @
                 <input

@@ -16,9 +16,6 @@ function Login() {
     memberPwd: '',
   });
 
-  if(member.length > 0) {
-      console.log("[Login] Login is already authenticated by the server");        
-  }
 
   const onChangeHandler = (e) => {
       setForm({
