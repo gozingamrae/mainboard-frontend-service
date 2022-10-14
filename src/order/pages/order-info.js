@@ -1,3 +1,4 @@
+
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,51 +13,52 @@ import {
   SET_TARGET_ADDRESS_CODE,
   SET_ZIPCODE,
 } from "../../modules/deliveryModules/deliveryModule";
+
 import {
   SUBPRICE,
   EMAIL,
   EMAILID,
   EMAILDOMAIN,
 } from "../../modules/orderModules/orderModule";
+import{
+  ORDER_FINAL,
+} from "../../modules/orderModules/orderFinalModule";
 import "../css/order-info-style.css";
 import style from "../../mypage/css/delivery-address-insert.module.css";
 import Modal from "react-modal";
 import DaumPostcodeEmbed from "react-daum-postcode";
 import { SET_MODAL1, SET_MODAL2 } from "../../modules/modalModules/modalModule";
+import { FinalOrderInfo} from "../../apis/order/OrderFinalAPICalls";
 
 /* 회원 정보 불러올 때 사용되는 모듈 */
 import { callGetMemberAPI } from "../../apis/member/MemberAPICalls";
 import { decodeJwt } from "../../utils/tokenUtils";
 
 function OrderInfo() {
+
+  const location = useLocation();
+  const productInfo = location.state.productInfo;
+  const grade = location.state.grade;
+  console.log('state', location.state)
+
+  const navigate = useNavigate();
+
   const arr = [
     {
-      info: "부루마블",
-      quantity: "2",
-      price: "4000",
-      points: 400,
-      totalPrice: 8000,
-    },
-    {
-      info: "할리갈리",
-      quantity: "3",
-      price: "3000",
-      points: 450,
-      totalPrice: 9000,
-    },
-    {
-      info: "쿼리도",
+      info: productInfo.boardgameName + "  <" + grade + ">",
       quantity: "1",
-      price: "2000",
-      points: 100,
-      totalPrice: 2000,
+      price: grade == "최상"? productInfo.srentalFee :grade == "상"? productInfo.arentalFee :productInfo.brentalFee,
+      points: 400,
+      totalPrice: grade == "최상"? productInfo.srentalFee :grade == "상"? productInfo.arentalFee :productInfo.brentalFee,
     },
   ];
+
 
   const deliveryCharge = 2500;
   const holdingPoints = 5000;
   var TOTALPRICE = 0;
   var TOTALPOINTS = 0;
+  var deliveryStart = "N";
 
   //useSelector는 현재 state값을 받아올 수 있는 react hook이다. -> subPrice, email등등의  state를 가져옴.
   const address = useSelector((state) => state.deliveryReducer);
@@ -65,12 +67,14 @@ function OrderInfo() {
   const emailIdResult = useSelector((state) => state.emailIdReducer);
   const emailDomainResult = useSelector((state) => state.emailDomainReducer);
   const emailResult = useSelector((state) => state.emailReducer);
-
   const orderInfoResult = useSelector((state) => state.orderInfoReducer);
+  const orderFinalResult = useSelector((state) => state.orderFinalReducer);
+
 
   //Dispatch -> reducer를 호출하는 함수.
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
 
   const setModal1 = () => {
     dispatch({ type: [SET_MODAL1] });
@@ -109,12 +113,10 @@ function OrderInfo() {
   const pointsOnChangeHandler = (e) => {
     //reducer에서 key값으로 액션을 실행시키고, payload에 원하는 값을 넣어 state를 변경시킨다.
     dispatch({ type: SUBPRICE, payload: e.target.value });
-    console.log(subPriceResult);
   };
 
   const pointsOnClickHandler = (e) => {
     const inputText = document.getElementById("usingPoints");
-    console.log(inputText);
 
     if (e.target.checked) {
       inputText.value = holdingPoints;
@@ -155,6 +157,7 @@ function OrderInfo() {
     });
   };
 
+
   // console.log(emailResult.email);
 
   async function PaymentButtonOnChangeHandler() {
@@ -179,6 +182,85 @@ function OrderInfo() {
     function cancelButtonOnChangeHandler() {
       navigate("/boardgame/list");
     }
+
+  var finalPrice = TOTALPRICE - subPriceResult.subPrice;
+
+// ===============================================================
+  // console.log("orderId 값은 ?? ", orderInfoResult.data);
+  // console.log("orderAmount 값은 ?? ", orderInfoResult.price);
+  // console.log("couponUsedRate 값은 ?? ", "0%"); //값 받아서 넣기!!
+  // console.log("pointsUsedAmount 값은 ?? ", subPriceResult.subPrice);
+  // console.log("orderDate 값은 ?? ", orderInfoResult.data && orderInfoResult.data.substr(6,8));
+  // console.log("selectedProduct 값은 ?? ", 1);
+  // console.log("memberCode 값은 ?? ", memberDetail.memberCode);
+  // console.log("paymentMethod 값은 ?? ", "카드");
+  // console.log("deliveryCharge 값은 ?? ", deliveryCharge);
+  // console.log("usedCouponCode 값은 ?? ", "usedCouponCode");
+  // console.log("deliveryCode 값은 ?? ", deliveryStart);
+  // console.log("finalOrderAmount 값은 ?? ", finalPrice);
+
+
+  const orderFinal = {
+    orderId: orderInfoResult.data,
+    orderAmount: orderInfoResult.price,
+    pointsUsedAmount: subPriceResult.subPrice,
+    couponUsedRate: 0,
+    orderDate: orderInfoResult.data && orderInfoResult.data.substr(6,8),
+    selectedProduct: 1,
+    memberCode:  memberDetail.memberCode,
+    paymentMethod: "카드",
+    deliveryCharge: deliveryCharge,
+    usedCouponCode: "usedCouponCode",
+    deliveryStartYn: deliveryStart,
+    finalOrderAmount: finalPrice
+    
+  };
+
+  useEffect(
+    ()=>{
+      console.log('token: ' + token.sub);
+      if(token != null){
+        dispatch(callGetMemberAPI());
+        
+      }
+
+      dispatch({type: ORDER_FINAL, payload: orderFinal});
+    },[orderFinal.orderId]
+  )
+
+  const data = FinalOrderInfo(); 
+  data();
+
+  
+  return (
+    <div className="orderInfo">
+      <h3 className="orderInfoSubTitle">주문 상세 내역</h3>
+      <hr className="orderInfohr" />
+      <table className="orderInfoTable">
+        <thead>
+          <tr className="orderInfoHeader">
+            <th width="600">상품/옵션 정보 </th>
+            <th>수량</th>
+            <th>상품 금액</th>
+            <th>적립 포인트</th>
+            <th>합계 금액</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {arr.map((list) => (
+            <tr align="center" className="orderInfoContent">
+              <td width="500" height="100">
+                {list.info}
+              </td>
+              <td>{list.quantity}</td>
+              <td>{list.price}</td>
+              <td>{list.points}</td>
+              <td>{list.totalPrice}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
     var finalPrice = TOTALPRICE - subPriceResult.subPrice;
 
@@ -279,6 +361,7 @@ function OrderInfo() {
             ))}
           </tbody>
         </table>
+
 
         <div>
           <h3 className="orderInfoSubTitle">주문자 정보</h3>

@@ -1,149 +1,60 @@
 import { NavLink } from "react-router-dom";
+import { useState , useEffect} from "react";
+import {useSelector, useDispatch} from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 import Pagenation from "../items/Pagenation";
 import style from "../static/css/boardgame-list.module.css";
+import {callProductListAPI,
+    callSearchProductListAPI 
+} from "../../apis/boardgame/ProductAPICalls";
 
 function BoardgameList() {
-  const exampleProduct = [
-    {
-      boardgameCode: 1,
-      boardgameName: "스플렌더",
-      boardgamePrice: 4000,
-      boardgameTheme: "전략",
-      boardgameLevel: "매우 어려움",
-      boardgameTime: "3시간 이상",
-    },
-    {
-      boardgameCode: 2,
-      boardgameName: "다빈치 코드",
-      boardgamePrice: 4000,
-      boardgameTheme: "전략",
-      boardgameLevel: "매우 어려움",
-      boardgameTime: "3시간 이상",
-    },
-    {
-      boardgameCode: 3,
-      boardgameName: "루미큐브",
-      boardgamePrice: 4000,
-      boardgameTheme: "전략",
-      boardgameLevel: "매우 어려움",
-      boardgameTime: "3시간 이상",
-    },
-    {
-      boardgameCode: 4,
-      boardgameName: "블리츠",
-      boardgamePrice: 4000,
-      boardgameTheme: "순발력",
-      boardgameLevel: "쉬움",
-      boardgameTime: "30분 이하",
-    },
-    {
-      boardgameCode: 5,
-      boardgameName: "클루",
-      boardgamePrice: 4000,
-      boardgameTheme: "추리",
-      boardgameLevel: "어려움",
-      boardgameTime: "30분~1시간",
-    },
-    {
-      boardgameCode: 1,
-      boardgameName: "스플렌더",
-      boardgamePrice: 4000,
-      boardgameTheme: "전략",
-      boardgameLevel: "매우 어려움",
-      boardgameTime: "3시간 이상",
-    },
-    {
-      boardgameCode: 2,
-      boardgameName: "다빈치 코드",
-      boardgamePrice: 4000,
-      boardgameTheme: "전략",
-      boardgameLevel: "매우 어려움",
-      boardgameTime: "3시간 이상",
-    },
-    {
-      boardgameCode: 3,
-      boardgameName: "루미큐브",
-      boardgamePrice: 4000,
-      boardgameTheme: "전략",
-      boardgameLevel: "매우 어려움",
-      boardgameTime: "3시간 이상",
-    },
-    {
-      boardgameCode: 4,
-      boardgameName: "블리츠",
-      boardgamePrice: 4000,
-      boardgameTheme: "순발력",
-      boardgameLevel: "쉬움",
-      boardgameTime: "30분 이하",
-    },
-    {
-      boardgameCode: 5,
-      boardgameName: "클루",
-      boardgamePrice: 4000,
-      boardgameTheme: "추리",
-      boardgameLevel: "어려움",
-      boardgameTime: "30분~1시간",
-    },
-    {
-      boardgameCode: 1,
-      boardgameName: "스플렌더",
-      boardgamePrice: 4000,
-      boardgameTheme: "전략",
-      boardgameLevel: "매우 어려움",
-      boardgameTime: "3시간 이상",
-    },
-    {
-      boardgameCode: 2,
-      boardgameName: "다빈치 코드",
-      boardgamePrice: 4000,
-      boardgameTheme: "전략",
-      boardgameLevel: "매우 어려움",
-      boardgameTime: "3시간 이상",
-    },
-    {
-      boardgameCode: 3,
-      boardgameName: "루미큐브",
-      boardgamePrice: 4000,
-      boardgameTheme: "전략",
-      boardgameLevel: "매우 어려움",
-      boardgameTime: "3시간 이상",
-    },
-    {
-      boardgameCode: 4,
-      boardgameName: "블리츠",
-      boardgamePrice: 4000,
-      boardgameTheme: "순발력",
-      boardgameLevel: "쉬움",
-      boardgameTime: "30분 이하",
-    },
-    {
-      boardgameCode: 5,
-      boardgameName: "클루",
-      boardgamePrice: 4000,
-      boardgameTheme: "추리",
-      boardgameLevel: "어려움",
-      boardgameTime: "30분~1시간",
-    },
-  ];
+
+  const data = useSelector(state => state.productReducer); 
+  const products = data.data;
+  console.log(data);
+  const nav = useNavigate();
+  const dispatch = useDispatch();
+  console.log("상품 api 결과", products)
+  const [currentPage, setCurrentPage] = useState(1);
+  let productN = 5;
+  productN = data?.pageInfo?.totalCount != undefined ? Number(data.pageInfo.totalCount) : 5;
+
+  const pageButton = () => {
+    let pageArray = [];
+    for (let i = 1; i <= productN / 15 +1 ; i++) 
+      {currentPage==i? pageArray.push(<h3 style={{color : "red"}}>{i}</h3>) : pageArray.push(<h3 onClick={()=>{setCurrentPage(i)}}>{i}</h3>)}
+    return pageArray;
+  }
+
+  useEffect(
+    () => {         
+        dispatch(callProductListAPI({
+            currentPage: currentPage
+        }));        
+    }
+    ,[currentPage]
+);
 
   return (
     <div className={style.layout}>
       <div>
         <div className={style.rowBox}>
-          {exampleProduct.map((row, index) => {
+          {products == undefined? null : products.map((row, index) => {
             return index % 5 == 0 ? (
               <div className={style.row}>
                 <div>
-                  {exampleProduct.map((product, i) => {
+                  {products.map((product, i) => {
                     return i >= index && i < index + 5 ? (
                       <NavLink
-                        to={`/boardgame/list/${product.boardgameCode}`}
+                        to={`/boardgame/list/${product.boardgameTypeCode}`}
                         className={style.product}
                       >
                         <div className={style.imageBox}>
                           <img
                             className={style.image}
-                            src={require(`../static/images/best${product.boardgameCode}.png`)}
+                            src={product.productImageUrl}
                           />
                         </div>
                         <div className={style.info}>
@@ -151,14 +62,14 @@ function BoardgameList() {
                             {product.boardgameName}
                           </div>
                           <div className={style.boardgamePrice}>
-                            {product.boardgamePrice
+                            {product.defaultRentalFee
                               .toString()
                               .replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "원"}
                           </div>
                           <div className={style.category}>
-                            <div>{product.boardgameTheme}</div>
-                            <div>{product.boardgameLevel}</div>
-                            <div>{product.boardgameTime}</div>
+                            <div>{product.categoryName}</div>
+                            <div>어려움</div>
+                            <div>1시간 이상</div>
                           </div>
                         </div>
                       </NavLink>
@@ -170,8 +81,10 @@ function BoardgameList() {
           })}
         </div>
       </div>
-      <div className={style.pagenation}>
-        <Pagenation />
+      <div className={style.pagenation} style={{justifyContent : "space-between", display:"flex", width:"300px"}}>
+        <img src="/common/left_arrow.png" onClick={()=>{setCurrentPage(currentPage!=1 ? currentPage-1 : 1)}}/>
+        {pageButton()}
+        <img src="/common/right_arrow.png" onClick={()=>{setCurrentPage(currentPage!=productN ? currentPage+1 : productN)}}/>
       </div>
     </div>
   );

@@ -1,12 +1,12 @@
 import "../css/payment-completed-style.css";
-
 import { useDispatch, useSelector } from "react-redux";
 import { PostPaymentInfo } from "../../apis/payment/PaymentInfoAPICalls";
 import { POST_PAYMENTINFO } from "../../modules/paymentModules/paymentInfoModule";
+import { useNavigate } from "react-router-dom";
 
 
 const onClickHandler2 = (e) => {
-  window.location.href = "/";
+  useNavigate = "/";
 };
 
 
