@@ -1,3 +1,10 @@
+import style from "./FAQ.module.css";
+
 function FAQ() {
-  return <h1>FAQ</h1>;
+  return (
+  <div>
+    <h1 className={style.title}>FAQ</h1>
+  </div>    
+  );
 }
+export default FAQ;
